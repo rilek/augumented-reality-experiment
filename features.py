@@ -16,16 +16,12 @@ def process_img(cap):
     fps = int(1000/24)
     
     ## Features
-    orb = cv2.ORB_create()
-    kp1, desc1 = orb.detectAndCompute(cv2.cvtColor(base, cv2.COLOR_BGR2GRAY), None)
+    sift = cv2.xfeatures2d.SIFT_create()
+    kp1, desc1 = sift.detectAndCompute(cv2.cvtColor(base, cv2.COLOR_BGR2GRAY), None)
     base = cv2.drawKeypoints(base, kp1, base)
 
     ## Feature matching
-    # index_params = dict(algorithm=0, trees=3)
-    index_params= dict(algorithm = 6, ## FLANN_INDEX_LSH
-                       table_number = 6, # 12
-                       key_size = 12,     # 20
-                       multi_probe_level = 1) #2
+    index_params = dict(algorithm=0, trees=3)
     search_params = dict()
     flann = cv2.FlannBasedMatcher(index_params, search_params)
     i = 0
@@ -41,19 +37,16 @@ def process_img(cap):
         # if i == 0:
         gframe = frame #cv2.resize(frame, (320, 240))
         gframe = cv2.cvtColor(gframe, cv2.COLOR_BGR2GRAY)
-        kp2, desc2 = orb.detectAndCompute(gframe, None)
+        kp2, desc2 = sift.detectAndCompute(gframe, None)
         # gframe = cv2.drawKeypoints(gframe, kp2, gframe)
 
-        matches = flann.knnMatch(desc1,desc2,k=2)
+        matches = flann.knnMatch(desc1, desc2, k=2)
         good_points = []
-        for mn in matches:
-            if len(mn) != 2: continue
-            
-            m, n = mn
+        for m, n in matches:
             if m.distance < 0.5 * n.distance:
                 good_points.append(m)
 
-        if len(good_points) > 10:
+        if len(good_points) > 7:
             qpts = np.float32([kp1[m.queryIdx].pt for m in good_points]).reshape(-1, 1, 2)
             tpts = np.float32([kp2[m.trainIdx].pt for m in good_points]).reshape(-1, 1, 2)
 
@@ -81,8 +74,8 @@ def process_img(cap):
 
             # cv2.imshow("Img", img)
 
-            img = cv2.warpPerspective(img, matrix, (640, 480))
-            # img = cv2.resize(img, (320, 240))
+            img = cv2.warpPerspective(img, matrix, (320, 240))
+            img = cv2.resize(img, (320, 240))
             
             r, c, ch = img.shape
             roi = homography[0:r, 0:c]
