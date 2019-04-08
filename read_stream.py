@@ -7,21 +7,50 @@ import base64
 import sys
 import getopt
 import numpy as np
+import re
+from util import log, error, warning, info
 
 
 class Stream(object):
-    def __init__(self, host="127.0.0.1", port=5555):
-        addr = "tcp://{}:{}".format(host, port)
-        print("Connecting to socket: {}".format(addr))
-        try:
-            self.context = zmq.Context()
-            self.footage_socket = self.context.socket(zmq.SUB)
-            self.footage_socket.connect(addr)
-            self.footage_socket.setsockopt_string(zmq.SUBSCRIBE, np.unicode(''))
-        except Exception:
-            print("Cannot connect to socket!")
+    def __init__(self, source=None, source_type="cam"):
+        info("Reading from ", source_type, "!")
 
-    def read(self):
+        if source_type == "cam":
+            source = int(source) or 0
+            try:
+                self.cap = cv2.VideoCapture(source)
+                self.release = self.cap.release
+                self.read = self.cap.read
+            except Exception as e:
+                error("Cannot read from ", source_type , "!", err=e)
+                print(Exception)
+
+        elif source_type == "file":
+            try:
+                self.cap = cv2.VideoCapture(source)
+                self.release = self.cap.release
+                self.read = self.read_from_file
+            except Exception as e:
+                error("Cannot read from ", source_type ,"!", err=e)
+                exit()
+
+        elif source_type == "remote":
+            source = "tcp://" + source
+            log("Connecting to socket: {}".format(source))
+            try:
+                self.context = zmq.Context()
+                self.footage_socket = self.context.socket(zmq.SUB)
+                self.footage_socket.connect(source)
+                self.footage_socket.setsockopt_string(zmq.SUBSCRIBE, np.unicode(''))
+                self.read = self.read_from_stream
+                self.release = lambda: None
+            except Exception as e:
+                error("Cannot connect to socket!", err=e)
+                exit()
+        else:
+            error("Unknown type of source")
+
+    def read_from_stream(self):
         try:
             frame = self.footage_socket.recv_string()
             img = base64.b64decode(frame)
@@ -31,6 +60,19 @@ class Stream(object):
         except Exception:
             print("Something is not working")
             return False, None
+
+    def read_from_file(self):
+        ret, frame = self.cap.read()
+
+        if not ret:
+            self.cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+            ret, frame = self.cap.read()
+
+        return ret, frame
+
+    def __exit__(self, exec_type, exc_value, traceback):
+        self.release()
+
 
 def help_print():
     print('./read_stream.py -i <ip> -p <port>')

@@ -5,7 +5,7 @@ import cv2
 import socket
 import zmq
 
-cap = cv2.VideoCapture(2)  # init the camera
+cap = cv2.VideoCapture(0)  # init the camera
 
 # cap.set(cv2.CAP_PROP_FRAME_WIDTH, 960)
 # cap.set(cv2.CAP_PROP_FRAME_HEIGHT,540)
