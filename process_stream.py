@@ -46,4 +46,10 @@ if __name__ == "__main__":
     log("Start processing")
     proc = features.ImageProcessor(stream, reference_image=reference_image)
     proc.enable_object_follow()
+    proc.set_parameters({"LED": "ON"})
+    # proc.set_handler(
+    #     "arduino/button",
+    #     lambda parameters:
+    #         error("ERRROR")
+    # )
     proc.start()

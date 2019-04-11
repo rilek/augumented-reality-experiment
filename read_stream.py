@@ -19,6 +19,8 @@ class Stream(object):
             source = int(source) or 0
             try:
                 self.cap = cv2.VideoCapture(source)
+                self.cap.set(cv2.CAP_PROP_FRAME_WIDTH,1920)
+                self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT,1080)
                 self.release = self.cap.release
                 self.read = self.cap.read
             except Exception as e:
@@ -35,15 +37,18 @@ class Stream(object):
                 exit()
 
         elif source_type == "remote":
-            source = "tcp://" + source
+            # source = "http://" + source
             log("Connecting to socket: {}".format(source))
             try:
-                self.context = zmq.Context()
-                self.footage_socket = self.context.socket(zmq.SUB)
-                self.footage_socket.connect(source)
-                self.footage_socket.setsockopt_string(zmq.SUBSCRIBE, np.unicode(''))
-                self.read = self.read_from_stream
-                self.release = lambda: None
+                # self.context = zmq.Context()
+                # self.footage_socket = self.context.socket(zmq.SUB)
+                # self.footage_socket.connect(source)
+                # self.footage_socket.setsockopt_string(zmq.SUBSCRIBE, np.unicode(''))
+                # self.read = self.read_from_stream
+                # self.release = lambda: None
+                self.cap = cv2.VideoCapture(source)
+                self.release = self.cap.release
+                self.read = self.cap.read
             except Exception as e:
                 error("Cannot connect to socket!", err=e)
                 exit()
