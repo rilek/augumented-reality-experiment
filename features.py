@@ -162,7 +162,7 @@ class ImageProcessor(object):
             kp, desc = self.detect_frame(frame)
 
             if desc is None:
-                self.show_img(homography or frame)
+                self.show_img(frame)
                 key = cv2.waitKey(self.fps)
                 if key==27:
                     self.stop()
