@@ -10,6 +10,8 @@ import read_stream
 import features
 # import chessboard
 from util import log, error, warning, info, success
+from Layer import Layer, RelativeLayer, AbsoluteLayer
+from Client import ClientMQTT
 
 
 def prepare_arguments():
@@ -23,6 +25,33 @@ def prepare_arguments():
                         help="""Type of source. \033[1mDefault: file\033[0m""")
 
     return parser.parse_args()
+
+def prepare_mqtt_client():
+    client = ClientMQTT()
+    client.connect()
+
+    client.set_default_parameters({"LED": "OFF"})
+    client.register_handler(
+        "arduino/button",
+        lambda params, payload: {**params, "LED": payload}
+    )
+
+    return client
+
+
+def draaaw(parameters, layer):
+    layer.draw_rectangle((0,70), (100, 37), (255,255,255), coords_unit="pixel")
+    layer.draw_text("LED STATE", (20, 150), color=(255, 0, 0), fontSize=1, coords_unit="pixel")
+    layer.draw_text(parameters["LED"], (20, 180), color=(255, 0, 0), fontSize=1, coords_unit="pixel")
+    return layer
+
+
+def draaaw2(parameters, layer):
+    layer.draw_rectangle((20,20), (180, 70), (255,255,255), coords_unit="pixel", size_unit="pixel")
+    layer.draw_text("LED STATE", (30, 50), color=(255, 0, 0), fontSize=.5, coords_unit="pixel")
+    layer.draw_text(parameters["LED"], (30, 70), color=(255, 0, 0), fontSize=.5, coords_unit="pixel")
+    return layer
+
 
 
 if __name__ == "__main__":
@@ -46,10 +75,12 @@ if __name__ == "__main__":
     log("Start processing")
     proc = features.ImageProcessor(stream, reference_image=reference_image)
     proc.enable_object_follow()
-    proc.set_parameters({"LED": "ON"})
-    # proc.set_handler(
-    #     "arduino/button",
-    #     lambda parameters:
-    #         error("ERRROR")
-    # )
+
+    client = prepare_mqtt_client()
+    proc.set_client(client=client)
+
+    proc.create_layer(name="Test", type="relative", draw_fn=draaaw, image_size="ref")
+    proc.create_layer(name="Test", type="absolute", draw_fn=draaaw2, image_size="scene")
+
+
     proc.start()

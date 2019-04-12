@@ -19,8 +19,8 @@ class Stream(object):
             source = int(source) or 0
             try:
                 self.cap = cv2.VideoCapture(source)
-                self.cap.set(cv2.CAP_PROP_FRAME_WIDTH,1920)
-                self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT,1080)
+                self.cap.set(cv2.CAP_PROP_FRAME_WIDTH,1280)
+                self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT,720)
                 self.release = self.cap.release
                 self.read = self.cap.read
             except Exception as e:

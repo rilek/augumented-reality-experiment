@@ -5,82 +5,12 @@ import numpy as np
 from PIL import ImageFont, ImageDraw, Image
 import paho.mqtt.client as mqtt
 from util import log, error, warning, info, success as u
+from functools import partial, wraps
+from Layer import Layer, RelativeLayer, AbsoluteLayer
 
-LED_STATE = "ON"
-
-class Layer(object):
-    all_layers = []
-
-    def __init__(self, name, image, draw_fn=lambda:None, image_size=(0,0)):
-        self.name = name
-        self.image = image
-        self.draw_fn = lambda: draw_fn(self).image
-        self.img_width, self.img_height = image_size
-
-        Layer.all_layers.append(self)
-
-    def __setitem__(self, key, value):
-        self.image[key] = value
-
-    def __getitem__(self, key):
-        return self.image[key]
-
-    def set_draw_function(self, draw_fn):
-        self.draw_fn = lambda: draw_fn(self).image
-
-    def draw_rectangle(self, coords=(0,0), size=(0,0), color=(255,255,255),
-                       coords_unit="percentage", size_unit="percentage"):
-        layer = self.image
-        x, y = self.calc_coords(coords, coords_unit)
-        width, height = self.calc_coords(size, size_unit)
-        
-        layer[y:y+height, x:width, 0] = color[0]
-        layer[y:y+height, x:width, 1] = color[1]
-        layer[y:y+height, x:width, 2] = color[2]
-        return layer
-
-    def draw_text(self, text, coords, fontSize=1, color=(0,0,0), coords_unit="percentage"):
-        cv2.putText(self.image, text, coords, cv2.FONT_HERSHEY_SIMPLEX, fontSize, color, int(fontSize*2), cv2.LINE_AA)
-
-    def calc_coords(self, values, unit):
-        x, y = values
-        if unit == "percentage":
-            x, y = values[0]*self.img_width//100, values[1]*self.img_height//100
-        return x, y
-
-class RelativeLayer(Layer):
-    def __init__(self, name, image, draw_fn=lambda: None, image_size=(0,0)):
-        Layer.__init__(self, name, image, draw_fn, image_size)
-
-class AbsoluteLayer(Layer):
-    def __init__(self, name, image, draw_fn=lambda: None, image_size=(0,0)):
-        Layer.__init__(self, name, image, draw_fn, image_size)
 
 def draw_polylines(frame, dst_arr, color=(0, 0, 255), thickness=3):
     return cv2.polylines(frame, dst_arr, True, color, thickness)
-
-def on_message(client, userdata, message):
-    global LED_STATE
-    log("ON MESSAGE")
-    if message.topic == "arduino/button":
-        data = str(message.payload.decode("utf-8"))
-        print(data)
-        LED_STATE = data
-
-def prepareMQTT():
-    broker_address="localhost" 
-
-    try:
-        log("Connecting to MQTT broker")
-        client = mqtt.Client()
-        client.connect(broker_address, keepalive=180)
-        client.subscribe("arduino/button")
-    except Exception as e:
-        error("Cannot connect to broker", err=e)
-        exit()
-
-    client.on_message=on_message 
-    client.loop_start()
 
 class ImageProcessor(object):
     def __init__(self, cap, reference_image, opts=dict()):                
@@ -122,7 +52,7 @@ class ImageProcessor(object):
 
         ## Prepare communication with MQTT broker
         ## TODO: Handle lack of communication
-        prepareMQTT()
+        # prepareMQTT()
 
         ## Create descriptor
         self.create_descriptor(self.descritor_algorithm)
@@ -131,23 +61,6 @@ class ImageProcessor(object):
         ## Create keypoints matcher
         self.create_matcher(self.matcher_algorithm)
 
-        def draaaw(layer):
-            layer.draw_rectangle((0,70), (100, 37), (255,255,255), coords_unit="pixel")
-            layer.draw_text("LED STATE", (20, 150), color=(255, 0, 0), fontSize=1, coords_unit="pixel")
-            layer.draw_text(LED_STATE, (20, 180), color=(255, 0, 0), fontSize=1, coords_unit="pixel")
-            return layer
-
-        def draaaw2(layer):
-            layer.draw_rectangle((20,20), (180, 70), (255,255,255), coords_unit="pixel", size_unit="pixel")
-            layer.draw_text("LED STATE", (30, 50), color=(255, 0, 0), fontSize=.5, coords_unit="pixel")
-            layer.draw_text(LED_STATE, (30, 70), color=(255, 0, 0), fontSize=.5, coords_unit="pixel")
-            return layer
-
-
-        self.layer1 = self.create_layer(name="Test", type="relative", draw_fn=draaaw,
-                                        image_size=(self.ref_height, self.ref_width))
-        self.layer2 = self.create_layer(name="Test", type="absolute", draw_fn=draaaw2,
-                                        image_size=(self.scene_height, self.scene_width))
 
     def start(self):
         h = self.ref_height
@@ -259,6 +172,12 @@ class ImageProcessor(object):
 
     def create_layer(self, name=None, draw_fn=None, image_size=None, type="relative"):
         name = name if name else "Layer " + str(len(Layer.all_layers))
+        
+        if image_size == "ref":
+            image_size = (self.ref_height, self.ref_width)
+        elif image_size == "scene":
+            image_size = (self.scene_height, self.scene_width)
+
         if type == "absolute":
             layer_class = AbsoluteLayer
         else:
@@ -266,13 +185,10 @@ class ImageProcessor(object):
 
         h, w = image_size
         empty_img = np.zeros([h, w, 3], dtype=np.uint8)
-        layer = layer_class(name, empty_img, image_size=image_size, draw_fn=draw_fn)
+        layer = layer_class(name, empty_img, image_size=image_size, draw_fn=lambda x: draw_fn(self.get_parameters(), x))
 
         self.layers.append(layer)
         return layer
-
-    # def set_handler(self, event, fn):
-    #     self.connector.on(event, fn)
 
     def draw_layers(self, homography, matrix, mask, size):
         height, width = size
@@ -295,14 +211,17 @@ class ImageProcessor(object):
         
         return homography
 
-    def set_parameter(self, parameter, value):
-        self.parameters[parameter] = value
+    def set_client(self, client):
+        self.client = client
 
-    def set_parameters(self, dict):
-        self.parameters = {**self.parameters, **dict}
+    def set_handler(self, event, handler):
+        self.handlers.append(event, partial(handler, self.parameters))
 
     def delete_parameter(self, parameter):
         del self.parameters[parameter]
+
+    def get_parameters(self):
+        return self.client.get_parameters()
 
     @staticmethod
     def calc_scene_size(frame_size, max_size):
@@ -318,9 +237,6 @@ class ImageProcessor(object):
             width = int(width*scale)
             height = int(height*scale)
         return height, width
-
-
-
 
 
 ################
