@@ -6,7 +6,7 @@ from PIL import ImageFont, ImageDraw, Image
 import paho.mqtt.client as mqtt
 from util import log, error, warning, info, success as u
 from functools import partial, wraps
-from Layer import Layer, RelativeLayer, AbsoluteLayer
+from Layer import Layer, RelativeLayer, AbsoluteLayer, Layer2
 
 
 def draw_polylines(frame, dst_arr, color=(0, 0, 255), thickness=3):
@@ -50,9 +50,9 @@ class ImageProcessor(object):
 
         self.clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
 
-        ## Prepare communication with MQTT broker
-        ## TODO: Handle lack of communication
-        # prepareMQTT()
+        self.kernel = np.array([[-1,-1,-1], 
+                                [-1, 9,-1],
+                                [-1,-1,-1]])
 
         ## Create descriptor
         self.create_descriptor(self.descritor_algorithm)
@@ -68,6 +68,7 @@ class ImageProcessor(object):
         this = self
         self.run = True
         homography = None
+        good_points = []
 
         while self.run:
             ret, frame = self.cap.read()
@@ -88,9 +89,10 @@ class ImageProcessor(object):
                 matches_mask = mask.ravel().tolist()
 
                 # Perspective transform
-                pts = np.float32([[0, 0], [0, h], [w, h], [w,0]]).reshape(-1, 1, 2)
+                pts = np.float32([[[0, 0]], [[0, h]], [[w, h]], [[w, 0]]])
                 dst = cv2.perspectiveTransform(pts, matrix)
                 dst_arr = [np.int32(dst)]
+                # print(dst_arr)
 
                 homography = self.follow_object(frame, dst_arr)
                 homography = self.draw_layers(homography, matrix, mask,
@@ -123,9 +125,9 @@ class ImageProcessor(object):
     def create_matcher(self, matcher_algorithm, index_params=None, search_params=None):
         index_params = (index_params or
                         dict(algorithm =6,           # FLANN_INDEX_LSH
-                             table_number = 12,       # 12
-                             key_size = 20,          # 20
-                             multi_probe_level = 2)) # 2
+                             table_number = 6,       # 12
+                             key_size = 12,          # 20
+                             multi_probe_level = 1)) # 2
         search_params = search_params or dict(checks=100)
         if matcher_algorithm == "FLANN":
             matcher = cv2.FlannBasedMatcher
@@ -145,13 +147,9 @@ class ImageProcessor(object):
 
     def detect_frame(self, frame):
         gframe = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        gframe = cv2.equalizeHist(gframe)
-        gframe = self.clahe.apply(gframe)
-        kernel = np.array([[-1,-1,-1], 
-                           [-1, 9,-1],
-                           [-1,-1,-1]])
-        gframe = cv2.filter2D(gframe, -1, kernel) 
-        # cv2.imshow("TEST", gframe)
+        # gframe = cv2.equalizeHist(gframe)
+        # gframe = self.clahe.apply(gframe)
+        # gframe = cv2.filter2D(gframe, -1, self.kernel)
         return self.descriptor.detectAndCompute(gframe, None)
 
     def calc_good_points(self, desc):
@@ -170,22 +168,22 @@ class ImageProcessor(object):
         tpts = np.float32([kp[m.trainIdx].pt for m in good_points]).reshape(-1, 1, 2)
         return cv2.findHomography(qpts, tpts, cv2.RANSAC, 5.0)
 
-    def create_layer(self, name=None, draw_fn=None, image_size=None, type="relative"):
+    def create_layer(self, name=None, draw=None, transform=None, follow=None):
         name = name if name else "Layer " + str(len(Layer.all_layers))
-        
-        if image_size == "ref":
+        transform = transform or (transform is None and type == "relative")
+
+        if transform:
             image_size = (self.ref_height, self.ref_width)
-        elif image_size == "scene":
+        else:
             image_size = (self.scene_height, self.scene_width)
 
-        if type == "absolute":
-            layer_class = AbsoluteLayer
-        else:
-            layer_class = RelativeLayer
 
-        h, w = image_size
-        empty_img = np.zeros([h, w, 3], dtype=np.uint8)
-        layer = layer_class(name, empty_img, image_size=image_size, draw_fn=lambda x: draw_fn(self.get_parameters(), x))
+        layer = Layer2(name,
+                      draw=partial(ImageProcessor.draw, draw, self),
+                      size=image_size,
+                      transform=transform,
+                      follow=follow,
+                      ref_size = (self.ref_height, self.ref_width))
 
         self.layers.append(layer)
         return layer
@@ -193,10 +191,15 @@ class ImageProcessor(object):
     def draw_layers(self, homography, matrix, mask, size):
         height, width = size
         for layer in self.layers:
-            result = layer.draw_fn()
-            if isinstance(layer, RelativeLayer):
+            should_transform = layer.transform
+   
+            if not should_transform and layer.follow:
+                result = layer.draw(matrix)
+            else:
+                result = layer.draw()
+            if should_transform:
                 result = cv2.warpPerspective(result, matrix, (width, height))
-                
+
             r, c, ch = result.shape
             roi = homography[0:r, 0:c]
 
@@ -237,6 +240,13 @@ class ImageProcessor(object):
             width = int(width*scale)
             height = int(height*scale)
         return height, width
+
+    @staticmethod
+    def draw(draw_fn, self, x, y=None):
+        if y is not None:
+            return draw_fn(self.get_parameters(), x, matrix=y)
+        else:
+            return draw_fn(self.get_parameters(), x)
 
 
 ################
