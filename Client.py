@@ -22,18 +22,20 @@ class ClientMQTT(object):
             self.client.connect(self.host)
         except Exception as e:
             error("MQTT Connect exception", err=e)
+
         self.client.loop_start()
 
     # DEFAULT FUNCTIONS
-    def on_connect(self, client, userdata, flags, rc):
-        try:
-            if self.user_on_connect and callable(self.user_on_connect):
+    def on_connect(self, client, userdata, flags, rc):        
+        if self.user_on_connect and callable(self.user_on_connect):
+            try:
                 self.user_on_connect(self, client, userdata, flags, rc)
-        finally:
-            self.default_on_connect(client, userdata, flags, rc)
+            except Exception as e:
+                error("Custom on connect function error:\n\t", e)
+
+        self.default_on_connect(client, userdata, flags, rc)
 
     def default_on_connect(self, client, userdata, flags, rc):
-        print ("CONNECTION")
         if rc == 0:
             info("Successully connected with broker")
             self.parameters = {**self.parameters, "connected": True}

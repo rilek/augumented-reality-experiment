@@ -14,6 +14,9 @@ from Layer import Layer, RelativeLayer, AbsoluteLayer, Layer2
 from Client import ClientMQTT
 
 
+stage = -1
+
+
 def prepare_arguments():
     parser = argparse.ArgumentParser(description='Process video stream')
     parser.add_argument('-s','--source', type=str, default=None,
@@ -25,6 +28,10 @@ def prepare_arguments():
                         help="""Type of source. \033[1mDefault: file\033[0m""")
 
     return parser.parse_args()
+
+def on_connect(*args):
+    global stage
+    stage = 0
 
 def prepare_mqtt_client():
     client = ClientMQTT()
@@ -39,6 +46,8 @@ def prepare_mqtt_client():
         "arduino/ohm",
         lambda params, payload: {**params, "Ohm": payload}
     )
+
+    client.set_on_connect(on_connect)
     client.connect()
 
     return client
@@ -75,8 +84,37 @@ img = cv2.imread("img/original.jpg")
 img = cv2.resize(img, (50, 50))
 
 def draw_img(parameters, layer):
-    layer.draw_image(img, (10, 5), ("100%", "100%"))
+    layer.draw_image(img, (20, 20), ("100%", "100%"))
     return layer
+
+def presentation(parameters, layer, matrix=None):
+    global stage
+
+    # print(parameters)
+
+    if stage is 0 and parameters["LED"] == "ON":
+        stage = 1
+    elif stage is 1 and float(parameters["OHM"]) > 1000:
+        stage = 2
+
+    
+    layer.draw_rectangle((10,10), (160, 300), (255,255,255))
+    
+    layer.draw_text("Parameters:", (35, 20), color=(15, 15, 15), fontSize=.5)
+    layer.draw_text("LED: " +parameters["LED"], (60, 20), color=(15, 15, 15), fontSize=.5)
+    layer.draw_text("Ohm: " +parameters["Ohm"], (80, 20), color=(15, 15, 15), fontSize=.5)
+
+    if stage is -1:
+        layer.draw_text("Turn on the device", (120, 20), fontSize= 0.5, color=(15, 15, 225))
+    elif stage is 0:
+        layer.draw_text("Turn on the LED", (120, 20), fontSize= 0.5, color=(15, 15, 225))
+    elif stage is 1:
+        layer.draw_text("Set resistance over 1k OHM", (120, 20), fontSize= 0.5, color=(15, 15, 225))
+    elif stage is 2:
+        layer.draw_text("Device is ready to go!", (120, 20), fontSize= 0.5, color=(15, 15, 225))
+
+    return layer
+
 
 if __name__ == "__main__":
     args = prepare_arguments()
@@ -103,8 +141,9 @@ if __name__ == "__main__":
     client = prepare_mqtt_client()
     proc.set_client(client=client)
 
-    # proc.create_layer(name="Test", draw=draaaw, transform=False, follow=False)
-    proc.create_layer(name="Test", draw=draw_img, follow=True)
+
+    proc.create_layer(name="Test", draw=presentation, transform=False, follow=False)
+    # proc.create_layer(name="Test", draw=draw_img, follow=True)
     # proc.create_layer(name="Test", draw=draw_img, transform=True)
 
     proc.start()

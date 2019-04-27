@@ -19,8 +19,6 @@ class Layer2(object):
         Should the image be transformed to match object perspective
     follow : bool
         Should layer coordinates follow top left corner of an object
-    zero_point : (int, int) : (y, x)
-        Zero point coordinates
     ref_size : (int, int) : (height, width)
         Size of reference image. Neccessary to predict precentage size of following drawings
     """
@@ -44,8 +42,6 @@ class Layer2(object):
         self.__transform = transform
         # Should layer coordinates zero point follow top left corner of object
         self.__follow = follow
-        # Zero point coordinates
-        self.__zero_point = (0, 0)
         self.matrix = None
 
         Layer2.all_layers.append(self)
@@ -137,24 +133,11 @@ class Layer2(object):
 
         self.__perspective = value
 
-
-    @property
-    def zero_point(self):
-        return self.__zero_point
-
-    @zero_point.setter
-    def zero_point(self, value):
-        if not all(isinstance(coord, int) for coord in value):
-            raise TypeError("Coordinates must be int")
-        elif not (len(value) is 2):
-            raise ValueError("Zero point must be 2 item list")
-        self.__zero_point = value
-
     @property
     def default_image(self):
         return self.__default_image
 
-    def update_zero_point(self, matrix):
+    def update_perspective(self, matrix):
         self.matrix = matrix
         if matrix is not None:
             perspective = cv2.perspectiveTransform(np.float32([[[0, 0]], [self.ref_size]]), matrix)
@@ -168,29 +151,33 @@ class Layer2(object):
             coords = (0, 0)
             self.perspective = (1, 1)
 
-        self.zero_point = coords
-
-    def parse_coordinate(self, coord, reference, add_zero_point=True):
+    def parse_coordinate(self, coord, reference):
         if not isinstance(coord, int):
             if coord.endswith("%"):
-                coord = (self.perspective[reference] * self.ref_size[reference] * int(coord[:-1])) // 100
+                coord = (self.ref_size[reference] * int(coord[:-1]) // 100)
             elif coord.endswith("px"):
                 coord = int(coord[:-2])
             else:
                 raise ValueError("Unknown coordinate value")
 
-        coord_value = int(coord)
-        shift = self.zero_point[reference] if add_zero_point else 0
-        return shift + coord_value 
+        return coord
 
-    def calc_coords(self, values, add_zero_point=False):
-        y, x = [self.parse_coordinate(coord, i, add_zero_point) for i, coord in enumerate(values)]
+    def calc_coords(self, values):
+        values = [self.parse_coordinate(coord, i) for i, coord in enumerate(values)]
+        if self.follow:
+            tmp = cv2.perspectiveTransform(np.float32([[values]]), self.matrix)
+            values = tmp[0][0]
+            ## perspectiveTransform returns coordinates in reversed order
+            x, y = [int(x) for x in values]
+        else:
+            y, x = values
         return y, x
 
     def draw(self, matrix=None):
         self.image = self.default_image.copy()
         if matrix is not None:
-            self.update_zero_point(matrix)
+            self.matrix = matrix
+            self.update_perspective(matrix)
 
         self.__draw(self)
         # num, Rs, Ts, Ns = cv2.decomposeHomographyMat(self.matrix, cam_matrix)
@@ -200,7 +187,6 @@ class Layer2(object):
         if self.transform is False:
             current = self.image
             max_y, max_x, _ = current.shape
-            zero_y, zero_x = self.zero_point
             rows, cols, _ = img.shape
             y, x = self.calc_coords(coords)
             fin_y = y+rows
@@ -234,7 +220,7 @@ class Layer2(object):
     def draw_rectangle(self, coords=(0,0), size=(0,0), color=(255,255,255)):
         layer = self.image
         y, x = self.calc_coords(coords)
-        height, width = self.calc_coords(size, False)
+        height, width = self.calc_coords(size)
         
         layer[y:y+height, x:x+width, 0] = color[0]
         layer[y:y+height, x:x+width, 1] = color[1]
@@ -244,7 +230,7 @@ class Layer2(object):
     def draw_polylines(self, coords=(0,0), size=(0,0), color=(255,255,255), thickness=1):
         image = self.image
         y, x = self.calc_coords(coords)
-        height, width = self.calc_coords(size, False)
+        height, width = self.calc_coords(size)
 
         dst_arr = [np.array([[x, y], [x, y+height], [x+width, y+height], [x+width, y]], dtype=np.int32)]
         return cv2.polylines(image, dst_arr, True, color, thickness)
@@ -255,9 +241,9 @@ class Layer2(object):
 
     def draw_titled_area(self, title="", coords=(0,0), size=(0,0), color=(255,255,255), thickness=1):
         zpy, zpx = self.zero_point
-        _y, _x = self.calc_coords(coords, False)
+        _y, _x = self.calc_coords(coords)
         y, x = _y + zpy, _x + zpx 
-        size = self.calc_coords(size, False)
+        size = self.calc_coords(size)
         r = lambda b, a: (_y+b, _x+a)
 
         self.draw_polylines(coords, size, (0,0,255), thickness=2)
