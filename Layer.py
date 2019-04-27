@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-
+cam_matrix = np.loadtxt("mtx.txt")
 
 class Layer2(object):
     """
@@ -183,7 +183,7 @@ class Layer2(object):
         shift = self.zero_point[reference] if add_zero_point else 0
         return shift + coord_value 
 
-    def calc_coords(self, values, add_zero_point=True):
+    def calc_coords(self, values, add_zero_point=False):
         y, x = [self.parse_coordinate(coord, i, add_zero_point) for i, coord in enumerate(values)]
         return y, x
 
@@ -193,7 +193,7 @@ class Layer2(object):
             self.update_zero_point(matrix)
 
         self.__draw(self)
-        self.image = cv2.warpAffine
+        # num, Rs, Ts, Ns = cv2.decomposeHomographyMat(self.matrix, cam_matrix)
         return self.image
 
     def draw_image(self, img, coords=(0,0), size=("100%", "100%")):

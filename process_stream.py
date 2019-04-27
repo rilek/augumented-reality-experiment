@@ -28,24 +28,36 @@ def prepare_arguments():
 
 def prepare_mqtt_client():
     client = ClientMQTT()
-    client.connect()
 
     client.set_default_parameters({"LED": "OFF"})
     client.register_handler(
         "arduino/button",
         lambda params, payload: {**params, "LED": payload}
     )
+    client.set_default_parameters({"Ohm": "0"})
+    client.register_handler(
+        "arduino/ohm",
+        lambda params, payload: {**params, "Ohm": payload}
+    )
+    client.connect()
 
     return client
 
 
-# def draaaw(parameters, layer, matrix=None):
-#     layer.draw_rectangle((0,70), (100, 37), (255,255,255), coords_unit="pixel")
-#     layer.draw_text("LED STATE", (20, 150), color=(255, 0, 0), fontSize=1, coords_unit="pixel")
-#     layer.draw_text(parameters["LED"], (20, 180), color=(255, 0, 0), fontSize=1, coords_unit="pixel")
-#     return layer
+def draaaw(parameters, layer, matrix=None):
+    if not ("connected" in parameters and parameters["connected"]):
+        layer.draw_rectangle((10,10), (100, 300), (255,255,255))
+        layer.draw_text("Loading...", (40, 20), color=(0,0,255), fontSize=.75)
+    else:
+        parameters = parameters.copy()
+        del parameters["connected"]
+        layer.draw_rectangle((10,10), ((len(parameters))*20+50, 300), (255,255,255))
+        layer.draw_text("Parameters:", (35, 20), color=(15, 15, 15), fontSize=.5)
+        layer.draw_text("LED: " +parameters["LED"], (60, 20), color=(15, 15, 15), fontSize=.5)
+        layer.draw_text("Ohm: " +parameters["Ohm"], (80, 20), color=(15, 15, 15), fontSize=.5)
+    return layer
 
-def draaaw(parameters, layer):
+def draaaw3(parameters, layer):
     layer.draw_titled_area("Author", (10, 100), (70, 210), (0,0,255), thickness=1)
     layer.draw_titled_area("Title", ("13%", 10), (180, "90%"), (0,0,255), thickness=1)
     layer.draw_titled_area("Publishers", ("85%", "50%"), ("13%", "50%"), (0,0,255), thickness=1)
@@ -60,6 +72,7 @@ def draaaw2(parameters, layer):
     return layer
 
 img = cv2.imread("img/original.jpg")
+img = cv2.resize(img, (50, 50))
 
 def draw_img(parameters, layer):
     layer.draw_image(img, (10, 5), ("100%", "100%"))
@@ -85,13 +98,13 @@ if __name__ == "__main__":
 
     log("Start processing")
     proc = features.ImageProcessor(stream, reference_image=reference_image)
-    # proc.enable_object_follow()
+    proc.enable_object_follow()
 
     client = prepare_mqtt_client()
     proc.set_client(client=client)
 
-    proc.create_layer(name="Test", draw=draaaw, transform=False, follow=True)
-    # proc.create_layer(name="Test", draw=draaaw2, follow=True)
-    # proc.create_layer(name="Test", draw=draw_img, transform=False, follow=True)
+    # proc.create_layer(name="Test", draw=draaaw, transform=False, follow=False)
+    proc.create_layer(name="Test", draw=draw_img, follow=True)
+    # proc.create_layer(name="Test", draw=draw_img, transform=True)
 
     proc.start()

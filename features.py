@@ -25,7 +25,7 @@ class ImageProcessor(object):
         self.cap = cap
         self.max_width = 1280
         self.max_height = 1280
-        self.mqtt_client = None
+        self.client = None
         self.reference_image = reference_image
         self.gray_reference_image = gray_reference_image
         self.fps = int(1000/1000)
@@ -37,9 +37,8 @@ class ImageProcessor(object):
         self.layers = []
         self.run = False
         self.ref_height, self.ref_width = self.reference_image.shape[:2]
-        self.parameters = dict()
-        self.connected = False
         self.handlers = []
+        self.cam_matrix = np.loadtxt("mtx.txt")
 
         self.frame_width = int(self.cap.cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         self.frame_height = int(self.cap.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -92,7 +91,6 @@ class ImageProcessor(object):
                 pts = np.float32([[[0, 0]], [[0, h]], [[w, h]], [[w, 0]]])
                 dst = cv2.perspectiveTransform(pts, matrix)
                 dst_arr = [np.int32(dst)]
-                # print(dst_arr)
 
                 homography = self.follow_object(frame, dst_arr)
                 homography = self.draw_layers(homography, matrix, mask,
@@ -101,7 +99,6 @@ class ImageProcessor(object):
                 self.show_img(homography)
             else:
                 self.show_img(frame)
-
 
             key = cv2.waitKey(self.fps)
             if key==27:
@@ -117,7 +114,7 @@ class ImageProcessor(object):
             fn = cv2.ORB_create
         else:
             fn = cv2.ORB_create
-        self.descriptor = fn()
+        self.descriptor = fn(1000)
 
     def prepare_reference(self):
         return self.descriptor.detectAndCompute(self.gray_reference_image, None)
@@ -125,10 +122,10 @@ class ImageProcessor(object):
     def create_matcher(self, matcher_algorithm, index_params=None, search_params=None):
         index_params = (index_params or
                         dict(algorithm =6,           # FLANN_INDEX_LSH
-                             table_number = 6,       # 12
-                             key_size = 12,          # 20
+                             table_number = 12,       # 12
+                             key_size = 20,          # 20
                              multi_probe_level = 1)) # 2
-        search_params = search_params or dict(checks=100)
+        search_params = search_params or dict(checks=300)
         if matcher_algorithm == "FLANN":
             matcher = cv2.FlannBasedMatcher
         else:
@@ -159,7 +156,7 @@ class ImageProcessor(object):
                 if len(mn) != 2: continue
 
                 m, n = mn
-                if m.distance < 0.75 * n.distance:
+                if m.distance < 0.85 * n.distance:
                     good_points.append(m)
         return good_points
 
@@ -176,7 +173,6 @@ class ImageProcessor(object):
             image_size = (self.ref_height, self.ref_width)
         else:
             image_size = (self.scene_height, self.scene_width)
-
 
         layer = Layer2(name,
                       draw=partial(ImageProcessor.draw, draw, self),

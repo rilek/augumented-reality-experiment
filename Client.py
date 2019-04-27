@@ -5,13 +5,13 @@ from util import log, error, warning, info, success as u
 from functools import partial
 
 class ClientMQTT(object):
-    def __init__(self, host="localhost", port=1234):
+    def __init__(self, host="localhost", port=1883):
         client = mqtt.Client()
         self.client = client
         self.host = host
         self.port = port
         self.handlers = dict()
-        self.parameters = dict()
+        self.parameters = {"connected": False}
 
     def connect(self):
         self.client.on_connect = self.on_connect
@@ -26,8 +26,17 @@ class ClientMQTT(object):
 
     # DEFAULT FUNCTIONS
     def on_connect(self, client, userdata, flags, rc):
+        try:
+            if self.user_on_connect and callable(self.user_on_connect):
+                self.user_on_connect(self, client, userdata, flags, rc)
+        finally:
+            self.default_on_connect(client, userdata, flags, rc)
+
+    def default_on_connect(self, client, userdata, flags, rc):
+        print ("CONNECTION")
         if rc == 0:
             info("Successully connected with broker")
+            self.parameters = {**self.parameters, "connected": True}
         else:
             error("Bad connection. Returned code=", rc)
 
@@ -48,13 +57,13 @@ class ClientMQTT(object):
 
     # SETTERS AND REGISTERS
     def set_on_connect(self, fun):
-        self.on_connect = fun
+        self.user_on_connect = fun
 
     def set_default_parameters(self, params):
         if not isinstance(params, dict):
             raise Exception("Parameters must be a dictionary!")
         
-        self.parameters = params
+        self.parameters = {**self.parameters, **params}
 
     def register_handler(self, event, handler):
         if not callable(handler):
