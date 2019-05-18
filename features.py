@@ -62,8 +62,6 @@ class ImageProcessor(object):
 
 
     def start(self):
-        log("START")
-
         h = self.ref_height
         w = self.ref_width
         this = self

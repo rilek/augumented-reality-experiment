@@ -12,12 +12,12 @@ class ClientMQTT(object):
         self.port = port
         self.handlers = dict()
         self.parameters = {"connected": False}
-
-    def connect(self):
+        self.client.on_message = self.on_message
         self.client.on_connect = self.on_connect
         self.client.on_disconnect = self.on_disconnect
-        self.client.on_message = self.on_message
+        self.user_on_connect = None
 
+    def connect(self):
         try:
             self.client.connect(self.host)
         except Exception as e:
@@ -25,14 +25,10 @@ class ClientMQTT(object):
 
         self.client.loop_start()
 
-    # DEFAULT FUNCTIONS
-    def on_connect(self, client, userdata, flags, rc):        
-        if self.user_on_connect and callable(self.user_on_connect):
-            try:
-                self.user_on_connect(self, client, userdata, flags, rc)
-            except Exception as e:
-                error("Custom on connect function error:\n\t", e)
-
+    def on_connect(self, client, userdata, flags, rc):
+        if self.user_on_connect is not None and callable(self.user_on_connect):
+            self.user_on_connect(self, client, userdata, flags, rc)
+        
         self.default_on_connect(client, userdata, flags, rc)
 
     def default_on_connect(self, client, userdata, flags, rc):

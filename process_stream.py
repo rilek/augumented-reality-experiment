@@ -32,9 +32,12 @@ def prepare_arguments():
 def on_connect(*args):
     global stage
     stage = 0
+    return true
 
 def prepare_mqtt_client():
     client = ClientMQTT()
+    client.set_on_connect(on_connect)
+    client.connect()
 
     client.set_default_parameters({"LED": "OFF"})
     client.register_handler(
@@ -46,9 +49,6 @@ def prepare_mqtt_client():
         "arduino/ohm",
         lambda params, payload: {**params, "Ohm": payload}
     )
-
-    client.set_on_connect(on_connect)
-    client.connect()
 
     return client
 
@@ -94,9 +94,10 @@ def presentation(parameters, layer, matrix=None):
 
     if stage is 0 and parameters["LED"] == "ON":
         stage = 1
-    elif stage is 1 and float(parameters["OHM"]) > 1000:
+    elif stage is 1 and float(parameters["Ohm"]) > 1000:
         stage = 2
 
+    print(stage)
     
     layer.draw_rectangle((10,10), (160, 300), (255,255,255))
     
