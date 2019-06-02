@@ -1,0 +1,33 @@
+{
+  "fps": 100,
+  "server": {
+    "protocol": "mqtt",
+    "host": "localhost",
+    "port": 1883,
+    "topics": [
+      {
+        "topic": "arduino/button",
+        "name": "LED",
+        "default": "OFF"
+      },
+      {
+        "topic": "arduino/ohm",
+        "name": "OHM",
+        "default": 0
+      }
+    ]
+  },
+  "machines": [
+    {
+      "name": "Test Machine",
+      "ref": "img/base.jpg",
+      "areas": {
+        "title": [50, 85, 230, 85],
+        "subtitle": [29, 174, 266, 21],
+        "author": [100, 26, 116, 25],
+        "art" : [0, 243, 296, 219],
+        "publishers": [190, 423, 130, 37]
+      }
+    }
+  ]
+}

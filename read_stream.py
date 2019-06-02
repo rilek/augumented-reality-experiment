@@ -11,6 +11,7 @@ import re
 from util import log, error, warning, info
 
 
+
 class Stream(object):
     def __init__(self, source=None, source_type="cam"):
         info("Reading from ", source_type, "!")
@@ -37,7 +38,6 @@ class Stream(object):
                 exit()
 
         elif source_type == "remote":
-            # source = "http://" + source
             log("Connecting to socket: {}".format(source))
             try:
                 # self.context = zmq.Context()
@@ -49,6 +49,15 @@ class Stream(object):
                 self.cap = cv2.VideoCapture(source)
                 self.release = self.cap.release
                 self.read = self.cap.read
+            except Exception as e:
+                error("Cannot connect to socket!", err=e)
+                exit()
+
+        elif source_type == "image":
+            try:
+                self.cap = None
+                self.release = lambda *a: None
+                self.read = lambda: (True, cv2.imread(source))
             except Exception as e:
                 error("Cannot connect to socket!", err=e)
                 exit()

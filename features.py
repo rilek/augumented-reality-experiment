@@ -7,17 +7,18 @@ import paho.mqtt.client as mqtt
 from util import log, error, warning, info, success as u
 from functools import partial, wraps
 from Layer import Layer, RelativeLayer, AbsoluteLayer, Layer2
-
+from Detector import Detector
 
 def draw_polylines(frame, dst_arr, color=(0, 0, 255), thickness=3):
     return cv2.polylines(frame, dst_arr, True, color, thickness)
 
 class ImageProcessor(object):
-    def __init__(self, cap, reference_image, opts=dict()):                
+    def __init__(self, cap, machine, opts=dict()):                
         if not isinstance(opts, dict):
             error("Options must be an dictionary")
             exit()
 
+        reference_image = machine.get_ref()
         reference_image = cv2.imread(reference_image)
         gray_reference_image = cv2.cvtColor(reference_image, cv2.COLOR_BGR2GRAY)
 
@@ -35,6 +36,7 @@ class ImageProcessor(object):
         self.follow_object = lambda frame, *a: frame
         self.window_name = "Homography"
         self.layers = []
+        self.detector = Detector(machine)
         self.run = False
         self.ref_height, self.ref_width = self.reference_image.shape[:2]
         self.handlers = []
