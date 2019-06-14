@@ -4,6 +4,7 @@ import paho.mqtt.client as mqtt
 from util import log, error, warning, info, success as u
 from functools import partial
 
+
 class ClientMQTT(object):
     def __init__(self, host="localhost", port=1883):
         client = mqtt.Client()

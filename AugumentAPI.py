@@ -48,7 +48,7 @@ class AugumentAPI(object):
                 self.stop()
                 break
 
-            result = resize_to_max(frame, (800, 800))
+            result = resize_to_max(frame, (1000, 1000))
 
             # Detect matchine
             found, matrix, mask = self.__detector.detect(result)
@@ -74,7 +74,7 @@ class AugumentAPI(object):
         self.__show_fps = True
 
     def parse_frame(self, frame, matrix, mask):
-        result = Frame(frame, matrix=matrix, mask=mask, ref_size=self.__ref_image.shape[:2])
+        result = Frame(frame, matrix=matrix, mask=mask, ref_size=self.__ref_image.shape)
         params = self.__store.get_state()
 
         # Perspective transform
@@ -104,11 +104,7 @@ class AugumentAPI(object):
         store = Store(topics)
 
         if topics:
-            connection_topics = [
-                {"topic": "on_connect", "name": "connected", "default": False},
-                {"topic": "on_disconnect", "name": "connected"}
-            ]
-            self.__topics = topics + connection_topics
+            self.__topics = topics
         
         return store
 
@@ -132,7 +128,11 @@ class AugumentAPI(object):
 
     def handle_message(self, event, payload):
         param_name = self.__store.translate_event(event)
-        print("param_", event, param_name, payload, self.__store.get_state())
+        param_type = self.__store.event_type(event)
+        
+        if param_type == "int":
+            payload = int(payload)
+
         self.__store.set_state(param_name, payload)
         return None
 

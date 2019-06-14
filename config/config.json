@@ -6,13 +6,8 @@
     "port": 1883,
     "topics": [
       {
-        "topic": "arduino/button",
-        "name": "LED",
-        "default": "OFF"
-      },
-      {
-        "topic": "arduino/ohm",
-        "name": "OHM",
+        "topic": "test/test",
+        "name": "state",
         "default": 0
       }
     ]

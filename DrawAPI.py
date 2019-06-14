@@ -60,7 +60,7 @@ class Frame:
         frame = self.__img
 
         if transform is not None:
-            if transform is T.FOLLOW:
+            if transform is T.FOLLOW or transform is T.PERSPECTIVE:
                 coords = tuple(map(int, cv2.perspectiveTransform(np.float32([[coords]]), self.__matrix)[0][0]))
 
         cv2.putText(frame, text, coords, font, size, color, weight, aa)
@@ -80,8 +80,11 @@ class Frame:
             x, y = tuple(map(int, cv2.perspectiveTransform(np.float32([[coords]]), self.__matrix)[0][0]))
             roi = current[y-rows:y, x:cols+x]
         elif transform is T.PERSPECTIVE:
-            img = cv2.warpPerspective(img, self.__matrix, self.__ref_size[::-1])
             y, x = coords
+            rows, cols, _ = img.shape
+            _img = np.zeros(self.__ref_size, dtype=np.uint8)
+            _img[y-rows:y, x:x+cols] = img
+            img = cv2.warpPerspective(_img, self.__matrix, (max_x, max_y))
             rows, cols, _ = img.shape
             roi = current[0:rows, 0:cols]
         else:
@@ -91,7 +94,6 @@ class Frame:
         fin_y = y+rows
         fin_x = x+cols
 
-        print(roi.shape)
 
         imggray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
         ret, mask = cv2.threshold(imggray, 10, 255, cv2.THRESH_BINARY)

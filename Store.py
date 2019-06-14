@@ -8,8 +8,6 @@ class Store(object):
 
     def set_state(self, param, value):
         self.__state = {**self.__state, param: value}
-        print("STATE CHANGED (" + param, ": ", str(value) +"). NEW STATE:")
-        print(self.__state)
 
     def get_state(self):
         return self.__state
@@ -32,3 +30,14 @@ class Store(object):
         else:
             raise ValueError("No such topic name")
             return
+
+    def event_type(self, event):
+        result = find_first(
+            lambda item: "topic" in item and item["topic"] == event,
+            self.__topics
+        )
+        if result and "type" in result:
+            result = result["type"]
+            return result
+        else:
+            return None

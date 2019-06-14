@@ -10,7 +10,7 @@ class Detector(object):
         self.__ref_image = ref_img
         
         # Prepare descriptor
-        self.__descriptor = cv2.ORB_create(750)
+        self.__descriptor = cv2.ORB_create(1000)
         
         # Compute keypoints and descriptors for reference image
         self.__kp, self.__desc = self.detectAndCompute(self.__ref_image)
@@ -21,10 +21,10 @@ class Detector(object):
 
         # Prepare matcher
         self.__index_params = dict(algorithm = 6,           # FLANN_INDEX_LSH
-                                   table_number = 6,        # 12
-                                   key_size = 12,           # 20
+                                   table_number = 12,        # 12
+                                   key_size = 20,           # 20
                                    multi_probe_level = 1)   # 2
-        self.__search_params = dict(checks=50)
+        self.__search_params = dict(checks=300)
         self.__matcher = cv2.FlannBasedMatcher(self.__index_params, self.__search_params)
 
     def detect(self, frame):        
@@ -67,7 +67,7 @@ class Detector(object):
             if len(mn) != 2: continue
 
             m, n = mn
-            if m.distance < 0.90 * n.distance:
+            if m.distance < 0.7 * n.distance:
                 res.append(m)
         return res
         

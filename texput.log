@@ -1,0 +1,12 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdftex 2019.4.13)  3 JUN 2019 12:16
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**weiiszablon.tex -o weii.pdf
+
+! Emergency stop.
+<*> weiiszablon.tex 
+                    -o weii.pdf
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!

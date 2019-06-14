@@ -15,6 +15,6 @@ import cv2
 # cap.release()
 # cv2.destroyAllWindows()
 
-img = cv2.imread("img/base.jpg")
+img = cv2.imread("img/base5.png")
 cv2.imshow("a", img)
 cv2.waitKey()
