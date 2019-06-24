@@ -1,2 +1,0 @@
-cvlc v4l2:///dev/video0 --v4l2-width 1280 --v4l2-height 720 --v4l2-chroma h264 --sout '#rtp{sdp=rtsp://:8554/}' 
-vlc -vvv v4l2:///dev/video0:chroma=h264  --sout '#transcode{vcodec=mpeg,ab=128,channels=2,samplerate=44100,threads=4}:standard{access=http,mux=ts,mime=video/ts,dst=:8099}' :demux=h264

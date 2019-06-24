@@ -232,6 +232,12 @@
 \newcommand\abstractEN[1]{\renewcommand\@abstractEN{#1}}
 \newcommand\@abstractEN{\@latex@error{No \noexpand\abstractEN given}\@ehc}
 
+\newcommand\keywords[1]{\renewcommand\@keywords{#1}}
+\newcommand\@keywords{\@latex@error{No \noexpand\keywords given}\@ehc}
+
+\newcommand\keywordsEN[1]{\renewcommand\@keywordsEN{#1}}
+\newcommand\@keywordsEN{\@latex@error{No \noexpand\keywordsEN given}\@ehc}
+
 \newcommand\studentID[1]{\renewcommand\@studentID{#1}}
 \newcommand\@studentID{\@latex@error{No \noexpand\studentID given}\@ehc}
 
@@ -303,7 +309,7 @@ Autor: \@author, nr albumu: \@studentID
 	
 Opiekun: \@supervisor
 	
-Słowa kluczowe: (max. 5 słów kluczowych w 2 wierszach, oddzielanych przecinkami)
+Słowa kluczowe: \@keywords
 \\
 \\
 \begin{fixedSizeBox}
@@ -337,7 +343,7 @@ Author: \@author, nr albumu: \@studentID
 	
 Supervisor: \@supervisorEN
 
-Key words: (max. 5 słów kluczowych w 2 wierszach, oddzielanych przecinkami)
+Key words: \@keywordsEN
 \\
 \\
 \begin{fixedSizeBox}

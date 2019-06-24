@@ -1,0 +1,54 @@
+{
+  "fps": 100,
+  "server": {
+    "protocol": "mqtt",
+    "host": "localhost",
+    "port": 1883,
+    "topics": [
+      {
+        "topic": "arduino/red",
+        "name": "red",
+        "default": 0,
+        "type": "int"
+      },
+      {
+        "topic": "arduino/green",
+        "name": "green",
+        "default": 0,
+        "type": "int"
+      },
+      {
+        "topic": "arduino/blue",
+        "name": "blue",
+        "default": 0,
+        "type": "int"
+      },
+      {
+        "topic": "arduino/mode",
+        "name": "mode",
+        "default": 0,
+        "type": "int"
+      },
+      {
+        "topic": "arduino/connected",
+        "name": "connected"
+      }
+    ]
+  },
+  "machines": [
+    {
+      "name": "Test Machine",
+      "ref": "img/base.png",
+      "areas": {
+        "PB": [92, 144, 178, 233],
+        "LED": [195, 174, 228, 207],
+        "RGB": [311,177,345,203],
+        "R": [392,148,460,225],
+        "G": [482,148,560,225],
+        "B": [575,148,654,225],
+        "B1": [502,305,547,347],
+        "B2": [549,305,638,347]
+      }
+    }
+  ]
+}
