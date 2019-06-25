@@ -77,16 +77,17 @@ class AugumentAPI(object):
         params = self.__store.get_state()
 
         # Perspective transform
-        # if self.__outline_detection:
-        #     dst = cv2.perspectiveTransform(self.__pts, matrix)
-        #     dst_arr = [np.int32(dst)]
-        #     result.draw_polylines(dst_arr)
+        if self.__outline_detection and matrix is not None:
+            dst = cv2.perspectiveTransform(self.__pts, matrix)
+            dst_arr = [np.int32(dst)]
+            result.draw_polylines(dst_arr)
 
-        for draw_function in self.__layers:
-            result = draw_function(result, self.__machine, params)
+        if matrix is not None:
+            for draw_function in self.__layers:
+                result = draw_function(result, self.__machine, params)
 
-        for draw_function in self.__statics:
-            result = draw_function(result, self.__machine, params)
+        # for draw_function in self.__statics:
+        #     result = draw_function(result, self.__machine, params)
 
         if self.__show_fps:
             new_timestamp = time.time()

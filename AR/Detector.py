@@ -10,7 +10,7 @@ class Detector(object):
         self.__ref_image = ref_img
         
         # Prepare descriptor
-        self.__descriptor = cv2.ORB_create(1000)
+        self.__descriptor = cv2.ORB_create(4000)
         
         # Compute keypoints and descriptors for reference image
         self.__kp, self.__desc = self.detectAndCompute(self.__ref_image)

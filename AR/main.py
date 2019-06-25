@@ -39,7 +39,7 @@ def draw_rot_arrow(frame, area, ccw=False):
     frame.draw_image(path, (area[1], area[2]-size), (size, size), transform=T.PERSPECTIVE)
 
 def draw_stats(frame, machine, params):
-    mode = 1 or params["mode"]
+    mode = params["mode"]
     areas = machine["areas"]
     R = areas["R"]
     G = areas["G"]
@@ -49,8 +49,8 @@ def draw_stats(frame, machine, params):
     green = params["green"]
     blue = params["blue"]
 
-    # if not "connected" in params or params["connected"] == "OFF":
-    if False:
+    if not "connected" in params or params["connected"] == "OFF":
+    # if False:
         frame.draw_rectangle((10, 30), (box_width,37))
         frame.draw_text("Urzadzenie wylaczone", (20, 50))
     else:
@@ -60,10 +60,11 @@ def draw_stats(frame, machine, params):
             frame.draw_rectangle((10, 30), (box_width,90))
             frame.draw_text("Tryb: {}".format(get_mode_name(mode)), (20, 50))
         else:
-            bias = 40
-            frame.draw_rectangle((10, 30), (box_width,130))
+            bias = 60
+            frame.draw_rectangle((10, 30), (box_width,150))
             frame.draw_text("Tryb:", (20, 50))
             frame.draw_text(get_mode_name(mode), (20, 80), size=1)
+            frame.draw_rectangle((15, 95), (box_width-10, 20), color=(blue, green, red))
         
         frame.draw_text("Czerwony: {}".format(red), (20, bias+70))
         frame.draw_text("Zielony: {}".format(green), (20, bias+90))
@@ -92,7 +93,7 @@ def draw_stats(frame, machine, params):
             elif blue - color[2] < -15:
                 draw_rot_arrow(frame, B, True)
         elif mode == 2:
-            color = (5, 85, 35)
+            color = (48, 213, 200)
 
             if red - color[0] > 15:
                 draw_rot_arrow(frame, R)
@@ -108,19 +109,7 @@ def draw_stats(frame, machine, params):
                 draw_rot_arrow(frame, B)
             elif blue - color[2] < -15:
                 draw_rot_arrow(frame, B, True)
-            
-    
 
-    # if state is 0:
-    # elif state is 1:
-    #     frame.draw_image("img/arr.png", tuple(machine["areas"]["subtitle"][:2][::-1]), (25, 25), transform=T.PERSPECTIVE)
-    # elif state is 2:
-    #     frame.draw_image("img/arr.png", tuple(machine["areas"]["author"][:2][::-1]), (25, 25), transform=T.PERSPECTIVE)
-    # elif state is 3:
-    #     frame.draw_image("img/arr.png", tuple(machine["areas"]["art"][:2][::-1]), (25, 25), transform=T.PERSPECTIVE)
-    # elif state is 4:
-    #     frame.draw_image("img/arr.png", tuple(machine["areas"]["publishers"][:2][::-1]), (25, 25), transform=T.PERSPECTIVE)
-    
     return frame
 
 
@@ -135,7 +124,7 @@ if __name__ == "__main__":
     augument = AugumentAPI(args.config)
     augument.outline_detection()
     augument.show_fps()
-    # augument.add_layer(draw_stats)
+    augument.add_layer(draw_stats)
 
     # Run 
     augument.run(cap)

@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.13)  25 JUN 2019 23:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.6.26)  26 JUN 2019 00:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **weiiszablon.tex
 (./weiiszablon.tex
 LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 4 language(s) loaded.
+Babel <3.18> and hyphenation patterns for 8 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
@@ -1072,7 +1072,7 @@ Overfull \hbox (5.94458pt too wide) in paragraph at lines 468--469
  []
 
 [28] [29]
-Underfull \vbox (badness 6944) has occurred while \output is active []
+Underfull \vbox (badness 4013) has occurred while \output is active []
 
  [30
 
@@ -1080,488 +1080,493 @@ Underfull \vbox (badness 6944) has occurred while \output is active []
 <./images/architektura.png, id=119, 188.705pt x 469.755pt>
 File: ./images/architektura.png Graphic file (type png)
 <use ./images/architektura.png>
-Package pdftex.def Info: ./images/architektura.png  used on input line 508.
+Package pdftex.def Info: ./images/architektura.png  used on input line 510.
 (pdftex.def)             Requested size: 88.2022pt x 219.56635pt.
 
 [31 <./images/architektura.png>]
 <./images/device.jpg, id=126, 2955.04pt x 3394.6825pt>
 File: ./images/device.jpg Graphic file (type jpg)
 <use ./images/device.jpg>
-Package pdftex.def Info: ./images/device.jpg  used on input line 521.
+Package pdftex.def Info: ./images/device.jpg  used on input line 523.
 (pdftex.def)             Requested size: 264.61333pt x 303.95428pt.
- [32 <./images/device.jpg>]
-<./images/scheme2.png, id=130, 978.65625pt x 923.45pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./images/scheme2.png, id=127, 978.65625pt x 923.45pt>
 File: ./images/scheme2.png Graphic file (type png)
 <use ./images/scheme2.png>
-Package pdftex.def Info: ./images/scheme2.png  used on input line 529.
+Package pdftex.def Info: ./images/scheme2.png  used on input line 531.
 (pdftex.def)             Requested size: 441.01773pt x 416.14047pt.
- [33 <./images/scheme2.png>]
-<./images/dirs_arduino.png, id=134, 325.215pt x 149.55875pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[32]
+<./images/dirs_arduino.png, id=131, 325.215pt x 149.55875pt>
 File: ./images/dirs_arduino.png Graphic file (type png)
 <use ./images/dirs_arduino.png>
-Package pdftex.def Info: ./images/dirs_arduino.png  used on input line 551.
+Package pdftex.def Info: ./images/dirs_arduino.png  used on input line 553.
 (pdftex.def)             Requested size: 176.40439pt x 81.12564pt.
- [34 <./images/dirs_arduino.png>] [35]
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[33 <./images/device.jpg>] [34 <./images/scheme2.png>] [35 <./images/dirs_ardui
+no.png>]
 <./images/algorithm.png, id=141, 390.45876pt x 678.535pt>
 File: ./images/algorithm.png Graphic file (type png)
 <use ./images/algorithm.png>
-Package pdftex.def Info: ./images/algorithm.png  used on input line 588.
+Package pdftex.def Info: ./images/algorithm.png  used on input line 590.
 (pdftex.def)             Requested size: 220.50887pt x 383.19698pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 <./images/dirs_ar.png, id=142, 366.36874pt x 479.7925pt>
 File: ./images/dirs_ar.png Graphic file (type png)
 <use ./images/dirs_ar.png>
-Package pdftex.def Info: ./images/dirs_ar.png  used on input line 597.
+Package pdftex.def Info: ./images/dirs_ar.png  used on input line 599.
 (pdftex.def)             Requested size: 176.40439pt x 231.02255pt.
- [36 <./images/algorithm.png>]
-[37 <./images/dirs_ar.png>]
-<./images/base.png, id=152, 770.88pt x 699.61375pt>
-File: ./images/base.png Graphic file (type png)
-<use ./images/base.png>
-Package pdftex.def Info: ./images/base.png  used on input line 643.
-(pdftex.def)             Requested size: 264.61333pt x 240.15002pt.
-<./images/base_kp.png, id=153, 769.87625pt x 699.61375pt>
-File: ./images/base_kp.png Graphic file (type png)
-<use ./images/base_kp.png>
-Package pdftex.def Info: ./images/base_kp.png  used on input line 649.
-(pdftex.def)             Requested size: 264.61333pt x 240.47028pt.
- [38]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[39 <./images/base.png>]
-Underfull \vbox (badness 2503) has occurred while \output is active []
+[36]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [40 <./images/base_kp.png>] [41] [42]
+ [37 <./images/algorithm.png>] [38 <./images/dirs_ar.png>]
+<./images/base.png, id=155, 770.88pt x 699.61375pt>
+File: ./images/base.png Graphic file (type png)
+<use ./images/base.png>
+Package pdftex.def Info: ./images/base.png  used on input line 645.
+(pdftex.def)             Requested size: 264.61333pt x 240.15002pt.
+<./images/base_kp.png, id=156, 769.87625pt x 699.61375pt>
+File: ./images/base_kp.png Graphic file (type png)
+<use ./images/base_kp.png>
+Package pdftex.def Info: ./images/base_kp.png  used on input line 651.
+(pdftex.def)             Requested size: 264.61333pt x 240.47028pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[39 <./images/base.png>] [40 <./images/base_kp.png>] [41] [42]
 Underfull \vbox (badness 5274) has occurred while \output is active []
 
  [43]
-<./images/draw_rect.png, id=173, 432.61626pt x 233.87375pt>
+[44]
+<./images/draw_rect.png, id=176, 432.61626pt x 233.87375pt>
 File: ./images/draw_rect.png Graphic file (type png)
 <use ./images/draw_rect.png>
-Package pdftex.def Info: ./images/draw_rect.png  used on input line 779.
+Package pdftex.def Info: ./images/draw_rect.png  used on input line 781.
 (pdftex.def)             Requested size: 220.50887pt x 119.2062pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[44]
 <./images/draw_poly.png, id=177, 273.02pt x 270.00874pt>
 File: ./images/draw_poly.png Graphic file (type png)
 <use ./images/draw_poly.png>
-Package pdftex.def Info: ./images/draw_poly.png  used on input line 789.
+Package pdftex.def Info: ./images/draw_poly.png  used on input line 791.
 (pdftex.def)             Requested size: 132.30666pt x 130.84695pt.
-<./images/draw_text.png, id=178, 436.63126pt x 237.88875pt>
+ [45 <./images/draw_rect.png> <./images/draw_poly.png>]
+<./images/draw_text.png, id=181, 436.63126pt x 237.88875pt>
 File: ./images/draw_text.png Graphic file (type png)
 <use ./images/draw_text.png>
-Package pdftex.def Info: ./images/draw_text.png  used on input line 799.
+Package pdftex.def Info: ./images/draw_text.png  used on input line 801.
 (pdftex.def)             Requested size: 220.50887pt x 120.1383pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[45 <./images/draw_rect.png> <./images/draw_poly.png>]
 <./images/draw_img.png, id=182, 292.09125pt x 191.71625pt>
 File: ./images/draw_img.png Graphic file (type png)
 <use ./images/draw_img.png>
-Package pdftex.def Info: ./images/draw_img.png  used on input line 809.
+Package pdftex.def Info: ./images/draw_img.png  used on input line 811.
 (pdftex.def)             Requested size: 220.50887pt x 144.73756pt.
-<./images/chaining.png, id=183, 348.30125pt x 221.82875pt>
+ [46 <./images/draw_text.png> <./images/draw_img.png>]
+<./images/chaining.png, id=186, 348.30125pt x 221.82875pt>
 File: ./images/chaining.png Graphic file (type png)
 <use ./images/chaining.png>
-Package pdftex.def Info: ./images/chaining.png  used on input line 824.
+Package pdftex.def Info: ./images/chaining.png  used on input line 826.
 (pdftex.def)             Requested size: 220.50887pt x 140.43996pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[46 <./images/draw_text.png> <./images/draw_img.png>] [47 <./images/chaining.pn
-g>]
-<./images/pres.png, id=190, 770.88pt x 698.61pt>
+ [47 <./images/chaining.png>] [48]
+<./images/pres.png, id=193, 770.88pt x 698.61pt>
 File: ./images/pres.png Graphic file (type png)
 <use ./images/pres.png>
-Package pdftex.def Info: ./images/pres.png  used on input line 869.
+Package pdftex.def Info: ./images/pres.png  used on input line 871.
 (pdftex.def)             Requested size: 220.50887pt x 199.8308pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[48]
 <./images/rgb_tri.jpg, id=194, 513.92pt x 444.66125pt>
 File: ./images/rgb_tri.jpg Graphic file (type jpg)
 <use ./images/rgb_tri.jpg>
-Package pdftex.def Info: ./images/rgb_tri.jpg  used on input line 877.
+Package pdftex.def Info: ./images/rgb_tri.jpg  used on input line 879.
 (pdftex.def)             Requested size: 220.50887pt x 190.7935pt.
- [49 <./images/pres.png> <./images/rgb_tri.jpg>]
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 884.
+               Default added (so using `tbp') on input line 886.
 
-<./images/lim2.png, id=199, 1003.75pt x 649.42625pt>
+<./images/lim2.png, id=195, 1003.75pt x 649.42625pt>
 File: ./images/lim2.png Graphic file (type png)
 <use ./images/lim2.png>
-Package pdftex.def Info: ./images/lim2.png  used on input line 886.
+Package pdftex.def Info: ./images/lim2.png  used on input line 888.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/lim3.png, id=200, 1003.75pt x 649.42625pt>
+<./images/lim3.png, id=196, 1003.75pt x 649.42625pt>
 File: ./images/lim3.png Graphic file (type png)
 <use ./images/lim3.png>
-Package pdftex.def Info: ./images/lim3.png  used on input line 890.
+Package pdftex.def Info: ./images/lim3.png  used on input line 892.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/lim4.png, id=201, 1003.75pt x 649.42625pt>
+<./images/lim4.png, id=197, 1003.75pt x 649.42625pt>
 File: ./images/lim4.png Graphic file (type png)
 <use ./images/lim4.png>
-Package pdftex.def Info: ./images/lim4.png  used on input line 894.
+Package pdftex.def Info: ./images/lim4.png  used on input line 896.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 885--897
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 887--899
 [][] []
  []
 
+[49 <./images/pres.png>]
 <./images/turk2.png, id=202, 1003.75pt x 649.42625pt>
 File: ./images/turk2.png Graphic file (type png)
 <use ./images/turk2.png>
-Package pdftex.def Info: ./images/turk2.png  used on input line 907.
+Package pdftex.def Info: ./images/turk2.png  used on input line 909.
 (pdftex.def)             Requested size: 308.71106pt x 199.73454pt.
 <./images/turk1.png, id=203, 1003.75pt x 649.42625pt>
 File: ./images/turk1.png Graphic file (type png)
 <use ./images/turk1.png>
-Package pdftex.def Info: ./images/turk1.png  used on input line 911.
+Package pdftex.def Info: ./images/turk1.png  used on input line 913.
 (pdftex.def)             Requested size: 308.71106pt x 199.73454pt.
-[50 <./images/lim2.png> <./images/lim3.png> <./images/lim4.png>]
-<./images/test_stat.jpg, id=208, 1553.805pt x 2071.74pt>
+ [50 <./images/rgb_tri.jpg>] [51 <./images/lim2.png> <./images/lim3.png> <./ima
+ges/lim4.png>]
+<./images/test_stat.jpg, id=211, 1553.805pt x 2071.74pt>
 File: ./images/test_stat.jpg Graphic file (type jpg)
 <use ./images/test_stat.jpg>
-Package pdftex.def Info: ./images/test_stat.jpg  used on input line 927.
+Package pdftex.def Info: ./images/test_stat.jpg  used on input line 929.
 (pdftex.def)             Requested size: 220.50887pt x 293.99315pt.
 
 Underfull \vbox (badness 2042) has occurred while \output is active []
 
- [51 <./images/turk2.png> <./images/turk1.png>]
-<./images/test_close1.png, id=212, 1003.75pt x 649.42625pt>
+ [52 <./images/turk2.png> <./images/turk1.png>]
+<./images/test_close1.png, id=215, 1003.75pt x 649.42625pt>
 File: ./images/test_close1.png Graphic file (type png)
 <use ./images/test_close1.png>
-Package pdftex.def Info: ./images/test_close1.png  used on input line 946.
+Package pdftex.def Info: ./images/test_close1.png  used on input line 948.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_close2.png, id=213, 1003.75pt x 649.42625pt>
+<./images/test_close2.png, id=216, 1003.75pt x 649.42625pt>
 File: ./images/test_close2.png Graphic file (type png)
 <use ./images/test_close2.png>
-Package pdftex.def Info: ./images/test_close2.png  used on input line 951.
+Package pdftex.def Info: ./images/test_close2.png  used on input line 953.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_close3.png, id=214, 1003.75pt x 649.42625pt>
+<./images/test_close3.png, id=217, 1003.75pt x 649.42625pt>
 File: ./images/test_close3.png Graphic file (type png)
 <use ./images/test_close3.png>
-Package pdftex.def Info: ./images/test_close3.png  used on input line 956.
+Package pdftex.def Info: ./images/test_close3.png  used on input line 958.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 945--960
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 947--962
 [][] []
  []
 
-[52 <./images/test_stat.jpg>]
-<./images/test_angle1.png, id=218, 1003.75pt x 649.42625pt>
+[53 <./images/test_stat.jpg>]
+<./images/test_angle1.png, id=221, 1003.75pt x 649.42625pt>
 File: ./images/test_angle1.png Graphic file (type png)
 <use ./images/test_angle1.png>
-Package pdftex.def Info: ./images/test_angle1.png  used on input line 970.
+Package pdftex.def Info: ./images/test_angle1.png  used on input line 972.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 971.
+(Font)              <10.95> on input line 973.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 971.
+(Font)              <8> on input line 973.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 971.
+(Font)              <6> on input line 973.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 971.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 973.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 971.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 973.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 971.
-<./images/test_angle2.png, id=219, 1003.75pt x 649.42625pt>
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 973.
+<./images/test_angle2.png, id=222, 1003.75pt x 649.42625pt>
 File: ./images/test_angle2.png Graphic file (type png)
 <use ./images/test_angle2.png>
-Package pdftex.def Info: ./images/test_angle2.png  used on input line 975.
+Package pdftex.def Info: ./images/test_angle2.png  used on input line 977.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 969--979
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 971--981
 []$[]$ $[]$ 
  []
 
-[53 <./images/test_close1.png> <./images/test_close2.png> <./images/test_close3
+[54 <./images/test_close1.png> <./images/test_close2.png> <./images/test_close3
 .png>]
-<./images/test_light1.png, id=223, 1003.75pt x 649.42625pt>
+<./images/test_light1.png, id=226, 1003.75pt x 649.42625pt>
 File: ./images/test_light1.png Graphic file (type png)
 <use ./images/test_light1.png>
-Package pdftex.def Info: ./images/test_light1.png  used on input line 987.
+Package pdftex.def Info: ./images/test_light1.png  used on input line 989.
 (pdftex.def)             Requested size: 202.87111pt x 131.25044pt.
-<./images/test_light2.png, id=224, 1003.75pt x 649.42625pt>
+<./images/test_light2.png, id=227, 1003.75pt x 649.42625pt>
 File: ./images/test_light2.png Graphic file (type png)
 <use ./images/test_light2.png>
-Package pdftex.def Info: ./images/test_light2.png  used on input line 992.
+Package pdftex.def Info: ./images/test_light2.png  used on input line 994.
 (pdftex.def)             Requested size: 202.87111pt x 131.25044pt.
-<./images/test_light3.png, id=225, 1003.75pt x 649.42625pt>
+<./images/test_light3.png, id=228, 1003.75pt x 649.42625pt>
 File: ./images/test_light3.png Graphic file (type png)
 <use ./images/test_light3.png>
-Package pdftex.def Info: ./images/test_light3.png  used on input line 997.
+Package pdftex.def Info: ./images/test_light3.png  used on input line 999.
 (pdftex.def)             Requested size: 202.87111pt x 131.25044pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 986--1001
+Underfull \hbox (badness 10000) in paragraph at lines 988--1003
 []$[]$ $[]$
  []
 
-[54 <./images/test_angle1.png> <./images/test_angle2.png> <./images/test_light1
+[55 <./images/test_angle1.png> <./images/test_angle2.png> <./images/test_light1
 .png> <./images/test_light2.png> <./images/test_light3.png>]
-<./images/test_bright1.png, id=230, 1003.75pt x 649.42625pt>
+<./images/test_bright1.png, id=234, 1003.75pt x 649.42625pt>
 File: ./images/test_bright1.png Graphic file (type png)
 <use ./images/test_bright1.png>
-Package pdftex.def Info: ./images/test_bright1.png  used on input line 1010.
+Package pdftex.def Info: ./images/test_bright1.png  used on input line 1012.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_bright3.png, id=231, 1003.75pt x 649.42625pt>
+<./images/test_bright3.png, id=235, 1003.75pt x 649.42625pt>
 File: ./images/test_bright3.png Graphic file (type png)
 <use ./images/test_bright3.png>
-Package pdftex.def Info: ./images/test_bright3.png  used on input line 1015.
+Package pdftex.def Info: ./images/test_bright3.png  used on input line 1017.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_bright2.png, id=232, 1003.75pt x 649.42625pt>
+<./images/test_bright2.png, id=236, 1003.75pt x 649.42625pt>
 File: ./images/test_bright2.png Graphic file (type png)
 <use ./images/test_bright2.png>
-Package pdftex.def Info: ./images/test_bright2.png  used on input line 1020.
+Package pdftex.def Info: ./images/test_bright2.png  used on input line 1022.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 1009--1024
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 1011--1026
 [][] []
  []
 
-<./images/test_rot1.png, id=233, 1003.75pt x 649.42625pt>
+<./images/test_rot1.png, id=237, 1003.75pt x 649.42625pt>
 File: ./images/test_rot1.png Graphic file (type png)
 <use ./images/test_rot1.png>
-Package pdftex.def Info: ./images/test_rot1.png  used on input line 1033.
+Package pdftex.def Info: ./images/test_rot1.png  used on input line 1035.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_rot2.png, id=234, 1003.75pt x 649.42625pt>
+<./images/test_rot2.png, id=238, 1003.75pt x 649.42625pt>
 File: ./images/test_rot2.png Graphic file (type png)
 <use ./images/test_rot2.png>
-Package pdftex.def Info: ./images/test_rot2.png  used on input line 1038.
+Package pdftex.def Info: ./images/test_rot2.png  used on input line 1040.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_rot3.png, id=235, 1003.75pt x 649.42625pt>
+<./images/test_rot3.png, id=239, 1003.75pt x 649.42625pt>
 File: ./images/test_rot3.png Graphic file (type png)
 <use ./images/test_rot3.png>
-Package pdftex.def Info: ./images/test_rot3.png  used on input line 1043.
+Package pdftex.def Info: ./images/test_rot3.png  used on input line 1045.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 1032--1047
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 1034--1049
 [][] []
  []
 
-[55 <./images/test_bright1.png> <./images/test_bright3.png> <./images/test_brig
+[56 <./images/test_bright1.png> <./images/test_bright3.png> <./images/test_brig
 ht2.png>]
-<./images/test_cover1.png, id=241, 1003.75pt x 649.42625pt>
+<./images/test_cover1.png, id=244, 1003.75pt x 649.42625pt>
 File: ./images/test_cover1.png Graphic file (type png)
 <use ./images/test_cover1.png>
-Package pdftex.def Info: ./images/test_cover1.png  used on input line 1060.
+Package pdftex.def Info: ./images/test_cover1.png  used on input line 1062.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_cover2.png, id=242, 1003.75pt x 649.42625pt>
+<./images/test_cover2.png, id=245, 1003.75pt x 649.42625pt>
 File: ./images/test_cover2.png Graphic file (type png)
 <use ./images/test_cover2.png>
-Package pdftex.def Info: ./images/test_cover2.png  used on input line 1065.
+Package pdftex.def Info: ./images/test_cover2.png  used on input line 1067.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_cover3.png, id=243, 1003.75pt x 649.42625pt>
+<./images/test_cover3.png, id=246, 1003.75pt x 649.42625pt>
 File: ./images/test_cover3.png Graphic file (type png)
 <use ./images/test_cover3.png>
-Package pdftex.def Info: ./images/test_cover3.png  used on input line 1070.
+Package pdftex.def Info: ./images/test_cover3.png  used on input line 1072.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_cover4.png, id=244, 1003.75pt x 649.42625pt>
+<./images/test_cover4.png, id=247, 1003.75pt x 649.42625pt>
 File: ./images/test_cover4.png Graphic file (type png)
 <use ./images/test_cover4.png>
-Package pdftex.def Info: ./images/test_cover4.png  used on input line 1075.
+Package pdftex.def Info: ./images/test_cover4.png  used on input line 1077.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_cover5.png, id=245, 1003.75pt x 649.42625pt>
+<./images/test_cover5.png, id=248, 1003.75pt x 649.42625pt>
 File: ./images/test_cover5.png Graphic file (type png)
 <use ./images/test_cover5.png>
-Package pdftex.def Info: ./images/test_cover5.png  used on input line 1080.
+Package pdftex.def Info: ./images/test_cover5.png  used on input line 1082.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 1059--1084
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 1061--1086
 [][] []
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 1059--1084
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 1061--1086
 [] []
  []
 
-[56 <./images/test_rot1.png> <./images/test_rot2.png> <./images/test_rot3.png>]
-[57 <./images/test_cover1.png> <./images/test_cover2.png> <./images/test_cover3
+[57 <./images/test_rot1.png> <./images/test_rot2.png> <./images/test_rot3.png>]
+[58 <./images/test_cover1.png> <./images/test_cover2.png> <./images/test_cover3
 .png> <./images/test_cover4.png> <./images/test_cover5.png>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1093.
+               Default added (so using `tbp') on input line 1095.
 
-[58] [59]
+[59] [60]
 Underfull \vbox (badness 2662) has occurred while \output is active []
 
- [60
+ [61
 
 ]
-[61]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 1139
+[62]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 1141
 .
  (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Underfull \hbox (badness 10000) in paragraph at lines 1142--1143
+Underfull \hbox (badness 10000) in paragraph at lines 1144--1145
 []$\T1/lmtt/m/n/12 h t t p s : / / w w w . w i r e d . c o m / s t o r y / c a 
 n -[] a i -[] b e -[] f a i r -[] j u d g e -[] c o u r t -[] e s t o n i a -[]
  t h i
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1145--1146
+Underfull \hbox (badness 10000) in paragraph at lines 1147--1148
 []$\T1/lmtt/m/n/12 h t t p s : / / w w w . n v i d i a . p l / o b j e c t / n 
 v i d i a -[] h a i r w o r k s -[] p l . h t m l$ \T1/lmr/m/n/12 Do-st如
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1148--1149
+Underfull \hbox (badness 10000) in paragraph at lines 1150--1151
 []$\T1/lmtt/m/n/12 h t t p s : / / n e w s . d e v e l o p e r . n v i d i a . 
 c o m / r e a l -[] t i m e -[] p a t h -[] t r a c i n g -[] a n d -[] d e n o
  i
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1158--1159
+Underfull \hbox (badness 10000) in paragraph at lines 1160--1161
 []$\T1/lmtt/m/n/12 h t t p s : / / w w w . v i a r 3 6 0 . c o m / v i r t u a 
 l -[] r e a l i t y -[] m a r k e t -[] s i z e -[] 2 0 1 8 /$\T1/lmr/m/n/12 . 
 Do-st如
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1161--1162
+Underfull \hbox (badness 10000) in paragraph at lines 1163--1164
 []$\T1/lmtt/m/n/12 h t t p s : / / w w w . v i a r 3 6 0 . c o m / v i r t u a 
 l -[] r e a l i t y -[] m a r k e t -[] s i z e -[] 2 0 1 8 /$\T1/lmr/m/n/12 . 
 Do-st如
  []
 
 
-Underfull \hbox (badness 2277) in paragraph at lines 1164--1165
+Underfull \hbox (badness 2277) in paragraph at lines 1166--1167
 []$\T1/lmtt/m/n/12 h t t p s : / / w w w . q u o r a . c o m / W h a t -[] i s 
 -[] a n -[] u m b r e l l a -[] t e r m -[] f o r -[] V R -[] A R -[] M R$\T1/l
 mr/m/n/12 . Do-st如
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1175--1177
+Underfull \hbox (badness 10000) in paragraph at lines 1177--1179
 \T1/lmtt/m/n/12 m / -[] / m e d i a / F i l e s / P D F s / A u g m e n t e d -
 [] R e a l i t y / S t a t e -[] o f -[] A R -[] R e p o r t -[] 2 0 1 9 . p df
 $\T1/lmr/m/n/12 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1179--1180
+Underfull \hbox (badness 10000) in paragraph at lines 1181--1182
 []$\T1/lmtt/m/n/12 h t t p s : / / e n g i n e . v u f o r i a . c o m / c o n 
 t e n t / v u f o r i a / e n / c a s e -[] s t u d i e s / a v a t a r -[]
  []
 
-[62
+[63
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1182--1183
+Underfull \hbox (badness 10000) in paragraph at lines 1184--1185
 []$\T1/lmtt/m/n/12 h t t p s : / / w w w . m a n u f a c t u r i n g . n e t / 
 a r t i c l e / 2 0 1 6 / 1 0 / c a s e -[] s t u d y -[] a u g m e n t e d
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1185--1186
+Underfull \hbox (badness 10000) in paragraph at lines 1187--1188
 []$\T1/lmtt/m/n/12 h t t p s : / / d o c s . o p e n c v . o r g / 3 . 0 -[] b 
 e t a / d o c / p y[] t u t o r i a l s / p y[] f e a t u r e 2 d / p y[] f
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1185--1186
+Underfull \hbox (badness 10000) in paragraph at lines 1187--1188
 \T1/lmtt/m/n/12 e a t u r e s[] m e a n i n g / p y[] f e a t u r e s[] m e a n
  i n g . h t m l# f e a t u r e s -[] m e a n i n g$\T1/lmr/m/n/12 . Do-st如
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1196--1197
+Underfull \hbox (badness 10000) in paragraph at lines 1198--1199
 []$\T1/lmtt/m/n/12 h t t p s : / / d o c s . o p e n c v . o r g / 3 . 0 -[] b 
 e t a / d o c / p y[] t u t o r i a l s / p y[] f e a t u r e 2 d / p y[] f
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1196--1197
+Underfull \hbox (badness 10000) in paragraph at lines 1198--1199
 \T1/lmtt/m/n/12 e a t u r e s[] m e a n i n g / p y[] f e a t u r e s[] m e a n
  i n g . h t m l# f e a t u r e s -[] m e a n i n g$\T1/lmr/m/n/12 . Do-st如
  []
 
 
-Underfull \hbox (badness 1521) in paragraph at lines 1203--1205
+Underfull \hbox (badness 1521) in paragraph at lines 1205--1207
 \T1/lmr/m/it/12 and BRISK \T1/lmr/m/n/12 , 2018. $\T1/lmtt/m/n/12 h t t p s : /
  / w w w . r e s e a r c h g a t e . n e t / p u b l i c a t i o n / 3 2 3 5 6 
 1 5
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1207--1208
+Underfull \hbox (badness 10000) in paragraph at lines 1209--1210
 []$\T1/lmtt/m/n/12 h t t p s : / / d o c s . o p e n c v . o r g / 3 . 0 -[] b 
 e t a / d o c / p y[] t u t o r i a l s / p y[] f e a t u r e 2 d / p y[] o
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1210--1211
+Underfull \hbox (badness 10000) in paragraph at lines 1212--1213
 []$\T1/lmtt/m/n/12 h t t p s : / / d o c s . o p e n c v . o r g / 3 . 0 -[] b 
 e t a / d o c / p y[] t u t o r i a l s / p y[] f e a t u r e 2 d / p y[] s
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1221--1222
+Underfull \hbox (badness 10000) in paragraph at lines 1223--1224
 []$\T1/lmtt/m/n/12 h t t p s : / / i n s i g h t s . s t a c k o v e r f l o w 
 . c o m / s u r v e y / 2 0 1 9 \OMS/lmsy/m/n/12 n\T1/lmtt/m/n/12 # t e c h n o
  l o g y$\T1/lmr/m/n/12 . Do-st如
  []
 
-[63]
-Underfull \hbox (badness 10000) in paragraph at lines 1224--1225
+[64]
+Underfull \hbox (badness 10000) in paragraph at lines 1226--1227
 []$\T1/lmtt/m/n/12 h t t p s : / / w w w . i c s . u c i . e d u / ~ m a j u m 
 d e r / v i s p e r c e p / c a m e r a c a l i b . p d f$\T1/lmr/m/n/12 . Do-s
 t如
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1233--1234
+Underfull \hbox (badness 10000) in paragraph at lines 1235--1236
 []$\T1/lmtt/m/n/12 h t t p s : / / d e v e n v . p l / m q t t -[] p r o t o k 
 o l -[] t r a n s m i s j i -[] d a n y c h -[] d l a -[] i o t/$\T1/lmr/m/n/12
  . Do-st如
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1236--1237
+Underfull \hbox (badness 10000) in paragraph at lines 1238--1239
 []$\T1/lmtt/m/n/12 h t tp : / / w w w . a l l t h e s k y . c o m / a r t i c l
  e s / c o l o r p r e s e r v e . h t m l$\T1/lmr/m/n/12 . Do-st如
  []
 
-[64]
-Overfull \hbox (14.2264pt too wide) in paragraph at lines 1243--1243
+[65]
+Overfull \hbox (14.2264pt too wide) in paragraph at lines 1245--1245
 []|[]| 
  []
 
 
-Overfull \hbox (14.2264pt too wide) in paragraph at lines 1243--1243
+Overfull \hbox (14.2264pt too wide) in paragraph at lines 1245--1245
 []|[]| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1243--1243
+Underfull \hbox (badness 10000) in paragraph at lines 1245--1245
 [][]
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[65] (./weiiszablon.aux) ) 
+[66] (./weiiszablon.aux) ) 
 Here is how much of TeX's memory you used:
- 9919 strings out of 494888
- 140065 string characters out of 6179866
- 268076 words of memory out of 5000000
- 12966 multiletter control sequences out of 15000+600000
+ 9921 strings out of 494815
+ 140093 string characters out of 6178284
+ 278321 words of memory out of 5000000
+ 12975 multiletter control sequences out of 15000+600000
  77121 words of font info for 64 fonts, out of 8000000 for 9000
- 34 hyphenation exceptions out of 8191
- 41i,14n,42p,1445b,1708s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 79 hyphenation exceptions out of 8191
+ 41i,14n,42p,1445b,1712s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/
 share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/
 lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/tex
@@ -1576,10 +1581,10 @@ mf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lms
 y10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fon
 ts/type1/public/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb
 >
-Output written on weiiszablon.pdf (65 pages, 37566170 bytes).
+Output written on weiiszablon.pdf (66 pages, 37566698 bytes).
 PDF statistics:
- 334 PDF objects out of 1000 (max. 8388607)
- 198 compressed objects within 2 object streams
+ 337 PDF objects out of 1000 (max. 8388607)
+ 200 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  251 words of extra memory for PDF output out of 10000 (max. 10000000)
 
