@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.13)  24 JUN 2019 21:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.13)  25 JUN 2019 23:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -983,619 +983,603 @@ Underfull \vbox (badness 6316) has occurred while \output is active []
  [7
 
 ]
-[8] [9]
-<./images/vr2018.png, id=37, 803.0pt x 447.6725pt>
-File: ./images/vr2018.png Graphic file (type png)
-<use ./images/vr2018.png>
-Package pdftex.def Info: ./images/vr2018.png  used on input line 184.
-(pdftex.def)             Requested size: 441.01773pt x 245.87225pt.
-<./images/reality-spectrum.png, id=38, 892.33376pt x 306.14375pt>
-File: ./images/reality-spectrum.png Graphic file (type png)
-<use ./images/reality-spectrum.png>
-Package pdftex.def Info: ./images/reality-spectrum.png  used on input line 193.
+Underfull \vbox (badness 2698) has occurred while \output is active []
 
-(pdftex.def)             Requested size: 441.01773pt x 151.30571pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [10
+ [8]
+[9] [10
 
 ]
-[11 <./images/vr2018.png (PNG copy)> <./images/reality-spectrum.png>]
+<./images/vr2018.png, id=40, 803.0pt x 447.6725pt>
+File: ./images/vr2018.png Graphic file (type png)
+<use ./images/vr2018.png>
+Package pdftex.def Info: ./images/vr2018.png  used on input line 187.
+(pdftex.def)             Requested size: 441.01773pt x 245.87225pt.
+<./images/reality-spectrum.png, id=41, 892.33376pt x 306.14375pt>
+File: ./images/reality-spectrum.png Graphic file (type png)
+<use ./images/reality-spectrum.png>
+Package pdftex.def Info: ./images/reality-spectrum.png  used on input line 196.
+
+(pdftex.def)             Requested size: 441.01773pt x 151.30571pt.
+ [11 <./images/vr2018.png (PNG copy)>]
 <./images/arbyindustry.png, id=45, 1228.59pt x 512.91624pt>
 File: ./images/arbyindustry.png Graphic file (type png)
 <use ./images/arbyindustry.png>
-Package pdftex.def Info: ./images/arbyindustry.png  used on input line 212.
+Package pdftex.def Info: ./images/arbyindustry.png  used on input line 215.
 (pdftex.def)             Requested size: 441.01773pt x 184.11751pt.
- [12]
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [13 <./images/arbyindustry.png>]
-Underfull \vbox (badness 6461) has occurred while \output is active []
+ [12 <./images/reality-spectrum.png>]
+Underfull \vbox (badness 1067) has occurred while \output is active []
 
- [14]
-[15]
-<./images/features.png, id=60, 312.16624pt x 246.9225pt>
-File: ./images/features.png Graphic file (type png)
-<use ./images/features.png>
-Package pdftex.def Info: ./images/features.png  used on input line 264.
-(pdftex.def)             Requested size: 312.16548pt x 246.92188pt.
+ [13 <./images/arbyindustry.png>] [14] [15]
+<./images/features.jpg, id=60, 451.6875pt x 401.5pt>
+File: ./images/features.jpg Graphic file (type jpg)
+<use ./images/features.jpg>
+Package pdftex.def Info: ./images/features.jpg  used on input line 261.
+(pdftex.def)             Requested size: 264.61333pt x 235.22269pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[16]
-Underfull \vbox (badness 2245) has occurred while \output is active []
 
- [17 <./images/features.png>]
-<./images/orb_kp.jpg, id=69, 451.6875pt x 358.33875pt>
+Underfull \vbox (badness 1137) has occurred while \output is active []
+
+ [16]
+[17 <./images/features.jpg>]
+<./images/fast.jpg, id=71, 444.66125pt x 216.81pt>
+File: ./images/fast.jpg Graphic file (type jpg)
+<use ./images/fast.jpg>
+Package pdftex.def Info: ./images/fast.jpg  used on input line 286.
+(pdftex.def)             Requested size: 264.61333pt x 129.02174pt.
+ [18 <./images/fast.jpg>]
+<./images/orb_kp.jpg, id=75, 451.6875pt x 358.33875pt>
 File: ./images/orb_kp.jpg Graphic file (type jpg)
 <use ./images/orb_kp.jpg>
-Package pdftex.def Info: ./images/orb_kp.jpg  used on input line 282.
-(pdftex.def)             Requested size: 451.68639pt x 358.33788pt.
+Package pdftex.def Info: ./images/orb_kp.jpg  used on input line 305.
+(pdftex.def)             Requested size: 220.50887pt x 174.94232pt.
 
-Overfull \hbox (10.66866pt too wide) in paragraph at lines 282--283
- [][] 
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \vbox (badness 6300) has occurred while \output is active []
-
- [18 <./images/orb_kp.jpg>]
-<./images/sift_scale_invariant.jpg, id=77, 328.22626pt x 135.50626pt>
+ [19 <./images/orb_kp.jpg>]
+<./images/sift_scale_invariant.jpg, id=80, 328.22626pt x 135.50626pt>
 File: ./images/sift_scale_invariant.jpg Graphic file (type jpg)
 <use ./images/sift_scale_invariant.jpg>
 Package pdftex.def Info: ./images/sift_scale_invariant.jpg  used on input line 
-297.
+320.
 (pdftex.def)             Requested size: 328.22545pt x 135.5059pt.
+ [20 <./images/sift_scale_invariant.jpg>]
+Underfull \vbox (badness 1052) has occurred while \output is active []
 
-
-LaTeX Warning: Citation `sift_scale_invariant_img' on page \relax \fontsize {10
-}{12}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshorts
-kip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargi
-n \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p
-@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus
-2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplaysk
-ip \abovedisplayskip 19 undefined on input line 298.
-
-
-LaTeX Warning: Citation `sift_scale_invariant_img' on page \relax \fontsize {10
-}{12}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshorts
-kip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargi
-n \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p
-@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus
-2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplaysk
-ip \abovedisplayskip 19 undefined on input line 298.
-
-
-Package caption Warning: \label without proper reference on input line 306.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `sift_gaussian' on page \relax \fontsize {10}{12}\sele
-ctfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ pl
-us3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmar
-gini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep
- 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus
-2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \aboved
-isplayskip 19 undefined on input line 301.
-
-[19 <./images/sift_scale_invariant.jpg>]
-<./images/sift_gaussian.png, id=82, 841.1425pt x 469.755pt>
-File: ./images/sift_gaussian.png Graphic file (type png)
-<use ./images/sift_gaussian.png>
-Package pdftex.def Info: ./images/sift_gaussian.png  used on input line 305.
-(pdftex.def)             Requested size: 441.01773pt x 246.29535pt.
-
-
-LaTeX Warning: Citation `sift_gaussian_img' on page \relax \fontsize {10}{12}\s
-electfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@
- plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \left
-margini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \item
-sep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ mi
-nus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abo
-vedisplayskip 20 undefined on input line 307.
-
-
-LaTeX Warning: Citation `sift_gaussian_img' on page \relax \fontsize {10}{12}\s
-electfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@
- plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \left
-margini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \item
-sep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ mi
-nus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abo
-vedisplayskip 20 undefined on input line 307.
-
-[20 <./images/sift_gaussian.png>]
-<./images/pinhole_model_img.png, id=87, 637.38126pt x 390.45876pt>
-File: ./images/pinhole_model_img.png Graphic file (type png)
-<use ./images/pinhole_model_img.png>
-Package pdftex.def Info: ./images/pinhole_model_img.png  used on input line 335
+ [21]
+[22]
+<./images/pinhole_model_img.jpg, id=90, 152.9715pt x 93.7101pt>
+File: ./images/pinhole_model_img.jpg Graphic file (type jpg)
+<use ./images/pinhole_model_img.jpg>
+Package pdftex.def Info: ./images/pinhole_model_img.jpg  used on input line 365
 .
-(pdftex.def)             Requested size: 441.01773pt x 270.16753pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[21] [22 <./images/pinhole_model_img.png>]
-
-Package caption Warning: \label without proper reference on input line 336.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `pinhole_model' on page \relax \fontsize {10}{12}\sele
-ctfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ pl
-us3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmar
-gini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep
- 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus
-2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \aboved
-isplayskip 23 undefined on input line 378.
-
-
-Package caption Warning: \label without proper reference on input line 396.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `homography-label' on page \relax \fontsize {10}{12}\s
-electfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@
- plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \left
-margini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \item
-sep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ mi
-nus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abo
-vedisplayskip 23 undefined on input line 389.
-
-[23]
+(pdftex.def)             Requested size: 308.71106pt x 189.11845pt.
+ [23 <./images/pinhole_model_img.jpg>] [24]
 <./images/homography_img.png, id=98, 500.87125pt x 309.155pt>
 File: ./images/homography_img.png Graphic file (type png)
 <use ./images/homography_img.png>
-Package pdftex.def Info: ./images/homography_img.png  used on input line 395.
-(pdftex.def)             Requested size: 441.01773pt x 272.22234pt.
- [24 <./images/homography_img.png>] [25]
-Overfull \hbox (16.53136pt too wide) in paragraph at lines 438--439
-\T1/lmr/m/n/12 IBM oraz Ar-lena Nip-pera z Eu-ro-tech, oparty o wzo-rzec Publis
-h-Subscribe (ang. publikacja-
+Package pdftex.def Info: ./images/homography_img.png  used on input line 427.
+(pdftex.def)             Requested size: 352.81552pt x 217.77975pt.
+ [25 <./images/homography_img.png>] [26] [27]
+Overfull \hbox (5.94458pt too wide) in paragraph at lines 468--469
+[]\T1/lmr/m/n/12 Jest to pro-to-k顗 ko-mu-ni-ka-cyjny stwo-rzony przez Andy'ego
+ Stanford-Clarka z IBM
  []
 
-[26] [27]
-<./images/architektura.png, id=113, 121.45375pt x 422.57875pt>
-File: ./images/architektura.png Graphic file (type png)
-<use ./images/architektura.png>
-Package pdftex.def Info: ./images/architektura.png  used on input line 478.
-(pdftex.def)             Requested size: 88.2022pt x 306.88081pt.
+[28] [29]
+Underfull \vbox (badness 6944) has occurred while \output is active []
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [28
+ [30
 
 ]
-[29 <./images/architektura.png>]
-<./images/algorithm.png, id=121, 390.45876pt x 678.535pt>
-File: ./images/algorithm.png Graphic file (type png)
-<use ./images/algorithm.png>
-Package pdftex.def Info: ./images/algorithm.png  used on input line 488.
-(pdftex.def)             Requested size: 220.50887pt x 383.19698pt.
- [30 <./images/algorithm.png>]
+<./images/architektura.png, id=119, 188.705pt x 469.755pt>
+File: ./images/architektura.png Graphic file (type png)
+<use ./images/architektura.png>
+Package pdftex.def Info: ./images/architektura.png  used on input line 508.
+(pdftex.def)             Requested size: 88.2022pt x 219.56635pt.
+
+[31 <./images/architektura.png>]
 <./images/device.jpg, id=126, 2955.04pt x 3394.6825pt>
 File: ./images/device.jpg Graphic file (type jpg)
 <use ./images/device.jpg>
-Package pdftex.def Info: ./images/device.jpg  used on input line 500.
+Package pdftex.def Info: ./images/device.jpg  used on input line 521.
 (pdftex.def)             Requested size: 264.61333pt x 303.95428pt.
-<./images/scheme2.png, id=127, 978.65625pt x 923.45pt>
+ [32 <./images/device.jpg>]
+<./images/scheme2.png, id=130, 978.65625pt x 923.45pt>
 File: ./images/scheme2.png Graphic file (type png)
 <use ./images/scheme2.png>
-Package pdftex.def Info: ./images/scheme2.png  used on input line 508.
+Package pdftex.def Info: ./images/scheme2.png  used on input line 529.
 (pdftex.def)             Requested size: 441.01773pt x 416.14047pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[31 <./images/device.jpg>]
-<./images/dirs_arduino.png, id=132, 325.215pt x 149.55875pt>
+ [33 <./images/scheme2.png>]
+<./images/dirs_arduino.png, id=134, 325.215pt x 149.55875pt>
 File: ./images/dirs_arduino.png Graphic file (type png)
 <use ./images/dirs_arduino.png>
-Package pdftex.def Info: ./images/dirs_arduino.png  used on input line 530.
+Package pdftex.def Info: ./images/dirs_arduino.png  used on input line 551.
 (pdftex.def)             Requested size: 176.40439pt x 81.12564pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[32 <./images/scheme2.png>] [33 <./images/dirs_arduino.png>]
-<./images/dirs_ar.png, id=139, 366.36874pt x 479.7925pt>
+ [34 <./images/dirs_arduino.png>] [35]
+<./images/algorithm.png, id=141, 390.45876pt x 678.535pt>
+File: ./images/algorithm.png Graphic file (type png)
+<use ./images/algorithm.png>
+Package pdftex.def Info: ./images/algorithm.png  used on input line 588.
+(pdftex.def)             Requested size: 220.50887pt x 383.19698pt.
+<./images/dirs_ar.png, id=142, 366.36874pt x 479.7925pt>
 File: ./images/dirs_ar.png Graphic file (type png)
 <use ./images/dirs_ar.png>
-Package pdftex.def Info: ./images/dirs_ar.png  used on input line 574.
+Package pdftex.def Info: ./images/dirs_ar.png  used on input line 597.
 (pdftex.def)             Requested size: 176.40439pt x 231.02255pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 1902) has occurred while \output is active []
-
- [34]
-Underfull \vbox (badness 5622) has occurred while \output is active []
-
- [35 <./images/dirs_ar.png>]
-<./images/base.png, id=147, 770.88pt x 699.61375pt>
+ [36 <./images/algorithm.png>]
+[37 <./images/dirs_ar.png>]
+<./images/base.png, id=152, 770.88pt x 699.61375pt>
 File: ./images/base.png Graphic file (type png)
 <use ./images/base.png>
-Package pdftex.def Info: ./images/base.png  used on input line 620.
+Package pdftex.def Info: ./images/base.png  used on input line 643.
 (pdftex.def)             Requested size: 264.61333pt x 240.15002pt.
-<./images/base_kp.png, id=148, 769.87625pt x 699.61375pt>
+<./images/base_kp.png, id=153, 769.87625pt x 699.61375pt>
 File: ./images/base_kp.png Graphic file (type png)
 <use ./images/base_kp.png>
-Package pdftex.def Info: ./images/base_kp.png  used on input line 626.
+Package pdftex.def Info: ./images/base_kp.png  used on input line 649.
 (pdftex.def)             Requested size: 264.61333pt x 240.47028pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+ [38]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[36] [37 <./images/base.png>] [38 <./images/base_kp.png>] [39]
+[39 <./images/base.png>]
+Underfull \vbox (badness 2503) has occurred while \output is active []
 
-LaTeX Warning: Reference `detecotor' on page \relax \fontsize {10}{12}\selectfo
-nt \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\
-p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini
- \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p
-@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@
- \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedispl
-ayskip 40 undefined on input line 698.
+ [40 <./images/base_kp.png>] [41] [42]
+Underfull \vbox (badness 5274) has occurred while \output is active []
 
-[40] [41]
-<./images/draw_rect.png, id=168, 432.61626pt x 233.87375pt>
+ [43]
+<./images/draw_rect.png, id=173, 432.61626pt x 233.87375pt>
 File: ./images/draw_rect.png Graphic file (type png)
 <use ./images/draw_rect.png>
-Package pdftex.def Info: ./images/draw_rect.png  used on input line 762.
+Package pdftex.def Info: ./images/draw_rect.png  used on input line 779.
 (pdftex.def)             Requested size: 220.50887pt x 119.2062pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./images/draw_poly.png, id=169, 273.02pt x 270.00874pt>
+[44]
+<./images/draw_poly.png, id=177, 273.02pt x 270.00874pt>
 File: ./images/draw_poly.png Graphic file (type png)
 <use ./images/draw_poly.png>
-Package pdftex.def Info: ./images/draw_poly.png  used on input line 772.
+Package pdftex.def Info: ./images/draw_poly.png  used on input line 789.
 (pdftex.def)             Requested size: 132.30666pt x 130.84695pt.
+<./images/draw_text.png, id=178, 436.63126pt x 237.88875pt>
+File: ./images/draw_text.png Graphic file (type png)
+<use ./images/draw_text.png>
+Package pdftex.def Info: ./images/draw_text.png  used on input line 799.
+(pdftex.def)             Requested size: 220.50887pt x 120.1383pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[42]
-<./images/draw_text.png, id=173, 436.63126pt x 237.88875pt>
-File: ./images/draw_text.png Graphic file (type png)
-<use ./images/draw_text.png>
-Package pdftex.def Info: ./images/draw_text.png  used on input line 782.
-(pdftex.def)             Requested size: 220.50887pt x 120.1383pt.
- [43 <./images/draw_rect.png> <./images/draw_poly.png> <./images/draw_text.png>
-]
-<./images/draw_img.png, id=178, 292.09125pt x 191.71625pt>
+[45 <./images/draw_rect.png> <./images/draw_poly.png>]
+<./images/draw_img.png, id=182, 292.09125pt x 191.71625pt>
 File: ./images/draw_img.png Graphic file (type png)
 <use ./images/draw_img.png>
-Package pdftex.def Info: ./images/draw_img.png  used on input line 792.
+Package pdftex.def Info: ./images/draw_img.png  used on input line 809.
 (pdftex.def)             Requested size: 220.50887pt x 144.73756pt.
-<./images/chaining.png, id=179, 348.30125pt x 221.82875pt>
+<./images/chaining.png, id=183, 348.30125pt x 221.82875pt>
 File: ./images/chaining.png Graphic file (type png)
 <use ./images/chaining.png>
-Package pdftex.def Info: ./images/chaining.png  used on input line 808.
+Package pdftex.def Info: ./images/chaining.png  used on input line 824.
 (pdftex.def)             Requested size: 220.50887pt x 140.43996pt.
- [44 <./images/draw_img.png> <./images/chaining.png>] [45]
-<./images/pres.png, id=186, 770.88pt x 698.61pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[46 <./images/draw_text.png> <./images/draw_img.png>] [47 <./images/chaining.pn
+g>]
+<./images/pres.png, id=190, 770.88pt x 698.61pt>
 File: ./images/pres.png Graphic file (type png)
 <use ./images/pres.png>
-Package pdftex.def Info: ./images/pres.png  used on input line 852.
+Package pdftex.def Info: ./images/pres.png  used on input line 869.
 (pdftex.def)             Requested size: 220.50887pt x 199.8308pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[46]
-<./images/lim.png, id=190, 771.88374pt x 702.625pt>
-File: ./images/lim.png Graphic file (type png)
-<use ./images/lim.png>
-Package pdftex.def Info: ./images/lim.png  used on input line 860.
-(pdftex.def)             Requested size: 220.50887pt x 200.72192pt.
- [47 <./images/pres.png> <./images/lim.png>]
-<./images/test_stat.jpg, id=194, 1553.805pt x 2071.74pt>
-File: ./images/test_stat.jpg Graphic file (type jpg)
-<use ./images/test_stat.jpg>
-Package pdftex.def Info: ./images/test_stat.jpg  used on input line 874.
-(pdftex.def)             Requested size: 220.50887pt x 293.99315pt.
-<./images/test_close1.png, id=195, 1003.75pt x 649.42625pt>
-File: ./images/test_close1.png Graphic file (type png)
-<use ./images/test_close1.png>
-Package pdftex.def Info: ./images/test_close1.png  used on input line 893.
+[48]
+<./images/rgb_tri.jpg, id=194, 513.92pt x 444.66125pt>
+File: ./images/rgb_tri.jpg Graphic file (type jpg)
+<use ./images/rgb_tri.jpg>
+Package pdftex.def Info: ./images/rgb_tri.jpg  used on input line 877.
+(pdftex.def)             Requested size: 220.50887pt x 190.7935pt.
+ [49 <./images/pres.png> <./images/rgb_tri.jpg>]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 884.
+
+<./images/lim2.png, id=199, 1003.75pt x 649.42625pt>
+File: ./images/lim2.png Graphic file (type png)
+<use ./images/lim2.png>
+Package pdftex.def Info: ./images/lim2.png  used on input line 886.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_close2.png, id=196, 1003.75pt x 649.42625pt>
-File: ./images/test_close2.png Graphic file (type png)
-<use ./images/test_close2.png>
-Package pdftex.def Info: ./images/test_close2.png  used on input line 898.
+<./images/lim3.png, id=200, 1003.75pt x 649.42625pt>
+File: ./images/lim3.png Graphic file (type png)
+<use ./images/lim3.png>
+Package pdftex.def Info: ./images/lim3.png  used on input line 890.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_close3.png, id=197, 1003.75pt x 649.42625pt>
-File: ./images/test_close3.png Graphic file (type png)
-<use ./images/test_close3.png>
-Package pdftex.def Info: ./images/test_close3.png  used on input line 903.
+<./images/lim4.png, id=201, 1003.75pt x 649.42625pt>
+File: ./images/lim4.png Graphic file (type png)
+<use ./images/lim4.png>
+Package pdftex.def Info: ./images/lim4.png  used on input line 894.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 892--907
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 885--897
 [][] []
  []
 
-[48 <./images/test_stat.jpg>]
-<./images/test_angle1.png, id=201, 1003.75pt x 649.42625pt>
-File: ./images/test_angle1.png Graphic file (type png)
-<use ./images/test_angle1.png>
-Package pdftex.def Info: ./images/test_angle1.png  used on input line 917.
+<./images/turk2.png, id=202, 1003.75pt x 649.42625pt>
+File: ./images/turk2.png Graphic file (type png)
+<use ./images/turk2.png>
+Package pdftex.def Info: ./images/turk2.png  used on input line 907.
+(pdftex.def)             Requested size: 308.71106pt x 199.73454pt.
+<./images/turk1.png, id=203, 1003.75pt x 649.42625pt>
+File: ./images/turk1.png Graphic file (type png)
+<use ./images/turk1.png>
+Package pdftex.def Info: ./images/turk1.png  used on input line 911.
+(pdftex.def)             Requested size: 308.71106pt x 199.73454pt.
+[50 <./images/lim2.png> <./images/lim3.png> <./images/lim4.png>]
+<./images/test_stat.jpg, id=208, 1553.805pt x 2071.74pt>
+File: ./images/test_stat.jpg Graphic file (type jpg)
+<use ./images/test_stat.jpg>
+Package pdftex.def Info: ./images/test_stat.jpg  used on input line 927.
+(pdftex.def)             Requested size: 220.50887pt x 293.99315pt.
+
+Underfull \vbox (badness 2042) has occurred while \output is active []
+
+ [51 <./images/turk2.png> <./images/turk1.png>]
+<./images/test_close1.png, id=212, 1003.75pt x 649.42625pt>
+File: ./images/test_close1.png Graphic file (type png)
+<use ./images/test_close1.png>
+Package pdftex.def Info: ./images/test_close1.png  used on input line 946.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 918.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 918.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 918.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 918.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 918.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 918.
-<./images/test_angle2.png, id=202, 1003.75pt x 649.42625pt>
-File: ./images/test_angle2.png Graphic file (type png)
-<use ./images/test_angle2.png>
-Package pdftex.def Info: ./images/test_angle2.png  used on input line 922.
+<./images/test_close2.png, id=213, 1003.75pt x 649.42625pt>
+File: ./images/test_close2.png Graphic file (type png)
+<use ./images/test_close2.png>
+Package pdftex.def Info: ./images/test_close2.png  used on input line 951.
+(pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
+<./images/test_close3.png, id=214, 1003.75pt x 649.42625pt>
+File: ./images/test_close3.png Graphic file (type png)
+<use ./images/test_close3.png>
+Package pdftex.def Info: ./images/test_close3.png  used on input line 956.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 916--926
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 945--960
+[][] []
+ []
+
+[52 <./images/test_stat.jpg>]
+<./images/test_angle1.png, id=218, 1003.75pt x 649.42625pt>
+File: ./images/test_angle1.png Graphic file (type png)
+<use ./images/test_angle1.png>
+Package pdftex.def Info: ./images/test_angle1.png  used on input line 970.
+(pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 971.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 971.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 971.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 971.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 971.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 971.
+<./images/test_angle2.png, id=219, 1003.75pt x 649.42625pt>
+File: ./images/test_angle2.png Graphic file (type png)
+<use ./images/test_angle2.png>
+Package pdftex.def Info: ./images/test_angle2.png  used on input line 975.
+(pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
+
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 969--979
 []$[]$ $[]$ 
  []
 
-[49 <./images/test_close1.png> <./images/test_close2.png> <./images/test_close3
+[53 <./images/test_close1.png> <./images/test_close2.png> <./images/test_close3
 .png>]
-<./images/test_light1.png, id=207, 1003.75pt x 649.42625pt>
+<./images/test_light1.png, id=223, 1003.75pt x 649.42625pt>
 File: ./images/test_light1.png Graphic file (type png)
 <use ./images/test_light1.png>
-Package pdftex.def Info: ./images/test_light1.png  used on input line 934.
+Package pdftex.def Info: ./images/test_light1.png  used on input line 987.
 (pdftex.def)             Requested size: 202.87111pt x 131.25044pt.
-<./images/test_light2.png, id=208, 1003.75pt x 649.42625pt>
+<./images/test_light2.png, id=224, 1003.75pt x 649.42625pt>
 File: ./images/test_light2.png Graphic file (type png)
 <use ./images/test_light2.png>
-Package pdftex.def Info: ./images/test_light2.png  used on input line 939.
+Package pdftex.def Info: ./images/test_light2.png  used on input line 992.
 (pdftex.def)             Requested size: 202.87111pt x 131.25044pt.
-<./images/test_light3.png, id=209, 1003.75pt x 649.42625pt>
+<./images/test_light3.png, id=225, 1003.75pt x 649.42625pt>
 File: ./images/test_light3.png Graphic file (type png)
 <use ./images/test_light3.png>
-Package pdftex.def Info: ./images/test_light3.png  used on input line 944.
+Package pdftex.def Info: ./images/test_light3.png  used on input line 997.
 (pdftex.def)             Requested size: 202.87111pt x 131.25044pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 933--948
+Underfull \hbox (badness 10000) in paragraph at lines 986--1001
 []$[]$ $[]$
  []
 
-[50 <./images/test_angle1.png> <./images/test_angle2.png> <./images/test_light1
+[54 <./images/test_angle1.png> <./images/test_angle2.png> <./images/test_light1
 .png> <./images/test_light2.png> <./images/test_light3.png>]
-<./images/test_bright1.png, id=215, 1003.75pt x 649.42625pt>
+<./images/test_bright1.png, id=230, 1003.75pt x 649.42625pt>
 File: ./images/test_bright1.png Graphic file (type png)
 <use ./images/test_bright1.png>
-Package pdftex.def Info: ./images/test_bright1.png  used on input line 957.
+Package pdftex.def Info: ./images/test_bright1.png  used on input line 1010.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_bright3.png, id=216, 1003.75pt x 649.42625pt>
+<./images/test_bright3.png, id=231, 1003.75pt x 649.42625pt>
 File: ./images/test_bright3.png Graphic file (type png)
 <use ./images/test_bright3.png>
-Package pdftex.def Info: ./images/test_bright3.png  used on input line 962.
+Package pdftex.def Info: ./images/test_bright3.png  used on input line 1015.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_bright2.png, id=217, 1003.75pt x 649.42625pt>
+<./images/test_bright2.png, id=232, 1003.75pt x 649.42625pt>
 File: ./images/test_bright2.png Graphic file (type png)
 <use ./images/test_bright2.png>
-Package pdftex.def Info: ./images/test_bright2.png  used on input line 967.
+Package pdftex.def Info: ./images/test_bright2.png  used on input line 1020.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 956--971
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 1009--1024
 [][] []
  []
 
-<./images/test_rot1.png, id=218, 1003.75pt x 649.42625pt>
+<./images/test_rot1.png, id=233, 1003.75pt x 649.42625pt>
 File: ./images/test_rot1.png Graphic file (type png)
 <use ./images/test_rot1.png>
-Package pdftex.def Info: ./images/test_rot1.png  used on input line 980.
+Package pdftex.def Info: ./images/test_rot1.png  used on input line 1033.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_rot2.png, id=219, 1003.75pt x 649.42625pt>
+<./images/test_rot2.png, id=234, 1003.75pt x 649.42625pt>
 File: ./images/test_rot2.png Graphic file (type png)
 <use ./images/test_rot2.png>
-Package pdftex.def Info: ./images/test_rot2.png  used on input line 985.
+Package pdftex.def Info: ./images/test_rot2.png  used on input line 1038.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_rot3.png, id=220, 1003.75pt x 649.42625pt>
+<./images/test_rot3.png, id=235, 1003.75pt x 649.42625pt>
 File: ./images/test_rot3.png Graphic file (type png)
 <use ./images/test_rot3.png>
-Package pdftex.def Info: ./images/test_rot3.png  used on input line 990.
+Package pdftex.def Info: ./images/test_rot3.png  used on input line 1043.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 979--994
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 1032--1047
 [][] []
  []
 
-[51 <./images/test_bright1.png> <./images/test_bright3.png> <./images/test_brig
+[55 <./images/test_bright1.png> <./images/test_bright3.png> <./images/test_brig
 ht2.png>]
-<./images/test_cover1.png, id=225, 1003.75pt x 649.42625pt>
+<./images/test_cover1.png, id=241, 1003.75pt x 649.42625pt>
 File: ./images/test_cover1.png Graphic file (type png)
 <use ./images/test_cover1.png>
-Package pdftex.def Info: ./images/test_cover1.png  used on input line 1006.
+Package pdftex.def Info: ./images/test_cover1.png  used on input line 1060.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_cover2.png, id=226, 1003.75pt x 649.42625pt>
+<./images/test_cover2.png, id=242, 1003.75pt x 649.42625pt>
 File: ./images/test_cover2.png Graphic file (type png)
 <use ./images/test_cover2.png>
-Package pdftex.def Info: ./images/test_cover2.png  used on input line 1011.
+Package pdftex.def Info: ./images/test_cover2.png  used on input line 1065.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_cover3.png, id=227, 1003.75pt x 649.42625pt>
+<./images/test_cover3.png, id=243, 1003.75pt x 649.42625pt>
 File: ./images/test_cover3.png Graphic file (type png)
 <use ./images/test_cover3.png>
-Package pdftex.def Info: ./images/test_cover3.png  used on input line 1016.
+Package pdftex.def Info: ./images/test_cover3.png  used on input line 1070.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_cover4.png, id=228, 1003.75pt x 649.42625pt>
+<./images/test_cover4.png, id=244, 1003.75pt x 649.42625pt>
 File: ./images/test_cover4.png Graphic file (type png)
 <use ./images/test_cover4.png>
-Package pdftex.def Info: ./images/test_cover4.png  used on input line 1021.
+Package pdftex.def Info: ./images/test_cover4.png  used on input line 1075.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
-<./images/test_cover5.png, id=229, 1003.75pt x 649.42625pt>
+<./images/test_cover5.png, id=245, 1003.75pt x 649.42625pt>
 File: ./images/test_cover5.png Graphic file (type png)
 <use ./images/test_cover5.png>
-Package pdftex.def Info: ./images/test_cover5.png  used on input line 1026.
+Package pdftex.def Info: ./images/test_cover5.png  used on input line 1080.
 (pdftex.def)             Requested size: 220.50887pt x 142.6661pt.
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 1005--1030
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 1059--1084
 [][] []
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 1005--1030
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 1059--1084
 [] []
  []
 
-[52 <./images/test_rot1.png> <./images/test_rot2.png> <./images/test_rot3.png>]
-[53 <./images/test_cover1.png> <./images/test_cover2.png> <./images/test_cover3
-.png> <./images/test_cover4.png> <./images/test_cover5.png>] [54] [55
+[56 <./images/test_rot1.png> <./images/test_rot2.png> <./images/test_rot3.png>]
+[57 <./images/test_cover1.png> <./images/test_cover2.png> <./images/test_cover3
+.png> <./images/test_cover4.png> <./images/test_cover5.png>]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1093.
+
+[58] [59]
+Underfull \vbox (badness 2662) has occurred while \output is active []
+
+ [60
 
 ]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 1062
+[61]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 1139
 .
-
-(/usr/share/texmf/tex/latex/lm/t1lmtt.fd
+ (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Underfull \hbox (badness 10000) in paragraph at lines 1065--1066
+Underfull \hbox (badness 10000) in paragraph at lines 1142--1143
 []$\T1/lmtt/m/n/12 h t t p s : / / w w w . w i r e d . c o m / s t o r y / c a 
 n -[] a i -[] b e -[] f a i r -[] j u d g e -[] c o u r t -[] e s t o n i a -[]
  t h i
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1068--1069
+Underfull \hbox (badness 10000) in paragraph at lines 1145--1146
 []$\T1/lmtt/m/n/12 h t t p s : / / w w w . n v i d i a . p l / o b j e c t / n 
 v i d i a -[] h a i r w o r k s -[] p l . h t m l$ \T1/lmr/m/n/12 Do-st如
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1071--1072
+Underfull \hbox (badness 10000) in paragraph at lines 1148--1149
 []$\T1/lmtt/m/n/12 h t t p s : / / n e w s . d e v e l o p e r . n v i d i a . 
 c o m / r e a l -[] t i m e -[] p a t h -[] t r a c i n g -[] a n d -[] d e n o
  i
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1081--1082
+Underfull \hbox (badness 10000) in paragraph at lines 1158--1159
 []$\T1/lmtt/m/n/12 h t t p s : / / w w w . v i a r 3 6 0 . c o m / v i r t u a 
 l -[] r e a l i t y -[] m a r k e t -[] s i z e -[] 2 0 1 8 /$\T1/lmr/m/n/12 . 
 Do-st如
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1084--1085
+Underfull \hbox (badness 10000) in paragraph at lines 1161--1162
 []$\T1/lmtt/m/n/12 h t t p s : / / w w w . v i a r 3 6 0 . c o m / v i r t u a 
 l -[] r e a l i t y -[] m a r k e t -[] s i z e -[] 2 0 1 8 /$\T1/lmr/m/n/12 . 
 Do-st如
  []
 
 
-Underfull \hbox (badness 2277) in paragraph at lines 1087--1088
+Underfull \hbox (badness 2277) in paragraph at lines 1164--1165
 []$\T1/lmtt/m/n/12 h t t p s : / / w w w . q u o r a . c o m / W h a t -[] i s 
 -[] a n -[] u m b r e l l a -[] t e r m -[] f o r -[] V R -[] A R -[] M R$\T1/l
 mr/m/n/12 . Do-st如
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1098--1100
+Underfull \hbox (badness 10000) in paragraph at lines 1175--1177
 \T1/lmtt/m/n/12 m / -[] / m e d i a / F i l e s / P D F s / A u g m e n t e d -
 [] R e a l i t y / S t a t e -[] o f -[] A R -[] R e p o r t -[] 2 0 1 9 . p df
 $\T1/lmr/m/n/12 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1102--1103
+Underfull \hbox (badness 10000) in paragraph at lines 1179--1180
 []$\T1/lmtt/m/n/12 h t t p s : / / e n g i n e . v u f o r i a . c o m / c o n 
 t e n t / v u f o r i a / e n / c a s e -[] s t u d i e s / a v a t a r -[]
  []
 
-[56
+[62
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1105--1106
+Underfull \hbox (badness 10000) in paragraph at lines 1182--1183
 []$\T1/lmtt/m/n/12 h t t p s : / / w w w . m a n u f a c t u r i n g . n e t / 
 a r t i c l e / 2 0 1 6 / 1 0 / c a s e -[] s t u d y -[] a u g m e n t e d
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1107--1108
+Underfull \hbox (badness 10000) in paragraph at lines 1185--1186
+[]$\T1/lmtt/m/n/12 h t t p s : / / d o c s . o p e n c v . o r g / 3 . 0 -[] b 
+e t a / d o c / p y[] t u t o r i a l s / p y[] f e a t u r e 2 d / p y[] f
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1185--1186
+\T1/lmtt/m/n/12 e a t u r e s[] m e a n i n g / p y[] f e a t u r e s[] m e a n
+ i n g . h t m l# f e a t u r e s -[] m e a n i n g$\T1/lmr/m/n/12 . Do-st如
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1196--1197
+[]$\T1/lmtt/m/n/12 h t t p s : / / d o c s . o p e n c v . o r g / 3 . 0 -[] b 
+e t a / d o c / p y[] t u t o r i a l s / p y[] f e a t u r e 2 d / p y[] f
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1196--1197
+\T1/lmtt/m/n/12 e a t u r e s[] m e a n i n g / p y[] f e a t u r e s[] m e a n
+ i n g . h t m l# f e a t u r e s -[] m e a n i n g$\T1/lmr/m/n/12 . Do-st如
+ []
+
+
+Underfull \hbox (badness 1521) in paragraph at lines 1203--1205
+\T1/lmr/m/it/12 and BRISK \T1/lmr/m/n/12 , 2018. $\T1/lmtt/m/n/12 h t t p s : /
+ / w w w . r e s e a r c h g a t e . n e t / p u b l i c a t i o n / 3 2 3 5 6 
+1 5
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1207--1208
 []$\T1/lmtt/m/n/12 h t t p s : / / d o c s . o p e n c v . o r g / 3 . 0 -[] b 
 e t a / d o c / p y[] t u t o r i a l s / p y[] f e a t u r e 2 d / p y[] o
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1114--1115
+Underfull \hbox (badness 10000) in paragraph at lines 1210--1211
+[]$\T1/lmtt/m/n/12 h t t p s : / / d o c s . o p e n c v . o r g / 3 . 0 -[] b 
+e t a / d o c / p y[] t u t o r i a l s / p y[] f e a t u r e 2 d / p y[] s
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1221--1222
 []$\T1/lmtt/m/n/12 h t t p s : / / i n s i g h t s . s t a c k o v e r f l o w 
 . c o m / s u r v e y / 2 0 1 9 \OMS/lmsy/m/n/12 n\T1/lmtt/m/n/12 # t e c h n o
  l o g y$\T1/lmr/m/n/12 . Do-st如
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1117--1118
+[63]
+Underfull \hbox (badness 10000) in paragraph at lines 1224--1225
 []$\T1/lmtt/m/n/12 h t t p s : / / w w w . i c s . u c i . e d u / ~ m a j u m 
 d e r / v i s p e r c e p / c a m e r a c a l i b . p d f$\T1/lmr/m/n/12 . Do-s
 t如
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1126--1127
+Underfull \hbox (badness 10000) in paragraph at lines 1233--1234
 []$\T1/lmtt/m/n/12 h t t p s : / / d e v e n v . p l / m q t t -[] p r o t o k 
 o l -[] t r a n s m i s j i -[] d a n y c h -[] d l a -[] i o t/$\T1/lmr/m/n/12
  . Do-st如
  []
 
-[57]
-Overfull \hbox (14.2264pt too wide) in paragraph at lines 1133--1133
+
+Underfull \hbox (badness 10000) in paragraph at lines 1236--1237
+[]$\T1/lmtt/m/n/12 h t tp : / / w w w . a l l t h e s k y . c o m / a r t i c l
+ e s / c o l o r p r e s e r v e . h t m l$\T1/lmr/m/n/12 . Do-st如
+ []
+
+[64]
+Overfull \hbox (14.2264pt too wide) in paragraph at lines 1243--1243
 []|[]| 
  []
 
 
-Overfull \hbox (14.2264pt too wide) in paragraph at lines 1133--1133
+Overfull \hbox (14.2264pt too wide) in paragraph at lines 1243--1243
 []|[]| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1133--1133
+Underfull \hbox (badness 10000) in paragraph at lines 1243--1243
 [][]
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[58] (./weiiszablon.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+[65] (./weiiszablon.aux) ) 
 Here is how much of TeX's memory you used:
- 9881 strings out of 494888
- 139499 string characters out of 6179866
- 288735 words of memory out of 5000000
- 12936 multiletter control sequences out of 15000+600000
- 71132 words of font info for 62 fonts, out of 8000000 for 9000
+ 9919 strings out of 494888
+ 140065 string characters out of 6179866
+ 268076 words of memory out of 5000000
+ 12966 multiletter control sequences out of 15000+600000
+ 77121 words of font info for 64 fonts, out of 8000000 for 9000
  34 hyphenation exceptions out of 8191
- 41i,14n,42p,1430b,1710s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
-/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
--mathit.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmex
-10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/sha
-re/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm
-/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9
-.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
-Output written on weiiszablon.pdf (58 pages, 32971105 bytes).
+ 41i,14n,42p,1445b,1708s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/
+share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/
+lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/tex
+mf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texmf/fonts/type1/public/lm/lmb
+x10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fo
+nts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.p
+fb></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lms
+y10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb
+>
+Output written on weiiszablon.pdf (65 pages, 37566170 bytes).
 PDF statistics:
- 309 PDF objects out of 1000 (max. 8388607)
- 183 compressed objects within 2 object streams
+ 334 PDF objects out of 1000 (max. 8388607)
+ 198 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 226 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 251 words of extra memory for PDF output out of 10000 (max. 10000000)
 

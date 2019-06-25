@@ -86,8 +86,8 @@
 % np. EF-123456, EN-654321, ...
 \studentID{EF-144087}
 
-\title{Rozszerzona rzeczywistość we wspomaganiu obsługi urządzeń}
-\titleEN{Augumented Reality in support of device operating}
+\title{Zastosowanie rzeczywistości rozszerzonej do wspomagania obsługi urządzeń}
+\titleEN{Application of augmented reality to support the operation of devices}
 
 
 %%% wybierz rodzaj pracy wpisując jeden z poniższych numerów: ...
@@ -103,13 +103,13 @@
 %% przykład: dr hab. inż. Józef Nowak, prof. PRz
 
 %%% promotor ze stopniami naukowymi po angielsku
-\supervisorEN{PhD Mariusz Oszust}
+\supervisorEN{Mariusz Oszust PhD}
 
-\abstract{Celem pracy było stworzenie systemu rozszerzonej rzeczywistości, pozwalającego na komunikację z dowolnym połączonym z siecią urządzeniem w przypadku wykrycia go na obrazie z kamery. Wykonana aplikacja pozwala na komunikację w czasie rzeczywistym dzięki protokołowi MQTT.}
-\abstractEN{The puropse of this thesis was to develop an augumented reality system allowing to communicate with any external device connected to the network when detected in the camera's view. Developed application allow to real time communication via MQTT protocol.}
+\abstract{Celem pracy było stworzenie systemu rozszerzonej rzeczywistości, pozwalającego na komunikację z dowolnym połączonym z siecią urządzeniem w przypadku wykrycia go na obrazie z kamery. Wykonana aplikacja pozwala na zwiększenie efektywności procesów dokonywanych w zakładach.}
+\abstractEN{The puropse of this thesis was to develop an augumented reality system allowing to communicate with any external device connected to the network when detected in the camera's view. Developed application allows to increase the efficiency of processes in factories.}
 
-\keywords{wizja komputerowa, rozszerzona rzeczywistość, internet rzeczy, opencv, ar}
-\keywordsEN{computer vision, augumented reality, iot, opencv, ar}
+\keywords{wizja komputerowa, rozszerzona rzeczywistość, internet rzeczy, opencv, AR}
+\keywordsEN{computer vision, augumented reality, IoT, opencv, AR}
 
 \begin{document}
 
@@ -131,6 +131,7 @@
 	\item[] \textbf{AR} Augumented Reality
 	\item[] \textbf{DL} Deep Learning
 	\item[] \textbf{FLANN} Fast Library for Approximate Nearest Neighbors
+	\item[] \textbf{FPS} Frames per second
 	\item[] \textbf{IoT} Internet of Things
 	\item[] \textbf{JSON} JavaScript Object Notation
 	\item[] \textbf{MQTT} Message Queue Telemetry Transport
@@ -149,20 +150,23 @@
 
 \section{Wstęp}
 
-Panującym obecnie trendem jest automatyzacja - słowo to występuje wielokrotnie na każdej konferencji. Dotyczy każdego rodzaju przemysłu i rynku usług. Jej efekty już od dawna odczuwamy także w życiu codziennym. Niczym dziwnym jest widok osoby mówiącej do telefonu, aby ten podał drogę do miejsca docelowego, wyszukał wykwintną restaurację, czy nawet opowiedział dowcip. Przedsiębiorstwa całego świata inwestują w działy automatyzacji produkcji zakupując kolejne manipulatory, czy też rozwoju, próbujące wymyślić nowe sposoby na wyeliminowania człowieka z procesu. W chwili obecnej to właśnie homo sapiens najsłabszym ogniwem. Maszyny, czy też oprogramowanie jest w stanie szybciej działać, wykonywać obliczenia będąc przy tym nieporównywalnie dokładniejszym. Jednocześnie urządzenia nie biorą urlopów, ich wydajność nie spada, nie wymagają motywacji, a także - co najważniejsze  mogą pracować 24h na dobę. Coraz częściej pojawiają się gniazda produkcyjne oraz magazyny w pełni autonomiczne, wymagające jedynie konserwacji.
+Panującym obecnie trendem jest automatyzacja - słowo to występuje wielokrotnie na każdej konferencji. Dotyczy każdego rodzaju przemysłu i rynku usług. Jej efekty już od dawna odczuwamy także w życiu codziennym. Niczym dziwnym jest widok osoby mówiącej do telefonu, aby ten podał drogę do miejsca docelowego, wyszukał wykwintną restaurację, czy nawet opowiedział dowcip. Przedsiębiorstwa całego świata inwestują w działy automatyzacji produkcji zakupując kolejne manipulatory, czy też rozwoju, próbujące wymyślić nowe sposoby na wyeliminowania człowieka z procesu. W chwili obecnej to właśnie homo sapiens najsłabszym ogniwem. Maszyny, czy też oprogramowanie jest w stanie szybciej działać, wykonywać obliczenia będąc przy tym nieporównywalnie dokładniejszym. Jednocześnie urządzenia nie biorą urlopów, ich wydajność nie spada, nie wymagają motywacji, a także - co najważniejsze  mogą pracować 24 godziny na dobę. Coraz częściej pojawiają się gniazda produkcyjne oraz magazyny w pełni autonomiczne, wymagające jedynie konserwacji.
 
 Taka sytuacja ma miejsce nie tylko na obszarach produkcyjnych. W niektórych zawodach specjalizowanych coraz częściej modele sztucznej inteligencji mają lepsze osiągi niż specjaliści z dużym doświadczeniem. Tak jest na przykład w przypadku diagnozy niektórych schorzeń na podstawie danych o pacjencie oraz statystykach chorób \cite{healthcare}. W Estonii uruchomiono pierwszy na świecie sąd, gdzie wyroki dotyczą drobnych przestępstw wydaje model uczenia maszynowego \cite{judges}. W chwili obecnej takie narzędzia służą jako doradcy dla ludzi. Natomiast poprzez rozwój działu sztucznej inteligencji na świecie, będą pełniły coraz większą rolę. Można więc przewidywać, że w przeciągu kilku lat AI wyprze także specjalistów.
 
-Jeśli obecne trendy się nie zmienią, w nowoczesnych procesach produkcyjnych będzie popyt na dwa typy pracowników: inżynierów tworzących nowe rozwiązania, oraz konserwatorów obecnych. Tutaj pole do automatyzacji jest mniejsze. Nie stworzyliśmy jeszcze sztucznej inteligencji tworzącej koncepcje nowych maszyn w sposób pragmatyczny, to jest uwzględniającej dokładną specyfikację. Podobnie ciężko zastąpić konserwatorów, którzy do pracy potrzebują zarówno zwinnych rąk, szeregu narzędzi jak i pomysłowości w diagnozie usterek. Mają oni jednak pewne zasadnicze ograniczenia. Posiadają zaledwie dwie ręce, oraz parę oczu mogącej patrzeć się w jedną stronę. Projekt wykonany w ramach niniejszej pracy stara się w pewnym stopniu znieść te ograniczenia, aby przyszli pracownicy mając do wykonania pewną pracę mogli skupić się na swoim zadaniu znacznie redukując liczbę obiektów potencjalnie go rozpraszających i ograniczających.
+Jeśli obecne trendy się nie zmienią, w nowoczesnych procesach produkcyjnych będzie popyt na dwa typy pracowników: inżynierów tworzących nowe rozwiązania, oraz konserwatorów obecnych. Tutaj pole do automatyzacji jest mniejsze. Nie stworzyliśmy jeszcze sztucznej inteligencji tworzącej koncepcje nowych maszyn w sposób pragmatyczny, to jest uwzględniającej dokładną specyfikację. Podobnie ciężko zastąpić konserwatorów, którzy do pracy potrzebują zarówno zwinnych rąk, szeregu narzędzi jak i~pomysłowości w diagnozie usterek. Mają oni jednak pewne zasadnicze ograniczenia. Posiadają zaledwie dwie ręce, oraz parę oczu mogącej patrzeć się w jedną stronę. Projekt wykonany w ramach niniejszej pracy ma za zadanie podnieść efektywność pracowników obsługujących maszyny w zakładzie poprzez szybsze dostarczenie im informacji mających wpływ na przebieg danego procesu, oraz zasugerować konkretne działania prowadzące do wprowadzenia obiektu w odpowiedni stan. Jest to możliwe dzięki nałożeniu informacji o urządzeniu oraz sugestii wykonania konkretnych działać na obraz widziany przez operatora.
 
-Odpowiednim rozwiązaniem powyższych problemów wydaje się być Rozszerzona Rzeczywistość (ang. Augumented Reality - AR). Metodologia ta polega na nałożeniu na obraz rzeczywisty widziany przez użytkownika elementów wygenerowanych przez program. Często spotykane zastosowania AR to filtry w aplikacjach typu Messenger czy Instagram. Pozwalają one wykonywać zdjęcia czy filmy ze zmodyfikowanym obrazem. Odpowiednie algorytmy poszukują ludzkiej twarzy na kadrze, a następnie modyfikują, dodając na przykład wąsy, bądź pogrubiając twarz. Innym częstym zastosowaniem są gry AR, gdzie najpopularniejszym przykładem jest Pokemon GO. Aplikacja wykorzystuje lokalizację użytkownika; będąc w miejscu gdzie występują pokemony można uruchomić aplikację, a na ekranie gracz zobaczy model 3D stworka z którym można nawiązać interakcję - walczyć, bądź go złapać. Rozszerzona rzeczywistość znajduje zastosowanie również w innych dziedzinach - firma Ikea udostępniła aplikację, która pozwala wizualizować jak będzie prezentował się dany produkt w otoczeniu użytkownika. Na potrzeby AR technologii powstały również specjalnie okulary, które pokazują wygenerowany obraz bezpośrednio przed oczami użytkownika, zamiast na ekranie.
+Odpowiednim rozwiązaniem powyższych problemów wydaje się być Rozszerzona Rzeczywistość (ang. Augumented Reality - AR). Technologia ta polega na nałożeniu na obraz rzeczywisty widziany przez użytkownika elementów wygenerowanych przez program. Często spotykane zastosowania AR to filtry w aplikacjach typu Messenger, czy Instagram. Pozwalają one wykonywać zdjęcia czy filmy ze zmodyfikowanym obrazem. Odpowiednie algorytmy poszukują ludzkiej twarzy na kadrze, a następnie modyfikują, dodając na przykład wąsy, bądź pogrubiając twarz. Innym częstym zastosowaniem są gry AR, gdzie najpopularniejszym przykładem jest Pokemon GO. Aplikacja wykorzystuje lokalizację użytkownika. Udostępniana jest mu mapa rzeczywistego świata, a~w~miejscu gdzie serwer aplikacji uzna, że występują pokemony pokazywana jest ikona. Użytkownik będący w~tym odpowiedniej lokalizacji może uruchomić aplikację, i zobaczyć model 3D stworka z którym można nawiązać interakcję - walczyć, bądź go złapać. Rozszerzona rzeczywistość znajduje zastosowanie również w innych dziedzinach - firma Ikea udostępniła aplikację, która pozwala wizualizować jak będzie prezentował się dany produkt w otoczeniu użytkownika. Na potrzeby AR technologii powstały również specjalnie okulary, które pokazują wygenerowany obraz bezpośrednio przed oczami użytkownika, zamiast na ekranie.
 
-Okulary AR są narzędziem nadającym się idealnie do celów konserwacji. Poprzez nałożenie na widoczny, rzeczywisty, obraz dodatkowych elementów możliwe jest bez oderwania wzorku od obiektu zainteresowania wykonać wiele czynności. Przykładowo dzięki będącemu zawsze w polu widzenia wskazaniu miernika, można testować obwody o wiele szybciej. Dzięki kamerze przebieg procesów można nagrywać, bądź współpracować zdalnie z inną osobą, gdzie obie widzą ten sam obraz. Przykłady można mnożyć, a dodatkową zaletą jest fakt, że nikt nic w ten sposób nie traci - wciąż możliwe jest wykonywanie wszystkich czynności w sposób tradycyjny.
+Okulary AR są narzędziem nadającym się idealnie do celów konserwacji. Poprzez nałożenie na widoczny, rzeczywisty, obraz dodatkowych elementów możliwe jest bez oderwania wzroku od obiektu zainteresowania wykonać wiele czynności. Przykładowo dzięki będącemu zawsze w polu widzenia wskazaniu miernika, można testować obwody o wiele szybciej. Dzięki kamerze przebieg procesów można nagrywać, bądź współpracować zdalnie z inną osobą, gdzie obie widzą ten sam obraz. Przykłady można mnożyć, a dodatkową zaletą jest fakt, że nikt nic w ten sposób nie traci - wciąż możliwe jest wykonywanie wszystkich czynności w sposób tradycyjny.
+
+Jednym z założeń niniejszej pracy jest połączenie urządzenia z internetem oraz możliwość wysyłania danych, ponieważ konieczna jest wiedza na temat parametrów urządzenia. Komunikacja ta powinna odbywać się w czasie rzeczywistym.
 
 Autor za wkład własny uważa:
 \begin{itemize}
-	\item Stworzenie oprogramowania pozwalające na spełnienie wizji opisanej w powyższym akapicie. Docelowo ma ono wspomagać obsługę i konserwację urządzeń dzięki metodom rozszerzonej rzeczywistości. Zakłada się, że dostępne maszyny, które mają być obsługiwane posiadają moduły umożliwiające połączenie się z lokalną siecią LAN, oraz mogą za jej pomocą wysyłać swoje parametry protokołem MQTT
-	\item Stworzenie na potrzeby prezentacji pracy prostego urządzenia imitującego prawdziwe, dużo bardziej skomplikowane. A którego celem jest przesyłanie prostych wartości w postaci ciągu znaków.
+	\item Stworzenie oprogramowania pozwalającego na przeprowadzenie detekcji urządzenia na obrazie z kamery i określenie jego pozycji w przestrzeni rzeczywistej.
+	\item Stworzenie komunikacji pomiędzy urządzeniem a systemem AR pozwalającej na przesyłanie parametrów.
+	\item Wykonanie urządzenia elektronicznego opartego na płytce Arduino. Jego celem jest wysyłanie wartości parametrów urządzenia, co jest to niezbędne do poprawnego działania systemu. Do parametrów zalicza się: odchylenie potencjometru, oraz wciśnięcie przycisku. Dzięki temu system AR będzie wyświetlał użytkownikowi aktualne dane.
 \end{itemize}
 
 
@@ -170,6 +174,8 @@ Autor za wkład własny uważa:
 
 
 \section{Wprowadzenie teoretyczne}
+
+Rozdział ten zawiera wszystkie informacje potrzebne do zrozumienia zasady działania systemu. Na początku przedstawione zostały różne podejścia do modyfikacji rzeczywistości, ich założenia, oraz argumenty dla których to rozszerzenie zostało wybrane jako temat niniejszej pracy. Następnie wymienione zostały oraz opisane różne istniejące narzędzia AR. Podrozdział \ref{section:implementations} opisuje przykłady zastosowań tych technologii w przemyśle na podstawie rzeczywistych wdrożeń w przedsiębiorstwach. Kolejna sekcja została poświęcona opisowi metod pozwalających na stworzenie systemu AR oraz argumentację przemawiającą za jedną z opcji. Reszta rozdziału poświęcona jest opisowi wykorzystanych metod oraz ich alternatyw i technologii, które zastosowano do tworzenia projektu.
 
 \subsection {Wirtualna i Rozszerzona Rzeczywistość}
 W roku 2019 fotorealistyczna grafika komputerowa nie robi już na nikim większego wrażenia. Dzięki technikom Motion Capture generowane komputerowo postacie poruszają się zupełnie naturalnie. Specjalne algorytmy są w stanie symulować setki tysięcy włosów w czasie rzeczywistym \cite{hairworks}. Pierwsze gry wykorzystujące RayTracing są już na rynku gier komputerowych \cite{raytracinggames}, a badania nad dedykowanym sprzętem już się rozpoczęły \cite{raytracinghardware}. Oznacza to, że obecna technologia zbliża się do granicy fotorealizmu, jaki jesteśmy w stanie osiągnąć. Naturalnym rozwiązaniem wydaje się więc wyjście ze środowiska płaskich ekranów na rzecz bardziej naturalnych doznań.
@@ -192,16 +198,17 @@ Innym podejściem do tematu modyfikacji rzeczywistości jest rzeczywistość roz
 	\label{realityspectrum}
 \end{figure}
 
-Jak widać na rysunku, AR znajduje się pomiędzy światem prawdziwym, a generowanym komputerowo. Jego celem nie jest wygenerowanie zupełnie nowej rzeczywistości jak ma to miejsce w przypadku VR, a jedynie stworzenie "wartości dodanej" do otaczającego świata. Przyjętą definicję AR zaprezentował Ronald Azuma. Rozszerzona rzeczywistość powinna objawiać się na trzech płaszczyznach \cite{azuma}:
+Jak widać na rysunku, AR znajduje się pomiędzy światem prawdziwym, a generowanym komputerowo. Jego celem nie jest wygenerowanie zupełnie nowej rzeczywistości jak ma to miejsce w przypadku VR, a jedynie stworzenie wartości dodanej do otaczającego świata. Przyjętą definicję AR zaprezentował Ronald Azuma. Rozszerzona rzeczywistość powinna objawiać się na trzech płaszczyznach \cite{azuma}:
 \begin{itemize}
 	\item Łączy świat rzeczywisty z wirtualnym
 	\item Interakcja występuje w czasie rzeczywistym
 	\item Rejestruje świat w trzech wymiarach
 \end{itemize}
 
-W przeciwieństwie do wirtualnej rzeczywistości, rozszerzenie może objawiać się na wielu typach urządzeń. Najbardziej powszechnym jest smartfon, jednak responsywność zapewniają okulary. Pozwalają one potencjalnie na zupełnie bezobsługowe ulepszenie rzeczywistości. Jednak zasadniczą zaletą technologii AR jest wykorzystanie obrazu do tworzenia modyfikacji. Dziękuje wykorzystaniu kamery, oprogramowanie jest w stanie przetworzyć obraz, wydobyć z niego pewne informacje, a następnie wykorzystać do stworzenia rozszerzeń obrazu. Dobrym przykładem takiej funkcjonalności jest wspomniana we wstępnie aplikacja Ikei na smartfony. Pozwala ona, wykorzystując kamerę telefonu, wyznaczyć płaszczyznę podłogi pokoju, a następnie dzięki odpowiednim obliczeniom wyrenderować model 3D produktu we właściwiej dla pomieszczenia skali i orientacji oraz zapamiętać położenie względem pomieszczenia. Jest to przydatne przy projektowaniu wnętrza pokoju, a możliwość poruszania się w takiej przestrzeni dopełnia wrażenia.
+W przeciwieństwie do wirtualnej rzeczywistości, rozszerzenie może objawiać się na wielu typach urządzeń. Najbardziej powszechnym jest smartfon oraz tablet, jednak najwygodniejszym rozwiązaniem są okulary, dzięki braku konieczności trzymania urządzenia przed oczami. Jednak zasadniczą zaletą technologii AR jest wykorzystanie obrazu do tworzenia modyfikacji. Dziękuje wykorzystaniu kamery, oprogramowanie jest w stanie przetworzyć obraz, wydobyć z niego pewne informacje, a następnie wykorzystać do stworzenia rozszerzeń obrazu. Dobrym przykładem takiej funkcjonalności jest wspomniana we wstępnie aplikacja Ikei na smartfony. Pozwala ona, wykorzystując kamerę telefonu, wyznaczyć płaszczyznę podłogi pokoju, a następnie dzięki odpowiednim obliczeniom wyrenderować model 3D produktu we właściwiej dla pomieszczenia skali i orientacji oraz zapamiętać położenie względem pomieszczenia. Jest to przydatne przy projektowaniu wnętrza pokoju, a możliwość poruszania się w takiej przestrzeni dopełnia wrażenia.
 
-AR ze względu na swoją specyfikę dobrze odnajduje się w przemyśle. Raport firmy PTC \enquote{State of Industrial Augmented Reality 2019} \cite{ptcreport} twierdzi, że przemysł adaptuje najwięcej projektów AR, dzięki czemu wydajność pracowników gwałtownie wzrasta. Firmy oszczędzają również na szkoleniach, dzięki interaktywności rozwiązań.
+AR ze względu na swoją specyfikę dobrze odnajduje się w przemyśle. Raport firmy PTC \enquote{State of Industrial Augmented Reality 2019} \cite{ptcreport} twierdzi, że przemysł adaptuje najwięcej projektów AR, dzięki czemu wydajność pracowników gwałtownie wzrasta. Firmy oszczędzają również na szkoleniach, dzięki interaktywności rozwiązań. Ich przykłady przedstawiono w rozdziale \ref{section:implementations}.
+
 
 \begin{figure}
 \centering
@@ -214,7 +221,7 @@ AR ze względu na swoją specyfikę dobrze odnajduje się w przemyśle. Raport f
 Narzędzie to stworzone przez Apple pozwala tworzyć aplikacje AR na urządzenia iPhone oraz iPad. Z tego też powodu miejsce ich zastosowań jest bardzo ograniczone - nie ma możliwości zaimplementowania swojego narzędzia na żadne z dostępnych okularów AR.
 
 \subsubsection*{Google ARCore}
-Kolejna biblioteka stworzona przez giganta branży IT. Jej wykorzystanie jest możliwe w systemach Android oraz iOS i w silnikach Unity oraz Unreal. Z tego też powodu doskonale nadaje się do tworzenia aplikacji AR na urządzenia mobilne.
+Kolejna biblioteka stworzona przez giganta branży IT. Jej wykorzystanie jest możliwe w systemach Android oraz iOS i w silnikach Unity oraz Unreal. Doskonale nadaje się do tworzenia aplikacji AR na urządzenia mobilne, jednak wymagane jest uruchomienie aplikacji na urządzeniu mobilnym z systemem Android bądź iOS.
 
 \subsubsection*{Vuforia}
 Jest rozbudowanym rozszerzeniem do silnika Unity. Pozwala rozpoznawać i śledzić płaskie oraz proste obiekty 3D w czasie rzeczywistym. Określa ich pozycję oraz orientację w przestrzeni, pozwala w prosty sposób nakładać na obraz obiekty 3D.
@@ -224,83 +231,98 @@ Jest kompletnym narzędziem do tworzenia rozwiązań AR. Zawiera w sobie rozpozn
 
 \vspace{5mm}
 
-Istnieje również wiele innych mniej rozbudowanych rozwiązań. Autor, uznając jednak, że żadne ze wspomnianych nie spełnia jego oczekiwań, postanowił stworzyć własne.
+Istnieje również kilka innych, mniej rozbudowanych rozwiązań, jak EasyAR, ARToolKit czy Zapworks.
+
+W momencie rozpoczęcie prac nad projektem dostępne narzędzia były albo ograniczone do konkretnych typów urządzeń (ARKit, ARCore), albo płatne (Vuforia, Wikitude). Z tego też powodu autor podjął decyzję o stworzeniu własnego systemu. Dopiero od niedawna Wikitude oferuje bezpłatny pakiet.
 
 
 \subsection{Zastosowanie AR w przemyśle}
-Konserwacja jest procesem periodycznym, zajmującym mniej więcej tyle samo czasu, przy czym czas ten jest indywidualny dla każdej maszyny. Diagnostyka i naprawy występują rzadko, natomiast są czasochłonne, wymagają wykonania szeregu testów i pomiarów, aby diagnoza była możliwa. Wymagaj również szeregu dokumentów raportujących co zaszło, aby można było przeprowadzić stosowne analizy. Oba przypadki, choć skrajnie różne, mają cechę wspólną - poprzez ograniczenia ludzkie zajmują więcej czasu niż by mogły.
+\label{section:implementations}
+Konserwacja jest procesem periodycznym, zajmującym mniej więcej tyle samo czasu, przy czym czas ten jest indywidualny dla każdej maszyny. Diagnostyka i naprawy występują rzadko, natomiast są czasochłonne, wymagają wykonania szeregu testów i~pomiarów, aby diagnoza była możliwa. Wymagają również szeregu dokumentów raportujących co zaszło, aby można było przeprowadzić stosowne analizy.
 
-Najbardziej prymitywnym sposobem na usprawnienie pracy dzięki technologii jest zaopatrzenie pracownika w różnego rodzaju elektronarzędzia, tablet do sporządzania raportów i przeglądania instrukcji, czy krótkofalówkę do komunikacji. Są to rzeczy na pewno ulepszające proces, natomiast pewne na pewne rzeczy nie mają wpływu - człowiek wciąż musi samodzielnie wypełnić dokumenty, a podczas pracy może mieć szereg wskaźników, które musi śledzić na bieżąco, bądź podążać za procedurami, które nie zawsze da się dokładnie zapamiętać.
+Najbardziej prymitywnym sposobem na usprawnienie pracy dzięki technologii jest zaopatrzenie pracownika w różnego rodzaju elektronarzędzia lub tablet do sporządzania raportów i przeglądania instrukcji. Są to rzeczy na pewno ulepszające proces, natomiast pewne na pewne rzeczy nie mają wpływu - człowiek wciąż musi samodzielnie wypełnić dokumenty, a podczas pracy może mieć szereg wskaźników, które musi śledzić na bieżąco, bądź podążać za procedurami, które nie zawsze da się dokładnie zapamiętać.
 
 Dzięki technikom AR można część tych czynności ułatwić bądź zniwelować. Raport z operacji może zostać wygenerowany automatycznie dzięki nagraniu, bądź danym pobranym w jej trakcie. Testowanie obwodów może się odbywać bez odrywania od nich wzroku, dzięki pokazaniu pracownikowi bezpośrednio przed oczami wskazania miernika, bądź schemat. Nauka obsługi może się odbywać dzięki przedstawieniu zainteresowanemu każdego elementu urządzenia, z dodatkowymi informacji po wybraniu. Dzięki takim rozwiązaniom wydajność oraz dokładność wzrośnie, ponieważ nie człowiek będzie odpowiadał za część procesu, a dużo wydajniejszy program. Nie może zostać pominięty również czynnik ludzki, czyli zwykła pomyłka. Jej częstość zależy od wielu czynników, takich jak stan psychiczny człowieka, zmęczenie, czas pracy, czy zbliżające się terminy. W przypadku programów jest zgoła odwrotnie. Dobrze napisany będzie działał stabilnie, nie popełniając błędów. Dlatego też wspomaganie pracy programami komputerowymi wydaje się być szczególnie pożądane w newralgicznych momentach łańcucha produkcyjnego.
 
-Jedną z firm, która wdrożyła rozwiązanie AR jest Avatar Partners. Celem stworzonego przez firmę rozwiązania było przyspieszenie nauki oraz konserwacji myśliwców armii Stanów Zjednoczonych. Stosując bibliotekę Vuforia stworzyli narzędzie, które było w stanie wizualizować położenie przewodów, systemu hydraulicznego i innym elementów. Według twórców czas potrzebny na wykonanie konserwacji został zmniejszony, naprawy przyspieszony oraz zredukowano liczbę popełnianych błędów. Dokładne liczby nie zostały jednak opublikowane. \cite{avatarpartnerscasestudy}
+Jedną z firm, która wdrożyła rozwiązanie AR jest Avatar Partners. Celem stworzonego przez firmę rozwiązania było przyspieszenie nauki oraz konserwacji myśliwców armii Stanów Zjednoczonych \cite{avatarpartnerscasestudy}. Stosując bibliotekę Vuforia stworzyli narzędzie, które było w stanie wizualizować położenie przewodów, systemu hydraulicznego i innym elementów. Według twórców czas potrzebny na wykonanie konserwacji został zmniejszony, naprawy przyspieszony oraz zredukowano liczbę popełnianych błędów. Dokładne liczby nie zostały jednak opublikowane. 
 
-
-Firma Ingloba stworzyła dla Huawei Technologies narzędzie AR do wspomożenia instalacji i konserwacji paneli słonecznych Huawei. Stworzone narzędzie prezentowało kolejne kroki, które pracownik powinien poczynić, aby wykonać dane zadanie. Wykorzystanym urządzeniem jest tablet, więc istnieje możliwość sterowania programem poprzez ekran dotykowy. Poza wizualizacjami nakładanymi na rzeczywiste elementy, do dyspozycji pracownika są również tekstowe oraz filmowe instrukcje. Stworzono także listę kolejnych kroki procesu. Cała operacja jest rejestrowana i wysyłana na serwer w formie filmu. Według Huawei wdrożone rozwiązanie pozwoliło  operatorom lepiej zrozumieć wykonywane przez nich procesy, a same prace zaczęli wykonywać szybciej i dokładniej. \cite{huaweicasestudy}
+Firma Ingloba stworzyła dla Huawei Technologies narzędzie AR do wspomagania instalacji i konserwacji paneli słonecznych Huawei. Stworzone narzędzie prezentowało kolejne kroki, które pracownik powinien poczynić, aby wykonać dane zadanie. Wykorzystanym urządzeniem jest tablet, więc istnieje możliwość sterowania programem poprzez ekran dotykowy. Poza wizualizacjami nakładanymi na rzeczywiste elementy, do dyspozycji pracownika są również tekstowe oraz filmowe instrukcje. Stworzono także listę kolejnych kroki procesu. Cała operacja jest rejestrowana i wysyłana na serwer w~formie filmu. Według Huawei wdrożone rozwiązanie pozwoliło  operatorom lepiej zrozumieć wykonywane przez nich procesy, a same prace zaczęli wykonywać szybciej i~dokładniej \cite{huaweicasestudy}.
 
 
 \subsection {Sposoby zastosowań AR}
-Rozszerzona rzeczywistość zakłada wykorzystanie kontekstu obrazu, który jest dostarczony do programu. Jednym z podejść do wykorzystania kontekstu jest stosowanie metod sztucznej inteligencji. Metody te służą do stworzenia modelu, który na podstawie dostarczonych danych jest w stanie nauczyć się wykonywać pewne zadanie. W przypadku problemu, który przedstawia poniższa praca, interesująca może być sekcja uczenia maszynowego, nazywana \emph{uczeniem nadzorowanym}. Metody te polegają na przekazaniu do modelu sztucznej inteligencji zbioru danych wraz z etykietami zawierającymi poprawną reakcję. Specjalne algorytmy wykonują swoje obliczenia na każdym obiekcie zbioru, a następnie sprawdzają, czy obliczenie jest poprawne. W zależności od odpowiedzi, modyfikują swoje parametry, aby wynik pokrywał się z dostarczonymi etykietami. Podstawowe algorytmy uczenia nadzorowanego mają jednak pewną zasadniczą wadę - są prymitywne i dla celów wizji komputerowej nie były najlepszych rozwiązaniem. Następcą prostych metod uczenia maszynowego jest uczenie głębokie (ang. Deep Learning - DL). Te metody są już szeroko wykorzystywane w projektach wizji komputerowej. Dzięki faktowi, że mogą wydobywać z obrazu unikalne cechy, zakres możliwości rośnie. Najpopularniejszym wykorzystaniem nauczonych modeli jest rozpoznawanie wielu klas obiektów na obrazie.
+Rozszerzona rzeczywistość zakłada wykorzystanie kontekstu obrazu, który jest dostarczony do programu. Jednym z podejść do wykorzystania kontekstu jest stosowanie metod sztucznej inteligencji. Metody te służą do stworzenia modelu, który na podstawie dostarczonych danych jest w stanie nauczyć się wykonywać pewne zadanie. W przypadku problemu, który przedstawia poniższa praca, interesująca może być sekcja uczenia maszynowego, nazywana \emph{uczeniem nadzorowanym}. Metody te polegają na przekazaniu do modelu sztucznej inteligencji zbioru danych wraz z etykietami zawierającymi poprawną reakcję. Specjalne algorytmy wykonują swoje obliczenia na każdym obiekcie zbioru, a następnie sprawdzają, czy obliczenie jest poprawne. W zależności od odpowiedzi, modyfikują swoje parametry, aby wynik pokrywał się z dostarczonymi etykietami. Podstawowe algorytmy uczenia nadzorowanego mają jednak pewną zasadniczą wadę - są prymitywne i dla celów wizji komputerowej nie były najlepszym rozwiązaniem. Następcą prostych metod uczenia maszynowego jest uczenie głębokie (ang. Deep Learning - DL). Te metody są już szeroko wykorzystywane w projektach wizji komputerowej. Dzięki faktowi, że mogą wydobywać z obrazu unikalne cechy, zakres możliwości rośnie. Najpopularniejszym wykorzystaniem nauczonych modeli jest rozpoznawanie wielu klas obiektów na obrazie. \cite{dl_in_cv}
 
-DL ma jednak kilka ważnych wad. Aby skutecznie nauczyć model wykonywać swoje zadanie, konieczny jest duży zestaw danych. Należy je odpowiednio przygotować, więc poza samymi zasobami, uczenie kosztuje również czas. Przyjmuje się, że dla każdej klasy obiektów, konieczne jest przygotowanie około 1000 zdjęć. Drugą wadą jest moc obliczeniowa, której zarówno do procesu uczenia, jak i późniejszego działania potrzeba dużo. Ostatnim minusem tego rozwiązania jest nieelastyczność. Modele uczenia głębokiego są typu \enquote{czarna skrzynka}, a więc zawierają parametry dla człowieka zupełnie niezrozumiałe i zakres działań, które można podjąć jest dosyć wąski - ogranicza się w zasadzie do douczenia modelu.
+DL ma jednak kilka ważnych wad. Aby skutecznie nauczyć model wykonywać swoje zadanie, konieczny jest duży zestaw danych. Należy je odpowiednio przygotować, więc poza samymi zasobami, uczenie jest czasochłonne. Przyjmuje się, że dla każdej klasy obiektów, konieczne jest przygotowanie około 1000 zdjęć. Drugą wadą jest moc obliczeniowa, której zarówno do procesu uczenia, jak i późniejszego działania potrzeba dużo. Ostatnim minusem tego rozwiązania jest nieelastyczność. Modele uczenia głębokiego są typu \enquote{czarna skrzynka}, a więc zawierają parametry dla człowieka zupełnie niezrozumiałe i zakres działań, które można podjąć jest dosyć wąski - ogranicza się w~zasadzie do douczenia modelu.
 
-Innym podejściem do analizy kontekstowej obrazu jest \enquote{dopasowanie cech} (ang. feature matching). Polega ono na wydobyciu z obrazu specjalnych cech. Pobierając je z obrazu referencyjnego (obiektu, który chcemy wykryć) oraz obrazu z kamery (na którym jest poszukiwany obiekt), można je porównać i wyszukać czy i gdzie znajduje się obiekt referencyjny. Przewagą tej metody nad uczeniem głębokim jest fakt, że:
-\begin{enumerate}[label=\alph*), leftmargin=1.25cm]
-	\item wymaga mniej mocy obliczeniowej,
-	\item nie wymaga uczenia,
-	\item dzięki możliwości dostosowania parametrów wykrywania cech, elastyczność rozwiązania jest większa.
-\end{enumerate}
-
-Feature matching jest metodą wykorzystywaną nie tylko do rozpoznawania obiektów. Dzięki temu, że część wykrytych cech będzie się pokrywać na dwóch obrazach mających wspólny obszar, możliwe jest łączenie zdjęć w panoramy. Inne popularne zastosowanie do stabilizacja obrazu. Wiedząc, że kamera drga w osiach prostopadłych do osi głównej kamery, obraz końcowy można delikatnie przesuwać, dzięki czemu będzie on stabilny. Feature, jest unikalną cechą danego fragmentu obrazu. Mogą być to: krawędzie, narożniki, tekstury, koła i okręgi.
+Innym podejściem do analizy kontekstowej obrazu jest \enquote{dopasowanie cech} (ang. feature matching). Przewagą tej metody nad uczeniem głębokim jest fakt, że nie wymaga dużej mocy obliczeniowej, a dzięki możliwości dostosowania parametrów wykrywania cech, elastyczność rozwiązania jest większa. Dopasowanie cech wymaga wydobycia z obrazu unikalnych cech. Mogą być to: krawędzie, narożniki, tekstury, koła i~okręgi. Pobierając je z obrazu referencyjnego (obiektu, który chcemy wykryć) oraz obrazu z~kamery (na którym jest poszukiwany obiekt), można je porównać i wyszukać czy i~gdzie znajduje się obiekt referencyjny. 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics{features}
-	\caption{Potencjalne cechy}
+	\includegraphics[width=0.6\textwidth]{features}
+	\caption{Potencjalne cechy \cite{features}}
 	\label{features}
 \end{figure}
 
-Na rysunku \ref{features} wyodrębnione zostały trzy obszary: niebieski, czarny i czerwony. Pierwszy obszar nie wyróżnia się, nie jest więc unikalny. Podobnie sytuacja ma się w przypadku obszaru czarnego - tak samo wygląda cały obraz wzdłuż dolnej krawędzi zielonego prostokąta. Natomiast czerwony obszar jest unikalny, czyli nie ma drugiego takiego samego na rysunku. Wyszukiwanie unikalnych obszarów obrazu nazywa się detekcją cech (ang. Feature detection), a same cechy punktami charakterystycznymi (ang. keypoints). Kolejnym krokiem jest przetworzenie punktów, aby można było je porównać z tymi z innego rysunku. Taki proces nazywa się opisywaniem cech (ang. Feature description), a wynikiem tej operacji są deskryptory (ang. descriptors). Z punktu widzenia programu, zarówno punkty kluczowe jak i deskryptory są wektorami bądź tablicami asocjacyjnymi zawierającymi liczby. W dalszej części pracy opisane zostaną najpopularniejsze algorytmy obsługujące proces zarówno detekcji jak i deskrypcji.
+Na rysunku \ref{features} przedstawiono przykładowy obraz z wyszczególnionymi sześcioma obszarami podpisanymi kolejnymi literami. Fragmenty A oraz B nie są unikatowe - bezchmurne niebo wygląda niemal identycznie w każdym miejscu, a wzór na ścianie budynku jest powtarzalny, więc ciężko dokładnie określić położenie tego fragmentu. C i D są bardziej szczegółowe, jednak krawędzie dachu w każdym miejscu wyglądają podobnie. Przykłady E oraz F natomiast przedstawiają narożniki, których położenie na obrazie można łatwo określić - to są przykłady cech.
+
+Wyszukiwanie unikalnych fragmentów obrazu nazywa się detekcją cech (ang. feature detection), a same cechy punktami charakterystycznymi (ang. keypoints). Kolejnym krokiem jest przetworzenie punktów, aby można było je porównać z tymi z innego rysunku. Taki proces nazywa się opisywaniem cech (ang. Feature description), a~wynikiem tej operacji są deskryptory (ang. descriptors). Z punktu widzenia programu, zarówno punkty kluczowe jak i deskryptory są wektorami bądź tablicami asocjacyjnymi zawierającymi liczby. W dalszej części pracy opisane zostaną najpopularniejsze algorytmy obsługujące proces zarówno detekcji jak i deskrypcji.
 
 
 \subsection{Algorytmy detekcji i deskrypcji}
 
+\subsubsection{FAST}
+
+FAST jest detektorem cech zaproponowanym przez Edwarda Rostena oraz Toma Drummonda w pracy pod tytułem \emph{Machine learning for high-speed corner detection}. Jego zasadę działania opisać można w kilku punktach:
+\begin{enumerate}
+	\item Wybierz piksel $p$, który będzie sprawdzany, czy nadaje się na bycie punktem charakterystycznym. Jego jasność określona jest przez $I_p$.
+	\item Wybierz próg $t$.
+	\item Wybierz okrąg 16 pikseli wokół piksela testowanego.
+	\item Piksel $p$ jest narożnikiem, jeśli istnieje $n$ sąsiadujących pikselu w okręgu, których jasność jest większa niż $I_p + t$ lub mniejsza niż $I_p - t$. $n$ zwykle wynosi 12.
+	\item Zaproponowano również szybki test, aby wykluczyć dużą liczbę punktów nie będących narożnikami - testowane są jedynie 4 piksele: 1, 9, 5 i 13 (rys \ref{fast}). Najpierw sprawdzane jest czy 1 i 9 są odpowiednio jasne lub ciemne, następnie 5 i 13. Jeśli $p$ ma szansę być narożnikiem, to co najmniej 3 z nich powinna być wystarczająco jasne lub ciemna. Jeśli ten warunek jest spełniony, testowane są wszystkie piksele w okręgu.
+\end{enumerate}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{fast}
+	\caption{Przykład działania FAST \cite{fast_img}.}
+	\label{fast}
+\end{figure}
+
+\subsubsection{BRIEF}
+
+Jest to deskryptor zaproponowany w 2010 roku w pracy pod tytułem \emph{BRIEF: Binary Robust Independent Elementary Features} \cite{brief}. Dzięki temu, ze wykorzystuje wektory z wartościami binarnymi, zamiast zmiennoprzecinkowymi, jest szybszy niż SIFT czy SURF.
+
+Punkty charakterystyczne są tak naprawdę małymi obszarami pikseli. BRIEF konwertuje je na wektory binarne, czyli deskryptory. Każdy deskryptor może mieć długość 128, 256 lub 512. Jednak ze względu na fakt, że operuje bezpośrednio na pojedynczych pikselach, jest podatny na szum. Dlatego też wykorzystuje się filtr Gaussa, aby wygładzić piksele i zredukować szumy. Następnie algorytm wybiera zestaw par współrzędnych $n_d$. Porównywana jest jasność pikseli w parach. Jeśli $I(x) < I(y)$, to zwróć 1, w przeciwnym razie 0. Porównanie to jest aplikowane do każdej pary, tworząc wektor wartości binarnych.
+
 \subsubsection[ORB]{ORB - Oriented FAST and Rotated BRIEF}
 
-ORB jest metodą detekcji oraz deskrypcji punktów charakterystycznych wykorzystaną w poniższej pracy. Spaja ona detektor FAST oraz deskryptor BRIEF. Obie te techniki wyróżniają się niskimi wymaganiami mocy obliczeniowej. Autorzy tworząc to rozwiązanie podjęli się optymalizacji oraz zwiększenia odporności na zakłócenia.
+ORB jest metodą detekcji oraz deskrypcji punktów charakterystycznych wykorzystaną w poniższej pracy. Spaja ona detektor FAST oraz deskryptor BRIEF \cite{orb_doc}. Obie te techniki wyróżniają się niskimi wymaganiami mocy obliczeniowej. Autorzy tworząc to rozwiązanie podjęli się optymalizacji oraz zwiększenia odporności na zakłócenia.
 
-ORB na początku wykorzystuje FAST do znalezienia punktów, następnie najmniej przydatne z nich są filtrowane za pomocą metody detekcji narożników Harrisa. Orientacja obszaru jest opisywana poprzez położenie wartości punktu nazwanego \enquote{intensywny centroid}. Zakłada się, że intensywnością jest przesunięcie narożnika od centroidu daje wektor jego orientacji. Sam centroid jest punktem geometrycznego środka danej figury. Deskrypcja odbywa się za pomocą algorytmu BRIEF. Ponieważ jednak nie radzi sobie on z rotacjami, wykorzystywane są te już obliczone dla punktów charakterystycznych. Każdy zestaw cech posiada $n$ binarnych testów w miejscu $(xi, yi)$, Tworzona jest dla nich macierz $S$ o rozmiarze $2 \times n$, zawierającą te współrzędne pikseli. Za pomocą orientacji cechy $\theta$ obliczona zostaje macierz rotacji, która po zastosowaniu obraca S, tworząc $ S_\theta $.
+ORB na początku wykorzystuje FAST do znalezienia punktów, następnie najmniej przydatne z nich są filtrowane za pomocą metody detekcji narożników Harrisa. Orientacja narożnika jest opisywana poprzez wyznaczenie wektora przesunięcia "intensywnego centroidu", czyli momentów jasności pikseli w obszarze, od środka obszaru. Deskrypcja odbywa się za pomocą algorytmu BRIEF. Ponieważ jednak nie radzi sobie on z rotacjami, wykorzystywane są te już obliczone dla punktów charakterystycznych. Za pomocą orientacji cechy $\theta$ obliczona zostaje macierz rotacji, która po zastosowaniu obraca $S$, tworząc $ S_\theta $.
 
 \begin{figure}
 	\centering
-		\includegraphics{orb_kp}
+		\includegraphics[width=0.5\textwidth]{orb_kp}
 	\caption{Wykryte przez ORB cechy na przykładowym obrazie \cite{orbkp}}
 \end{figure}
 
 ORB dzieli cały obrót na obszary po $2\pi/30$ (12 stopni) i tworzy tabelę dla wzorców BRIEF. Dopóki orientacja punktu $\theta$ jest spójna pomiędzy obrazami, poprawny zestaw punktów $S_\theta$ zostanie użyty do wyliczenia deskryptora.
 
-Każda cecha BRIEF posiada dużą wariancję i średnią bliską 0.5. Jednak gdy zostanie zorientowana wzdłuż wektora orientacji punktu, wartości te stają się bardziej rozproszone. Kolejną pożądana właściwością jest brak korelacji pomiędzy testami, aby nie wpływać na własne wyniki. W tym celu ORB przeprowadza przeszukiwanie zachłanne wśród wszystkich testów aby znaleźć te z dużą wariancją i średnią bliską 0.5, oraz brakiem korelacji. Metoda, ze względu na swoją szybkość i dokładność, została wykorzystana do stworzenia projektu realizowanego w ramach niniejszej pracy.
+Każda cecha BRIEF posiada dużą wariancję i średnią bliską 0.5. Jednak gdy zostanie zorientowana wzdłuż wektora orientacji punktu, wartości te stają się bardziej rozproszone. Kolejną pożądana właściwością jest brak korelacji pomiędzy testami, aby nie wpływać na własne wyniki. W tym celu ORB przeprowadza przeszukiwanie zachłanne wśród wszystkich testów aby znaleźć te z dużą wariancją i średnią bliską 0.5, oraz brakiem korelacji. W pracy \emph{A Comparative Analysis of SIFT, SURF, KAZE, AKAZE, ORB, and BRISK}\cite{fastest_orb} porównano prędkości wielu algorytmów. ORB został uznany za najszybszy z nich, dlatego też został wykorzystany do realizacji projektu.
 
 \subsubsection[SIFT i SURF]{SIFT - Scale Invariant Feature Transform oraz SURF - Speeded-Up Robust Features}
 Inne popularne detektory i deskryptory to SIFT oraz SURF. Są to algorytmy opatentowane i płatne do komercyjnego zastosowania. SURF bazuje na SIFT i jest jest szybszą opcją.
 
-Detektor narożników Harrisa jest w stanie wykryć narożniki niezależnie ich obrotu, jednak w przypadku zmiany skali sytuacja ma się inaczej. To co na małym obrazie jest narożnikiem, na dużym (dla badanych obszarów o jednakowej wielkości) jest tylko krzywą.
+Detektor narożników Harrisa jest w stanie wykryć narożniki niezależnie ich obrotu, jednak w przypadku zmiany skali sytuacja ma się inaczej. To co na małym obrazie jest narożnikiem, na dużym (dla badanych obszarów o jednakowej wielkości) jest tylko krzywą (rys. \ref{sift_scale_invariant_img}).
 
 \begin{figure}[h]
 	\centering
 	\includegraphics{sift_scale_invariant}
-	\caption{Porównanie narożników w różnej skali \cite{sift_scale_invariant_img}}
+	\caption{Porównanie narożników w różnej skali \cite{sift_scale_invariant}}
+	\label{sift_scale_invariant_img}
 	\end{figure}
 
-Rozwiązanie tego problemu opisał w 2004 roku D. Lowe z uniwerstyteu Kolumbii Brytyjskiej, w artykule \enquote{Distinctive Image Features from Scale-Invariant Keypoints} \cite{dlowe}, który poza wyznaczeniem punktów, oblicza również deskryptory. Na początku rozmiar obrazu jest podwajany za pomocą metod interpolacji. Następnie następuje iteracja rozmyć używając rozmycia Gaussa, z czego każdy kolejny obraz jest generowany ze zwiększonym odchyleniem standardowym. Następnie rozmiar obrazu jest zmniejszany dwukrotnie i występuje kolejna iteracja. Każda sekwencja iteracji pomiędzy pomniejszeniami obrazu nazywa się oktawą. Zjawisko to odbywa się do momentu w którym obraz jest zupełnie nieczytelny. Tworzona jest w ten sposób przestrzeń skali (ang. scale space). Jej celem jest symulowanie różnych skali obserwowanego obrazu. Każdy ze stworzonych rysunków jest normalizowany. Następnie zakłada się, przestrzeń skali ma trzy wymiary: koordynaty x, i y oraz odchylenie standardowe. Punkty kluczowe znajduje się za pomocą metody zwaną różnicą funkcji Gaussa. Dla każdego odpowiadającego sobie w ramach danej oktawy piksela wylicza się różnicę, a następnie wyznacza ekstrema. Wizualizacja tego działania przedstawiona jest na rysunku \ref{sift_gaussian}.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{sift_gaussian}
-	\label{sift_gaussian}
-	\caption{Schemat działania ekstrakcji cech \cite{sift_gaussian_img}}
-\end{figure}
+Rozwiązanie tego problemu opisał w 2004 roku D. Lowe z uniwersytetu Kolumbii Brytyjskiej, w artykule \enquote{Distinctive Image Features from Scale-Invariant Keypoints} \cite{dlowe}, który poza wyznaczeniem punktów, oblicza również deskryptory. Na początku rozmiar obrazu jest podwajany za pomocą metod interpolacji. Następnie następuje iteracja rozmyć używając rozmycia Gaussa, z czego każdy kolejny obraz jest generowany ze zwiększonym odchyleniem standardowym. Następnie rozmiar obrazu jest zmniejszany dwukrotnie i występuje kolejna iteracja. Każda sekwencja iteracji pomiędzy pomniejszeniami obrazu nazywa się oktawą. Tworzona jest w ten sposób przestrzeń skali (ang. scale space). Jej celem jest symulowanie różnych skali obserwowanego obrazu. Każdy ze stworzonych rysunków jest normalizowany. Następnie zakłada się, przestrzeń skali ma trzy wymiary: koordynaty x i y oraz odchylenie standardowe. Punkty kluczowe znajduje się za pomocą metody zwaną różnicą funkcji Gaussa. Dla każdego odpowiadającego sobie w ramach danej oktawy piksela wylicza się różnicę, a następnie wyznacza ekstrema.
 
 Wyznaczone punkty są następnie filtrowane. Konieczne jest wykluczenie krawędzi wśród wykrytych cech oraz punktów o niskim kontraście, aby zwiększyć stabilność. Dzieje się to za pomocą macierzy $H$, o rozmiarze $2 \times 2$, której wartości są proporcjonalna do krzywizny danego obszaru. Następnie do każdego punkty przypisywana jest orientacja. Tworzony jest histogram według orientacji gradientów wokół określonej cechy. Ma on 36 przedziałów, każdy odpowiada 10 stopniom. Każda wartość przedziału to wielkość gradientu i $1,5 * \theta$ (okno gaussowskie). Wybierane jest maksimum.
 
@@ -316,20 +338,33 @@ Najbardziej prymitywnym sposobem na dopasowanie jest \enquote{dopasowanie brutal
 
 \begin{enumerate}[label=\alph*), leftmargin=1.25cm]
 \item NORM\_L2, który wylicza odległość euklidesową pomiędzy cechami; stosowany dla algorytmów SIFT i SURF
-\item HAMMING, wylicza odległość Hamminga (wykonanie XOR na ciągach binarnych i ich sumowanie); stosowany  dla binarnych rozwiązań jak ORB, BRIEF, BRISK.
+\item HAMMING, wylicza odległość Hamminga (wykonanie XOR na ciągach binarnych i ich sumowanie); stosowany dla binarnych rozwiązań jak ORB, BRIEF, BRISK.
 \end{enumerate}
 
 \subsubsection{FLANN based Matcher}
-Inną metodą jest FLANN, będący akronimem od \enquote{Fast Library for Approximate Nearest Neighbors}. Zawiera w sobie zestaw algorytmów zoptymalizowanych pod proces poszukiwania najbliższych sąsiadów w dużych zbiorach danych oraz z wielowymiarowymi cechami. Metoda ta działa szybciej niż Brute-Force na dużych zbiorach i została wykorzystana w niniejszej pracy \cite[s.575]{learnopencv}.
+Inną metodą jest FLANN, będący akronimem od \enquote{Fast Library for Approximate Nearest Neighbors}. Zawiera w sobie zestaw algorytmów zoptymalizowanych pod proces poszukiwania najbliższych sąsiadów w dużych zbiorach danych oraz z wielowymiarowymi cechami. Ważną rzeczą w implementacji FLANN są jego parametry, które pozwalają skonfigurować zachowanie algorytmu. Pierwszy z nich to \emph{index\_params}, będący strukturą informująca o tym jaka odbywać się będzie indeksowanie. Dostępne są:
+
+\begin{enumerate}
+	\item KD-tree - drzewa k-wymiarowe, które są wariantem drzew binarnych. Wykorzystuje się je do określenia najbliższych sąsiadów. Jest to domyślny algorytm używany we FLANN; można zdefiniować liczbę drzew.
+	\item Linear - wybranie tego algorytmu spowoduje działanie jak w przypadku Brute-Force, czyli porównywane są odległości pomiędzy poszczególnymi punktami.
+	\item K-means - inaczej algorytm k-średnich. Grupuje skupiska punktów, następnie dzieli je na podgrupy i tak dalej. Parametrami są: \emph{branching}, czyli na ile grup podzielić dostępne punkty; \emph{itrations} mówi ile iteracji podziału punktów na grupy należy wykonać; \emph{cb\_index} kontroluje w jaki sposób środki grup są inicjowane.
+	\item Composite - łączy algorytmy KD-tree i K-means, jego parametrami są te ze wspomnianych algorytmów.
+	\item Locality-sensitive hash - wykorzystuje funkcje hashujące do opisania punktów. Parametry: \emph{table\_number} mówi o rozmiarze tabeli hashującej; \emph{key\_size} determinuje rozmiar klucza oraz \emph{multi\_probe\_level} kontrolujący o tym jak odbywa się poszukiwanie sąsiadów.
+\end{enumerate}
+
+Drugim, opcjonalnym argumentem FLANN jest \emph{search\_params} mówiący o tym ile razy powiązania powinny zostać sprawdzone. Daje to większą precyzję, ale jest bardziej czasochłonne.
+
+Metoda ta działa szybciej niż Brute-Force na dużych zbiorach i została wykorzystana w niniejszej pracy \cite[s.575]{learnopencv}.
+
 
 \subsection[Model kamery otworkowej]{Model kamery otworkowej (Pinhole camera model)}
-Podstawowy model kamery, zakładający, że wszystkie promienie światła zbiegają do jednego punktu - otworu kamery. Za jej pomocą wykonano pierwszą fotografię, przedstawiającą budynku rolnicze i niebo. Poniższy rysunek prezentuje zasadę działania takiej kamery.
+Podstawowy model kamery, zakładający, że wszystkie promienie światła zbiegają do jednego punktu - otworu kamery. Za jej pomocą wykonano pierwszą fotografię, przedstawiającą budynku rolnicze i niebo. Założenia modelu są stosowane do określenie położenia punktu w przestrzeni. Jest to kluczowe dla niniejszej pracy, ponieważ wymagane jest ustalenie położenia obiektu w przestrzeni względem kamery. Rysunek \ref{pinhole_model} prezentuje zasadę działania takiej kamery.
 
 \begin{figure}[h]
 	\centering	
-	\includegraphics[width=\textwidth]{pinhole_model_img}
-	\label{pinhole_model}
+	\includegraphics[width=0.7\textwidth]{pinhole_model_img}
 	\caption{Geometryczny model kamery otworkowej \cite{cameralib}}
+	\label{pinhole_model}
 \end{figure}
 
 Punkt zbiegu fal świetlnych jest w punkcie $O$. Główną osią jest $Z$. Płaszczyzna obrazu jest przesunięte od punktu $O$ o długość ogniskowej f. Punkt rzeczywisty P o współrzędnych $(X,Y,Z)$ rzutowany jest na płaszczyznę obrazu kamery na punkt $Pc=(u,v)$. Znając długość ogniskową oraz współrzędne punktu rzeczywistego, można wyznaczyć współrzędne punktu na obrazie.
@@ -375,36 +410,38 @@ $$
 E = (R|RT)
 $$
 nazwaną macierzą parametrów zewnętrznych, więc kompletnym równaniem transformacji jest
-$$ K(R|RT) = (KR|KRT) = KR(I|T)$$
-na punkt $P_c$ jest wyliczany przez
-$$P_c = KR(U|T)P = CP$$
+$$ K(R|RT) = (KR|KRT) = KR(I|T)\text{.}$$
+Punkt $P_c$ jest wyliczany przez
+$$P_c = KR(U|T)P = CP\text{,}$$
 gdzie $C$ jest jest macierzą o rozmiarze $3 \times 4$ nazwaną macierzą kamery.
 
 \subsection{Homografia}
-Jeśli dwie kamery są zwrócone w kierunku jednego punktu, powiązanie pomiędzy nimi może być w prosty sposób obliczone. Rysunek \ref{homography-label} ilustruję sytuację, gdzie dla punktu $P\pi$, kamera 1 rzutuje go na obraz w punkcie $P^1_\pi$, kamera 2 analogicznie na $P^2_\pi$. Wiemy też, że punkt $P_\pi$ leży na płaszczyźnie $\pi$. Niech wektor normalny $N$ płaszczyzny będzie zdefiniowany przez $N = (a,b,c)$. Wtedy równanie płaszczyzny będzie równe:
+Homografia jest koncepcją wykorzystaną w niniejszej pracy do określenia położenia oraz orientacji urządzenia w przestrzeni.
+
+Jeśli dwie kamery są zwrócone w kierunku jednego punktu, powiązanie pomiędzy nimi może być w prosty sposób obliczone. Rysunek \ref{homography_label} ilustruję sytuację, gdzie dla punktu $P\pi$, kamera 1 rzutuje go na obraz w punkcie $P^1_\pi$, kamera 2 analogicznie na $P^2_\pi$. Wiemy też, że punkt $P_\pi$ leży na płaszczyźnie $\pi$. Niech wektor normalny $N$ płaszczyzny będzie zdefiniowany przez $N = (a,b,c)$. Wtedy równanie płaszczyzny będzie równe:
 $$ (N, 1) \cdot P = 0 $$
 dla każdego punktu w świecie 3D.
 
 \begin{figure}[h]
 	\centering	
-	\includegraphics[width=\textwidth]{homography_img}
-	\label{homography-label}
+	\includegraphics[width=0.8\textwidth]{homography_img}
 	\caption{Przykład homografii \cite{cameralib}}
+	\label{homography_label}
 \end{figure}
 
 Wiemy, że
-$$P^1_\pi = \begin{pmatrix} u_1 \\ v_1 \\ w_1 \end{pmatrix} = C_1 \cdot P_\pi$$
+$$P^1_\pi = \begin{pmatrix} u_1 \\ v_1 \\ w_1 \end{pmatrix} = C_1 \cdot P_\pi \text{.}$$
 Oznacza to, że punkt $P_\pi$ leży na promieniu $(u1,v1,w1,0)^T$, jednak parametr skali jest nieznany. Nazwiemy go $\tau$, otrzymując
-$$ Ppi = \begin{pmatrix} u_1 \\ v_1 \\ w_1\\ \tau \end{pmatrix} = \begin{pmatrix}P^1_\pi \\ \tau \end{pmatrix}$$
+$$ Ppi = \begin{pmatrix} u_1 \\ v_1 \\ w_1\\ \tau \end{pmatrix} = \begin{pmatrix}P^1_\pi \\ \tau \end{pmatrix} \text{.}$$
 Następnie, wiedząc, że $P_\pi$ spełnia równanie płaszczyzny otrzymujemy
-$$ tau = -N \cdot P^1_\pi $$
-,więc
-$$ P_\pi = \begin{pmatrix} u1 \\ v1 \\ w1 \\ \tau \end{pmatrix} = \begin{pmatrix} I \\-N \end{pmatrix} P^1_\pi $$
+$$ tau = -N \cdot P^1_\pi  \text{.}$$
+więc
+$$ P_\pi = \begin{pmatrix} u1 \\ v1 \\ w1 \\ \tau \end{pmatrix} = \begin{pmatrix} I \\-N \end{pmatrix} P^1_\pi  \text{ , gdzie}$$
 $I$ jest macierzą $3 \times 3$, $N$ $1 \times 3$, więc otrzymana jest macierz $4 \times 3$.
 Niech $C_2 = \begin{pmatrix} A_2 & a_2\end{pmatrix}$, gdzie $A_2$ to macierz $3\times 3$, a $a_2$ wektor $3 \times 1$. Wtedy,
-$$ P^2_\pi = C_2 \cdot P_\pi = \begin{pmatrix} A_2 & a_2\end{pmatrix} \begin{pmatrix}I \\ -N \end{pmatrix} P^1_\pi $$
-Macierz $C_2$ ma rozmiar $3 \times 4$, kolejna $4 \times 3$, więc wynikiem jest macierz $3 \times 3$, nazywaną macierzą homografii. Ostatecznie
-$$P^2_\pi = (A_2-a_2 N)P^1_\pi = HP^1_\pi$$
+$$ P^2_\pi = C_2 \cdot P_\pi = \begin{pmatrix} A_2 & a_2\end{pmatrix} \begin{pmatrix}I \\ -N \end{pmatrix} P^1_\pi  \text{ , gdzie}$$
+macierz $C_2$ ma rozmiar $3 \times 4$, kolejna $4 \times 3$, więc wynikiem jest macierz $3 \times 3$, nazywaną macierzą homografii. Ostatecznie
+$$P^2_\pi = (A_2-a_2 N)P^1_\pi = HP^1_\pi \text{.}$$
 
 Macierz homografii pokazuje relację pomiędzy obrazem z dwóch kamer. Używając jej, możliwa jest transformacja widoku, aby odpowiadał położeniu drugiej \cite[s.660]{learnopencv}.
 
@@ -413,28 +450,28 @@ Macierz homografii pokazuje relację pomiędzy obrazem z dwóch kamer. Używają
 \subsubsection{OpenCV}
 Najważniejszą technologią zastosowaną w niniejszej pracy jest OpenCV. Jest to popularna otwarta biblioteka o otwartych źródłach służąca do przetwarzania obrazu, stworzona przez firmę Intel. Oficjalnie projekt rozpoczął się w 1999 roku. Obecnie zawiera w sobie  ponad 2500 algorytmów rozwiązujących zarówno typowe problemy wizji komputerowej, jak mi algorytmy uczenia maszynowego.
 
-Obecnie społeczność OpenCV liczy ponad 47 tysięcy ludzi, a liczba pobrań przekracza 18 milionów. Rozwijają ją głównie specjaliści od optymalizacji oraz zespół optymalizacji Intela.  Korzystają z niej zarówno firmy komercyjne, grupy badawcze jak i urzędy. Biblioteka jest wykorzystywana zarówno do łączenia zdjęć w Google StreetView, detekcji włamywaczu w Izrealu jak i monitoringu sprzętu górniczego w Chinach.
+Obecnie społeczność OpenCV liczy ponad 47 tysięcy ludzi, a liczba pobrań przekracza 18 milionów. Rozwijają ją głównie specjaliści od optymalizacji oraz zespół optymalizacji Intela.  Korzystają z niej zarówno firmy komercyjne, grupy badawcze jak i urzędy. Biblioteka jest wykorzystywana zarówno do łączenia zdjęć w Google StreetView, detekcji włamywaczy w Izraelu, jak i monitoringu sprzętu górniczego w Chinach.
 
 Biblioteka ma interfejsu dla C++, Pythona, Javy i MATLABa, wspiera systemy Windows, Linux, Android i MacOS. Współpracuje z bibliotekami Tensorflow, PyTorch i innymi. Praca nad współpracą z technologiami CUDA oraz OpenCL trwają. OpenCV zostało napisane w C++ \cite{opencv}.
+
+Zawarte w bibliotece funkcje zostały wykorzystane do stworzenia systemu AR. Skorzystano zarówno z implementacji algorytmu ORB do detekcji i deskrypcji punktów, jak i FLANN do ich dopasowania, a także poszukiwanie homografii odbywało się za pomocą udostępnionych przez bibliotekę metod. Funkcjami nie związanymi bezpośrednio z rozszerzoną rzeczywistością, ale wykorzystanymi w projekcie są: wyświetlanie obrazu, rysowanie na obrazie (tekstu i kształtów), a także interfejs do pobierania strumienia wideo.
 
 \subsubsection{Arduino}
 Arduino jest otwartą platformą dla systemów wbudowanych w ramach jednego obwodu drukowanego ze standaryzowaną biblioteką. Język, w którym programuje się urządzenia Arduino jest rozszerzeniem języka C. Motywacją do stworzenia i rozwijania projektu było przygotowanie tanich, prostych w obsłudze i powszechnie dostępnych narzędzie do programowania mikrokontrolerów, aby uprościć, a w niektórych przypadkach nawet umożliwić pracę z systemami wbudowanymi. Arduino zawiera wbudowany programator, UART bądź USB do komunikacji z komputerem, cyfrowe i analogowe wejścia/wyjścia. Dzięki standaryzacji, możliwe było stworzenie szeregu rozszerzeń do urządzenia, jaki np. moduł WiFI, Bluetooth, GSM, szereg czujników, driverów do silników itd. Dodatkowo użytkownicy mogą tworzyć własne biblioteki i je udostępniać innym.
 
-Do wykonania poniższej pracy wykorzystano model Arduino Leonardo ze sprzętową obsługą protokołu USB.
-
-%ZDJĘCIE ARDUINO
+Do wykonania poniższej pracy wykorzystano model Arduino Leonardo ze sprzętową obsługą protokołu USB do stworzenia urządzenia pokazowego. Zdecydowano się na to konkretne rozwiązanie ze względu na jego prostotę użytkowania.
 
 Domyślnym środowiskiem do tworzenia programów na Arduino oraz komunikacji z urządzeniem jest program Arduino IDE. Pozwala w prosty sposób zaprogramować płytkę, monitorować port szeregowy, a także pisać programy i pobierać biblioteki.
 
-%SCREEN Z ARDUINO IDE z serial monitor
-
 \subsubsection[MQTT]{MQTT - Message Queue Telemetry Transport}
 
-Jest to protokół komunikacyjny stworzony przez Andy'ego Stanford-Clarka z IBM oraz Arlena Nippera z Eurotech, oparty o wzorzec Publish-Subscribe (ang. publikacja-subskrypcja). Został stworzony do transmisji danych przez urządzenia bez dużej przepustowości oraz mocy obliczeniowej. MQ w nazwie ma swoją genezę od produktów IBM. Dzięki swojej lekkości i niezawodności wykorzystywany jest w urządzeniach mobilnych oraz internecie rzeczy (ang. Internet of Things - IoT). Wykorzystywany jest m. in. w Facebook Messenger czy AWS IoT, a także w rozrusznikach serca \cite{mqtt}.
+Jest to protokół komunikacyjny stworzony przez Andy'ego Stanford-Clarka z~IBM oraz Arlena Nippera z Eurotech, oparty o wzorzec Publish~-~Subscribe (ang. publikacja~-~subskrypcja). Został stworzony do transmisji danych przez urządzenia bez dużej przepustowości oraz mocy obliczeniowej. MQ w nazwie ma swoją genezę od produktów IBM. Dzięki swojej lekkości i niezawodności wykorzystywany jest w urządzeniach mobilnych oraz internecie rzeczy (ang. Internet of Things - IoT). Wykorzystywany jest m. in. w Facebook Messenger czy AWS IoT, a także w rozrusznikach serca \cite{mqtt}.
 
 Architektura Publish-Subscribe zakłada, że wiadomości wysyłane przez nadawcę (publisher) trafiają do serwera (broker), a ten następnie przesyła wiadomość do zainteresowanych odbiorców (subscriber). Wiadomości przesyłane są w kanałach nazywanych tematami (topic). Odbiorca, musi subskrybować dany temat, aby otrzymać wiadomości od brokera. Nadawca nie ma informacji kto otrzyma wiadomość, ani czy ktokolwiek jest nią zainteresowany. Dzięki temu nie występuje tutaj periodyczne odpytywanie serwera aby zaktualizować dane (ang. pooling). Nadawca wysyłając wiadomość, musi także przekazać jakiego tematu ona dotyczy.
 
 Istnieje wiele bibliotek umożliwiających stworzenie brokera, jak np. Mosquitto, HiveMQ czy RabbitMQ, jednak do celów realizacji projektu wykorzystano Mosquitto. Jest to broker o otwartych źródłach od Eclipse.
+
+Zdecydowano się na to konkretne rozwiązanie ze względu niskie zapotrzebowanie na transfer danych, szybkość i komunikację w czasie rzeczywistym oraz możliwość podziału wysyłanych danych na niezależne tematy.
 
 \subsubsection{Języki programowania}
 
@@ -442,58 +479,49 @@ Do realizacji projektu wykorzystano 2 języki programowania: C oraz Python.
 
 Pierwszy z nich jest językiem prezentującym paradygmat imperatywny. Jest wysokopoziomowy i kompilowany. Pojawił się w 1972. Dzięki swojej prostocie i dostępie do niskopoziomowych narzędzi, jak np. zarządzanie pamięcią, jest często wykorzystywany w systemach wbudowanych. Tak też jest w tym przypadku - Z jego pomocą zaprogramowano urządzenie do komunikacji z brokerem. Wykorzystany język był w wersji zmodyfikowanej przez fundację Arduino, dzięki czemu dostęp do kanałów wejścia/wyjścia był łatwiejszy.
 
-% próbka kodu w C?
 
-Python jest językiem wysokopoziomowym ogólnego przeznaczenia. Realizuje paradygmaty obiektowy, imperatywny i strukturalny. Jest językiem interpretowanym i posiada system dynamicznych typów. Dzięki swojej prostej do zrozumienia składni znalazł zwolenników ze wielu dziedzin. Jest to obecnie czwarty najbardziej popularny język na świecie \cite{stackoverflow}. Jest on również bardzo wygodny przy korzystaniu z OpenCV, dlatego został on wybrany do realizowania projektu rozszerzonej rzeczywistości.
+Python jest językiem wysokopoziomowym ogólnego przeznaczenia. Realizuje paradygmaty obiektowy, imperatywny i~strukturalny. Jest językiem interpretowanym i~posiada system dynamicznych typów. Dzięki swojej prostej do zrozumienia składni znalazł zwolenników ze wielu dziedzin. Jest to obecnie czwarty najbardziej popularny język na świecie \cite{stackoverflow}. Jest on również bardzo wygodny przy korzystaniu z OpenCV i~pozwala na bardzo szybkie tworzenie nowych rozwiązań, dlatego został on wybrany do realizowania projektu rozszerzonej rzeczywistości.
 
 Operacje na obrazach z pomocą OpenCV w Pythonie realizuje się z pomocą biblioteki NumPy, dlatego również została ona użyta w pracy.
-
 
 \clearpage	
 
 \section{Realizacja projektu}
 \subsection{Przyjęte założenia}
-Ze względu na ograniczenia czasowe i finansowe autora, musiały zostać popełnione pewne założenia i uproszczenia, aby projekt mógł zostać zrealizowany.
+Aby projekt mógł zostać zrealizowany, poczyniono pewne uproszczenia i założenia.
 
-Wysoka cena okularów rozszerzonej rzeczywistości skutecznie odstraszyła autora przed ich zakupem. Dodatkowo trudności w prototypowaniu na urządzeniach mobilnych spowodowały również odrzucenie tego typu medium. Autor zdecydował się więc na realizowanie systemu rozszerzonej rzeczywistości na prywatnym laptopie Lenovo Thinkpad T460s. Sam program został napisany w języku Python, ze względu na jego prostotę i elastyczność. wykorzystane zostały jedynie darmowe narzędzia, z których autor miał prawo korzystać. Rezygnacja z zewnętrznego urządzenia spowodowało pewne ograniczenie, ponieważ laptop posiada kamerę skierowaną jedynie w kierunku użytkownika, dlatego też zdecydowano się na wykorzystanie zewnętrznej kamery USB.
+Wysoka cena okularów rozszerzonej rzeczywistości uniemożliwiła ich wykorzystanie w projekcie, dodatkowo trudności w prototypowaniu na urządzeniach mobilnych spowodowały również odrzucenie tego typu medium. Autor zdecydował się więc na realizowanie systemu rozszerzonej rzeczywistości na laptopie Lenovo Thinkpad T460s. Sam program został napisany w języku Python, ze względu na jego prostotę i elastyczność. Wykorzystane zostały jedynie darmowe narzędzia, z których autor miał prawo korzystać. Rezygnacja z zewnętrznego urządzenia spowodowało pewne ograniczenie, ponieważ laptop posiada kamerę skierowaną jedynie w kierunku użytkownika, dlatego też zdecydowano się na wykorzystanie zewnętrznej kamery USB.
 
-Ze względu na brak rzeczywistych urządzeń (zwanych dalej maszynami) stosowanych w przemyśle, autor podjął decyzję o wykonaniu prostego urządzenia mającego symulować te rzeczywiste i bardziej skomplikowane. Sterowanie i komunikację z serwerem realizuje się dzięki płytce Arduino Leonardo. Urządzenie składa się z 3 rezystorów, przycisku dwustanowego włącz/wyłącz, oraz dwóch przycisków typu pushbutton. Urządzenie posiada czarną obudowę. Ze względu na prostę frontu urządzenia, podjęto decyzję o naklejeniu na nie kawałek papieru z naniesionym wzorem, aby zwiększyć dokładność detekcji.
+Ze względu na brak rzeczywistych urządzeń (zwanych dalej maszynami) stosowanych w przemyśle, autor podjął decyzję o wykonaniu prostego urządzenia mającego symulować te rzeczywiste i bardziej skomplikowane. Sterowanie i komunikację z serwerem realizuje się dzięki płytce Arduino Leonardo. Urządzenie składa się z 3 rezystorów, przycisku dwustanowego włącz/wyłącz, oraz dwóch przycisków typu pushbutton. Urządzenie posiada czarną obudowę. Ze względu na prostotę frontu urządzenia, podjęto decyzję o naklejeniu na nie kawałek papieru z naniesionym wzorem, aby zwiększyć dokładność detekcji. Problemy związanie z rozpoznawaniem urządzenia w sytuacji gdy nie jest widoczny wzór prezentuje test w rozdziale \ref{section:partlyvisible}.
 
-Obecne rozwiązanie wspiera rozpoznawanie jednego obiektu.
+System AR ma wspomagać użytkownika w obsługiwaniu maszyny poprzez tworzenie nakładki na obraz. Odbywa się to na dwóch płaszczyznach. Użytkownik jest informowany o obecnym stanie obiektu dzięki wyświetlaniu parametrów na kadrze, oraz, w zależności od wybranego trybu, może zobaczyć wyszczególniony każdy element maszyny z opisem, bądź ikony sugerujące konkretne działanie.
 
-Ważnym założeniem przy tworzeniu narzędzia było to, aby nie wpływało ono w żaden sposób na działanie potencjalnej rzeczywistej maszyny. Dodatkowo wdrożenie do działającego już urządzenia powinno ograniczać się do dodania kanału komunikacji, bądź w przypadku jego istnienia tylko i wyłącznie do stworzenia pliku konfiguracyjnego.
+Obecne rozwiązanie wspiera rozpoznawanie jednego obiektu, jednak możliwy jest scenariusz, gdy będzie ich więcej. Zakładając, że każdy z obiektów jest skomunikowany z brokerem, różnice będą polegać na innym pliku konfiguracyjnym. Modyfikacja będzie się ograniczać do dodania kolejnej maszyny razem z jej obszarami, oraz następnych tematów do subskrybowania. Po stronie systemu AR modyfikacji wymaga jedynie przekazywanie maszyn do funkcji. Konieczne jest sprawienie, by miała ona jedynie dostęp do rozpoznanej na obrazie. Inaczej ma się sytuacja, gdy na jednym kadrze pojawią więcej niż jedno rozpoznawane urządzenie, jednak taki scenariusz nie mieści się w~założeniach.
+
+Ważnym założeniem przy tworzeniu narzędzia było to, aby nie wpływało ono w żaden sposób na działanie potencjalnej rzeczywistej maszyny. Dodatkowo wdrożenie do działającego już urządzenia powinno ograniczać się do dodania kanału komunikacji i zmiany konfiguracji, bądź w przypadku jego istnienia tylko i wyłącznie do stworzenia pliku konfiguracyjnego.
 
 Dodatkowo, aby wszystko działało poprawnie, zarówno maszyna jak i system AR powinny mieć połączenie z brokerem. W prezentowanej pracy połączenie jest bezprzewodowe.
 
 \subsection{Architektura rozwiązania}
-Cały system składa się z 3 bytów: Maszyny, brokera, oraz systemu AR. Zjawisko to obrazuje rysunek \ref{arch}.
+Cały system składa się z trzech elementów: Maszyny, brokera, oraz systemu AR. Obrazuje to rysunek \ref{arch}.
 
 \begin{figure}[h]
 	\centering	
 	\includegraphics[width=0.2\textwidth]{architektura}
-	\caption{Architektura rozwiązania. Źródło: własne}
+	\caption{Architektura rozwiązania.}
 	\label{arch}
 \end{figure}
-Komunikacja jest jednostronna: maszyna => broker => system AR. Można wywnioskować, że środkowy element jest niepotrzebny, a komunikację można poprowadzić bezpośrednio maszyna => AR. Jest to myślenie poprawne, jednak jednym z założeń była możliwie największa elastyczność rozwiązania. Wiąże się to z tym, że powinna istnieć możliwość zamienienia środkowego elementu na dowolnie inny: REST Api, Websocket, ERP itd., aby, w razie gdy istniała już jakaś infrastruktura komunikacji pomiędzy maszyną a dowolnym tworem agregującym, było możliwe dołączenia modułu AR bez konieczność przebudowywania istniejącej architektury.
 
-Algorytm działań realizowany od odebrania obrazu z kamery do jego wyświetlenia obrazuje rysunek \ref{alg}. Zgodnie z nim pierwszym krokiem jest ekstrakcja i detekcja cech. Zostało to połączone, ponieważ również w kodzie odbywa się to za pomocą wywołania jednej funkcji. Następnie realizowane jest \emph{feature matching} z tymi z obrazu referencyjnego. Jeśli nieodpowiednio silne dopasowanie nie zostanie znalezione, wyświetlany jest niezmieniony obraz. Jeśli jednak detekcja będzie pozytywna - poszukiwana zostaje macierz i maska homografii, oraz wywoływana na kadrze jest funkcja rysująca. Tak zmodyfikowany kadr jest prezentowany użytkownikowi.
+Komunikacja idzie w kierunku: maszyna => broker => system AR => użytkownik. Czynności, które użytkownik wykona na maszynie powodują wysłanie wiadomości przez brokera do systemu AR, który wyświetla nowe dane użytkownikowi. Teoretycznie brokera w architekturze można się pozbyć a komunikację poprowadzić bezpośrednio maszyna => AR, na przykład w ramach systemu AR udostępniając API obsługujące zapytania HTTP. Wtedy maszyna wysyłałaby wiadomości bezpośrednio do AR. Jednak w przypadku, gdy pojawią się kolejne maszyny i systemy AR, komunikacja musiałaby się odbywać na zasadzie \enquote{każdy z każdym}. Bardziej skalowalnym rozwiązaniem jest więc połączenie każdego urządzenia jak i systemu AR z jednym brokerem. Dodatkowo jednym z założeń była możliwie największa elastyczność rozwiązania. Wiąże się to z tym, że powinna istnieć możliwość zamienienia brokera na inny: REST Api, Websocket, ERP itd., aby, w razie gdy istniała już jakaś infrastruktura komunikacji pomiędzy maszyną a dowolnym tworem agregującym, było możliwe dołączenia modułu AR bez konieczności przebudowywania istniejącej architektury.
 
-\begin{figure}[h]
-	\centering	
-	\includegraphics[width=0.5\textwidth]{algorithm}
-	\caption{Algorytm rozwiązania. Źródło: własne}
-	\label{alg}
-\end{figure}
-
-\subsection{Maszyna}
-\subsubsection*{O urządzeniu}
-Maszyna, jak wspomniano wcześniej, pełni jedynie rolę symulacji prawdziwego urządzenia. Oparta jest o układ Arduino z programem napisanym w języku C z nakładką przygotowaną przez fundację Arduino. Do połączenia się z siecią WiFi użyto dedykowany do tego celu moduł ESP8266. Wykorzystano również diodę LED czerwoną, diodę RGB, 3 potencjometry, dwustanowy przycisk (On/Off), oraz 2 przyciski typu pushbutton. Urządzenie zasilane jest poprzez przewód USB. Dokładny schemat połączeń przedstawia rysunek \ref{scheme}.
+\subsection{Urządzenie}
+Jak wspomniano wcześniej, pełni ono jedynie rolę symulacji prawdziwego urządzenia. Oparta jest o układ Arduino z programem napisanym w języku C z nakładką przygotowaną przez fundację Arduino. Do połączenia się z siecią WiFi użyto dedykowany do tego celu moduł ESP8266. Wykorzystano również diodę LED czerwoną, diodę RGB, trzy potencjometry, dwustanowy przycisk (On/Off), oraz dwa przyciski typu pushbutton. Urządzenie zasilane jest poprzez przewód USB. Dokładny schemat połączeń przedstawia rysunek \ref{scheme}.
 
 
 \begin{figure}[h]
 	\centering	
 	\includegraphics[width=0.6\textwidth]{device}
-	\caption{Zdjęcie urządzenia. Źródło własne}
+	\caption{Zdjęcie urządzenia.}
 	\label{device}
 \end{figure}
 
@@ -501,7 +529,7 @@ Maszyna, jak wspomniano wcześniej, pełni jedynie rolę symulacji prawdziwego u
 \begin{figure}[h]
 	\centering	
 	\includegraphics[width=\textwidth]{scheme2}
-	\caption{Schemat połączeń. Źródło własne}
+	\caption{Schemat połączeń.}
 	\label{scheme}
 \end{figure}
 
@@ -512,29 +540,29 @@ Maszyna, jak wspomniano wcześniej, pełni jedynie rolę symulacji prawdziwego u
 	\item Przycisk na pinie 5V miał symulować przycisk włączenie/wyłączenia urządzenia, jednak ze względu na problemy w działaniu płytki Arduino po zmianie stanu, nie pełni on żadnej roli.
 	\item Piny RX/TX zostały skrosowane i połączone z układem ESP8266.
 	\item Dioda LED2 połączona do pinu D2 ma symbolizować uruchomienie układu.
-	\item Przyciski połączone do pinów D8,D9 mają symulować zdarzenia , które pojawiły się w trakcie działania maszyny.
-	\item Piny VCC oraz CH\_PD zostały połączone do źródłą zasilania z Arduino.
+	\item Przyciski połączone do pinów D8, D9 mają symulować zdarzenia , które pojawiły się w trakcie działania maszyny.
+	\item Piny VCC oraz CH\_PD zostały połączone do źródła zasilania z Arduino.
 \end{enumerate}
 
 \subsubsection*{Struktura plików}
 
-Programy zawarte są w folderze arduino, w którym są 2 podfoldery: mqtt oraz mqtt\_tel, a każdy z nich zawiera po jednym pliku .ino. Wynika to z architektury Arduino, gdzie każdy skrypt powinien znajdować się w folderze o takiej samej nazwie. Oba pliki .ino zawierają analogiczny kod do mikrokontrolera, przy czym wariant z sufiksem \_tel posiada dane do logowania do sieci WiFi udostępnianej przez telefon autora, a skrypt bez sufiksu - do sieci lokalnej w domu autora.
+Programy zawarte są w folderze arduino, w którym są dwa podfoldery: \emph{mqtt} oraz \emph{mqtt\_tel}, a każdy z nich zawiera po jednym pliku \emph{.ino}. Wynika to z architektury Arduino, gdzie każdy skrypt powinien znajdować się w folderze o takiej samej nazwie. Oba pliki \emph{.ino} zawierają analogiczny kod do mikrokontrolera, przy czym wariant z~sufiksem \emph{\_tel} posiada dane do logowania do sieci WiFi udostępnianej przez telefon, a~skrypt bez sufiksu - do sieci lokalnej.
 
 \begin{figure}[h]
 	\centering	
 	\includegraphics[width=0.4\textwidth]{dirs_arduino}
-	\caption{Struktura plików na urządzenie Arduino. Źródło własne}
+	\caption{Struktura plików na urządzenie Arduino.}
 \end{figure}
 
 \subsubsection*{Omówienie programu}
 Każdy program pisany dla Arduino można podzielić na trzy sekcje:
 \begin{enumerate}[label=\alph*), leftmargin=1.25cm]
 	\item importowanie bibliotek, definiowanie stałych i zmiennych,
-	\item funkcja setup,
-	\item funkcja loop.
+	\item funkcja \emph{setup},
+	\item funkcja \emph{loop}.
 \end{enumerate}
 
-Zawartość pierwszej sekcji dokładnie opisuje punkt a) powyższej listy. Do zrealizowania projektu wykorzystano 3 biblioteki: WiFiESP - umożliwiające połączenie się z siecią WIFI poprzez układ ESP8266; PubSubClient - pozwala na publikowanie wiadomości protokołem MQTT; Bounce2 odpowiada za zredukowanie wpływu drgania styków w momencie wciśnięcia przycisku pushbutton. Tworzony jest tutaj także klient MQTT. Stałe definiować można na 2 sposoby, poprzez
+Zawartość pierwszej sekcji dokładnie opisuje punkt a) powyższej listy. Do zrealizowania projektu wykorzystano trzy biblioteki: \emph{WiFiESP} - umożliwiające połączenie się z siecią WIFI poprzez układ ESP8266; \emph{PubSubClient} - pozwala na publikowanie wiadomości protokołem MQTT; \emph{Bounce2} odpowiada za zredukowanie wpływu drgania styków w momencie wciśnięcia przycisku typu pushbutton. Tworzony jest tutaj także klient MQTT. Stałe definiować można na dwa sposoby, poprzez
 \begin{lstlisting}
 #define <nazwa> <wartosc>
 \end{lstlisting}
@@ -542,32 +570,34 @@ co pozwala na bezpośrednie podmienienie nazwy w programie na wartość, bądź
 \begin{lstlisting}
 const <typ> <nazwa> = <wartosc>
 \end{lstlisting}
-Drugi sposób łączy nazwę zmiennej z komórką w pamięci podręcznej urządzenia, do której później program będzie się odwoływał gdy natrafi na daną nazwę. W programie występują również zmienne, definiowane w następujący sposób (fragment w nawiasach kwadratowych jest opcjonalny)
+Drugi sposób łączy nazwę zmiennej z komórką w pamięci podręcznej urządzenia, do której później program będzie się odwoływał, gdy natrafi na daną nazwę. W programie występują również zmienne, definiowane w następujący sposób (fragment w nawiasach kwadratowych jest opcjonalny)
 \begin{lstlisting}
 <typ> nazwa [= <domyslna wartosc>];
 \end{lstlisting}
 
-% biblioteki, define, const, int, pubsubclient
+Funkcja \emph{setup} ma za zadanie przygotować program do późniejszego zadania. W~tym miejscu ustawia się, czy pin ma pełnić funkcję wejścia czy wyjścia, konfiguruje się porty szeregowe, a także inicjuje połączenie z siecią WiFi.
 
-Funkcja setup ma za zadanie przygotować program do późniejszego zadania. W tym miejscu ustawia się, czy pin ma pełnić funkcję wejścia czy wyjścia, konfiguruje się porty szeregowe, a także inicjuje połączenie wifi.
-
-% połączenie wifi, ustawienei pinu, ustawienie seriala
-
-Funkcja loop jest pętlą nieskończoną. Można z niej wyjść, natomiast spowoduje to przerwanie programu. W jej ciele wykonują się sczytania z pinów i ustawienie na nich wartości; wysyłane są również wiadomości do brokera MQTT. Wartości z potencjometrów domyślnie mieszczą się w zakresie 0-1023, natomiast na potrzeby programu, wartości te zostały przeskalowane do 0-255. Dodatkowo, w celu zwiększenia stabilności wartości, odczytane i przeskalowane wskazania są obniżane o 10, przy czym nie mogą być mniejsze od 0. Program zakłada, że broker jest informowany o zmianie wartości napięcia na potencjometrze tylko, jeśli obecna różni się o więcej niż 4 od ostatnio wysłanej. Publikowane jest wskazanie potencjometru przeskalowane do wartości 0-255. Wynika to z niedokładności przetwornika analogowo-cyfrowego, co nawet przy braku ingerencji we wskazania potencjometrów może doprowadzić do kaskady publikowanych wiadomości, co jest szumem komunikacyjnym. W celu redukcji wpływu drgań styków, odczytanie ostatecznej wartości na przycisku dokonuje się z opóźnieniem 50ms względem momentu wciśnięcia. Broker informowany jest jedynie, że przycisk został wysłany.
-
-% screen połączenia się z wifi
-% przykładowe odczytanie wartości rezystora, kliknięcie przycisku, ustawienie led, wysłanie msg
-% powiedzieć o testamencie.
-
+Funkcja \emph{loop} jest pętlą nieskończoną. Można z niej wyjść, natomiast spowoduje to przerwanie programu. W jej ciele odczytywane są wartości na pinach wejściowych, oraz ustawienie wartości na wyjściowych. Wysyłane są również wiadomości do brokera MQTT. Poziom napięcia na potencjometrach domyślnie mieszczą się w zakresie 0-1023. Wynika to z rozdzielczości przetworników analogowo/cyfrowych na płytce, natomiast na potrzeby programu, wartości te zostały przeskalowane do 0-255. Ma to na celu ujednolicenie reprezentacji koloru z systemem szesnastkowym RGB, gdzie każda składowa ma wartości w zakresie 0-255. Dodatkowo, w celu zwiększenia stabilności wartości, odczytane i przeskalowane wskazania są obniżane o 10, przy czym nie mogą być mniejsze od 0. Program zakłada, że broker jest informowany o zmianie wartości napięcia na potencjometrze tylko, jeśli obecna różni się o więcej niż 4 od ostatnio wysłanej. Wynika to z niedokładności przetwornika analogowo-cyfrowego, co nawet przy braku ingerencji użytkownika w wychylenie potencjometrów może doprowadzić do kaskady publikowanych wiadomości, co jest szumem komunikacyjnym. W celu redukcji wpływu drgań styków, odczytanie ostatecznej wartości na przycisku dokonuje się z opóźnieniem 50ms względem momentu wciśnięcia.
 
 \subsection{System AR}
 \subsubsection*{O systemie}
-Przez system AR rozumie się zestaw współpracujących ze sobą skryptów napisanych w języku Python, który po włączeniu pobierze obraz z wybranego źródła i wyświetli zmodyfikowany obraz. Wszystkie pliki potrzebne do uruchomienia systemu znajdują się w folderze AR (rysunek \ref{dirs_ar_ref}). 
+Przez system AR rozumie się zestaw współpracujących ze sobą skryptów napisanych w języku Python, który po włączeniu pobierze obraz z wybranego źródła i~wyświetli zmodyfikowany obraz.
+
+Algorytm działań realizowany od odebrania obrazu z kamery do jego wyświetlenia obrazuje rysunek \ref{alg}. Zgodnie z nim pierwszym krokiem jest ekstrakcja i detekcja cech. Zostało to połączone, ponieważ również w kodzie odbywa się to za pomocą wywołania jednej funkcji. Następnie realizowane jest dopasowanie cech z tymi z obrazu referencyjnego. Empirycznie uznano, że dobrą detekcję otrzymuje się już przy 50 dopasowanych cechach. Uznaje się, że cechy są dopasowane, jeśli istnieje 70-procentowa pewność, że tak. Jeśli odpowiednio silne dopasowanie nie zostanie znalezione, wyświetlany jest niezmieniony obraz. Jeśli jednak detekcja będzie pozytywna - poszukiwana zostaje macierz i maska homografii, oraz wywoływana na kadrze jest funkcja rysująca. Tak zmodyfikowany kadr jest prezentowany użytkownikowi.
+
+\begin{figure}[h]
+	\centering	
+	\includegraphics[width=0.5\textwidth]{algorithm}
+	\caption{Algorytm rozwiązania.}
+	\label{alg}
+\end{figure}
+
+Wszystkie pliki potrzebne do uruchomienia systemu znajdują się w folderze AR (rysunek \ref{dirs_ar_ref}). 
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.4\textwidth]{dirs_ar}
-	\caption{Struktura plików w projekcie. Źródło własne}
+	\caption{Struktura plików w projekcie.}
 	\label{dirs_ar_ref}
 \end{figure}
 
@@ -600,40 +630,40 @@ Poza skryptami, których dokładny opis i wyjaśnienie działania przedstawione 
 }
 \end{lstlisting}
 
-Wydzielone zostały 2 główne sekcje:
+Wydzielone zostały dwie główne sekcje:
 
 \begin{enumerate}[label=\alph*), leftmargin=1.25cm]
-	\item server - zawiera informacje wymagane do połączenia z brokerem MQTT, takie jak adres hosta, port, oraz listę tematów, które powinny być nasłuchiwane. Każdy temat reprezentuje jedna tablica asocjasyjna, zawierające klucze dotyczące nazwy tematu po stronie mqtt, nazwy tematu po stronie aplikacji, oraz opcjonalnie domyślnej wartości i typu, na który powinna zostać przekonwertowana zmienna po odbiorze.
-	\item machines - lista maszyn, które algorytm będzie próbował znaleźć. W chwili pisania niniejszej pracy algorytm jest dostosowany do rozpoznawania jedynie jednej maszyny, ale pozostawiono furtkę do późniejszego rozwinięcia. Każda maszyna w konfiguracji to tablica asocjacyjna, która zawiera nazwę maszyny, ścieżkę do obrazka referencyjnego, oraz listę par klucz-wartość, reprezentującą potencjalnie interesujące obszary na panelu maszyny. Para ma strukturę: <nazwa\_obszaru>: [x1, y1, x2, y2], gdzie wartości są parami współrzędnych kartezjańskich wyznaczonych z obrazu referencyjnego.
+	\item \emph{server} - zawiera informacje wymagane do połączenia z brokerem MQTT, takie jak adres hosta, port, oraz listę tematów, które powinny być nasłuchiwane. Każdy temat reprezentuje jedna tablica asocjacyjna, zawierające klucze dotyczące nazwy tematu po stronie brokera MQTT, nazwy parametru po stronie aplikacji, oraz opcjonalnie domyślnej wartości i typu, na który powinna zostać przekonwertowana zmienna po odbiorze.
+	\item \emph{machines} - lista maszyn, które algorytm będzie próbował znaleźć. W chwili pisania niniejszej pracy algorytm jest dostosowany do rozpoznawania jedynie jednej maszyny, ale pozostawiono furtkę do późniejszego rozwinięcia. Każda maszyna w konfiguracji to tablica asocjacyjna, która zawiera nazwę maszyny, ścieżkę do obrazka referencyjnego, oraz listę par klucz-wartość, reprezentującą potencjalnie interesujące obszary na panelu maszyny. Para ma strukturę: \emph{<nazwa\_obszaru>: [x1, y1, x2, y2]}, gdzie wartości są dwiema parami współrzędnych kartezjańskich wyznaczonych z obrazu referencyjnego.
 \end{enumerate}
 
 \subsubsection*{Obraz referencyjny}
 
-Obrazem referencyjnym użytym w projekcie jest zdjęcie panelu urządzenia testowego, zrobionego za pomocą kamery webcam użytej do późniejszego testowania systemu. Rysunek \ref{base_img} przedstawia tenże obraz, a \ref{base_img_kp} wyznaczone z niego punkty charakterystyczne. Zauważyć można, że elementy użytkowe panelu nie pozwalają na wyznaczenie dużej liczby punktów, z tego też powodu do dolnej części panelu przyklejono wzór, który pozwala zauważalnie zwiększyć stabilność rozpoznawania.
+Obrazem referencyjnym użytym w projekcie jest zdjęcie panelu urządzenia testowego, zrobionego za pomocą kamery webcam użytej do późniejszego testowania systemu. Rysunek \ref{base_img} przedstawia tenże obraz, a \ref{base_img_kp} wyznaczone z~niego punkty charakterystyczne. Zauważyć można, że elementy użytkowe panelu nie pozwalają na wyznaczenie dużej liczby punktów, z tego też powodu do dolnej części panelu przyklejono wzór, który pozwala zauważalnie zwiększyć stabilność rozpoznawania - gdy uruchamiano system rozpoznawania urządzenia bez wzoru, często wyznaczona orientacja urządzenia nie pokrywała się z rzeczywistością. Może to być związane z wypukłością niektórych elementów urządzenia.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{base}
-	\caption{Obraz referencyjny. Źródło własne}
+	\caption{Obraz referencyjny.}
 	\label{base_img}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{base_kp}
-	\caption{Obraz referencyjny. Źródło własne}
+	\caption{Wyznaczone punkty kluczowe dla obrazu referencyjnego.}
 	\label{base_img_kp}
 \end{figure}
 
 
 \subsubsection*{Stworzone skrypty}
-\textbf{main.py} - Główny skrypt systemu, w celu jest uruchomienia powinien zostać uruchomiony przez użytkownika. Dostępnymi parametrami są:
+\textbf{main.py} - Główny skrypt systemu, powinien zostać uruchomiony przez użytkownika. Dostępnymi parametrami są:
 \begin{itemize}
-	\item -t/--type - typ źródła strumienia wideo. Dostępne są: remote (po adresie IP), file (z pliku), cam (kamera połączona bezpośrednio z komputerem), image (pojedyncza klatka). Domyślną wartością jest cam.
-	\item -s/--source - źródło strumienia, zależna od typu. Więc może to być kolejno: adres IP, ścieżka do pliku, id kamery, ścieżka do obrazka.
-	\item -c/--config - ścieżka do pliku konfiguracyjnego. Domyślnie ../config/config.json.
+	\item \emph{-t/--type} - typ źródła strumienia wideo. Dostępne są: \emph{remote} (po adresie IP), \emph{file} (z pliku), \emph{cam} (kamera połączona bezpośrednio z komputerem), \emph{image} (pojedyncza klatka). Domyślną wartością jest \emph{cam}.
+	\item \emph{-s/--source} - źródło strumienia, zależna od typu. Więc może to być kolejno: adres IP, ścieżka do pliku, id kamery, ścieżka do obrazka.
+	\item \emph{-c/--config} - ścieżka do pliku konfiguracyjnego. Domyślnie \emph{../config/config.json}.
 \end{itemize}
-W samym pliku znajduje się również skrypt inicjujący działanie systemu. Odbywa się to w kilku krokach. Na początku tworzony jest obiekt strumienia wideo cap. Następnie tworzona jest instancja systemu, przyjmująca konfigurację JSON jako argument. Opcjonalnymi krokami są: obrysowanie rozpoznanego obiektu, oraz wyświetlanie liczby klatek na sekundę (FPS). Kolejnym krokiem jest wywołanie metody add\_layer, w której parametrem jest funkcja modyfikująca obraz z kamery. Ostatnim krokiem jest wywołanie metody run, która zaczyna pobierać obraz ze strumienia i go odpowiednio przetwarzać. Schemat tego działania przedstawia Listing \ref{init_listing}.
+W samym pliku znajduje się również skrypt inicjujący działanie systemu. Odbywa się to w kilku krokach. Na początku tworzony jest obiekt strumienia wideo \emph{cap}. Następnie tworzona jest instancja systemu, przyjmująca konfigurację JSON jako argument. Opcjonalnymi krokami są: obrysowanie rozpoznanego obiektu, oraz wyświetlanie liczby klatek na sekundę (FPS). Kolejnym krokiem jest wywołanie metody \emph{add\_layer}, której parametrem jest funkcja modyfikująca obraz z~kamery. Ostatnim krokiem jest wywołanie metody \emph{run}, która zaczyna pobierać obraz ze strumienia i go odpowiednio przetwarzać. Schemat tego działania przedstawia Listing \ref{init-listing}.
 
-\begin{lstlisting}[language=Python,caption=Uruchomienie systemu,label=init_listing]
+\begin{lstlisting}[language=Python,caption=Uruchomienie systemu,label=init-listing]
 # Parse CLI arguments
 args = prepare_arguments()
 
@@ -650,7 +680,7 @@ augument.add_layer(draw_stats)
 augument.run(cap)
 \end{lstlisting}
 
-Funkcja rysująca przyjmuje trzy parametry. Pierwszym z nich jest frame, czyli obiekt klasy Frame, machine - tablica asocjacyjna z pliku konfiguracyjnego, oraz params - parametry z tematów MQTT. Funkcja ta musi zwrócić frame. Poniższy fragment (listing \ref{draw_fn}) rzeczywistej funkcji użytej w projekcie, ma za zadanie narysować biały prostokąt, oraz tekst "Urzadzenie wylaczone" w odpowiednim miejscu na kadrze jeśli parametr "connected" ma wartość "OFF". Docelowo funkcja rysująca jest jedynym miejscem, poza plikiem konfiguracyjnym, który późniejszy użytkownik powinien modyfikować. Funkcja rysująca wywoływana jest dla każdego kadru.
+Funkcja rysująca jest stosowana do tworzenia rozszerzeń obrazu. Przyjmuje trzy parametry. Pierwszym z nich jest \emph{frame}, czyli obiekt klasy \emph{Frame}, \emph{machine} - tablica asocjacyjna z pliku konfiguracyjnego, oraz \emph{params} - parametry tematów MQTT. Funkcja ta musi zwrócić \emph{frame}. Poniższy fragment (listing \ref{draw_fn}) rzeczywistej funkcji użytej w~projekcie, ma za zadanie narysować biały prostokąt w rogu ekranu, oraz tekst \enquote{Urzadzenie wylaczone} w odpowiednim miejscu na kadrze jeśli parametr \enquote{connected} ma wartość \enquote{OFF}. Funkcja rysująca wywoływana jest dla każdego kadru.
 
 \begin{lstlisting}[language=Python,caption=Uruchomienie systemu,label=draw_fn]
 if params["connected"] == "OFF":
@@ -659,11 +689,11 @@ if params["connected"] == "OFF":
 \end{lstlisting}
 
 \textbf{Stream.py}
-Skrypt zawiera klasę Stream, która tworzy instancję obiektu strumienia video, który zostanie później użyty w projekcie. W zależności typu źródła podanego w parametrach głównego skryptu main.py, obiekt się delikatnie różni, jednak każdy wariant posiada metody: cap, release, read, aby cały system mógł działać poprawnie. Dodatkowo w przypadku wariantu z kamerą połączoną bezpośrednio z komputerem, skrypt ustawia odpowiednią rozdzielczość, oby ograniczyć zużycie zasobów. Klasa Stream przyjmuje 2 parametry w swojej funkcji inicjującej: source oraz source\_type, które odpowiadają parametrom --source i --type.
+Skrypt zawiera klasę \emph{Stream}, która tworzy instancję obiektu strumienia wideo, który zostanie później użyty w projekcie. W zależności typu źródła podanego w parametrach głównego skryptu \emph{main.py}, obiekt się delikatnie różni, jednak każdy wariant posiada metody: \emph{cap}, \emph{release}, \emph{read}, aby cały system mógł działać poprawnie. Dodatkowo w przypadku wariantu z kamerą połączoną bezpośrednio z komputerem, skrypt ustawia odpowiednią rozdzielczość, oby ograniczyć zużycie zasobów. Klasa \emph{Stream} przyjmuje dwa parametry w swojej funkcji inicjującej: \emph{source} oraz \emph{source\_type}, które odpowiadają parametrom \emph{--source} i \emph{--type} z wywołania skryptu w terminalu.
 
 
 \textbf{Store.py}
-Zawiera definicję klasy Store, której zadaniem jest nadzorowanie stanu parametrów przekazywanych przez MQTT. Zawiera metody pozwalające na zmapowanie nazwy tematu na nazwę parametru w aplikacji, pobranie i ustawienie stanu. Funkcja inicjująca przyjmuje listę tematów z pliku konfiguracyjnego. Stan to tablica asocjacyjna zawierająca pary parametr-wartość. Listing \ref{store} przedstawia proces stworzenia i ustawienie wartości dla parametru "test"
+Zawiera on definicję klasy \emph{Store}, której zadaniem jest nadzorowanie stanu parametrów przekazywanych przez MQTT. Zawiera metody pozwalające na zmapowanie nazwy tematu na nazwę parametru w aplikacji, pobranie i ustawienie stanu. Funkcja inicjująca przyjmuje listę tematów z pliku konfiguracyjnego. Stan to tablica asocjacyjna zawierająca pary parametr-wartość. Listing \ref{store} przedstawia proces stworzenia i ustawienie wartości dla parametru "test".
 
 \begin{lstlisting}[language=Python,label=store,caption=Uruchomienie systemu]
 topics = [{"topic": "test/topic", "name": "top", "default": 0}]
@@ -674,25 +704,19 @@ store.get_state() # {"top": 100}
 \end{lstlisting}
 
 \textbf{Machine.py}
-Plik Machine.py zawiera klasę o tej samej nazwie. Jest to prosta klasa zawierająca w sobie informacje na temat pojedynczej maszyny: nazwę, obraz referencyjny oraz listę obszarów. Klasa zawiera pole statyczne all, pozwalające na śledzenie stanu rozpoznawanych maszyn. Zawiera publiczną metodę get\_area, która na podstawie nazwy obszaru zwróci jego współrzędne, a w razie potrzeby wywoła wyjątek. Posiada też pola name, areas i ref\_image, zawierające informacje o obiekcie. Listing \ref{mach} pokazuje proces tworzenia instancji klasy, jak i pobierania obszaru.
+Zawiera on definicję klasy o tej samej nazwie. Zawiera ona w sobie informacje na temat pojedynczej maszyny: nazwę, obraz referencyjny oraz listę obszarów. Klasa zawiera pole statyczne \emph{all}, pozwalające na śledzenie stanu rozpoznawanych maszyn. Zawiera też publiczną metodę \emph{get\_area}, która na podstawie nazwy obszaru zwróci jego współrzędne, a w razie potrzeby wywoła wyjątek. Posiada też pola \emph{name}, \emph{areas} i \emph{ref\_image}, zawierające informacje o obiekcie. Listing \ref{mach} pokazuje proces tworzenia instancji klasy, jak i pobierania obszaru.
 
 \begin{lstlisting}[language=Python,label=mach, caption=Stworzenie instancji Machine]
 config = {"name": "Maszyna", "ref": "test.jpg", "areas":{"A1": [0,0,100,100]}}
 machine = Machine(config)
 
 machine.get_area("A1") # [0,0,100,100]
-machine.get_area("Void")
-# Traceback (most recent call last):
-#   File "<stdin>", line 1, in <module>
-#   File "/home/rafcio/Mgr/AR/Machine.py", line 28, in get_area
-#     raise ValueError("No area named" + label)
-# ValueError: No area named VOID 
 \end{lstlisting}
 
 \textbf{Detector.py}
-Detektor.py zawiera klasę Detector. Jej zadaniem jest znalezienie homografii pomiędzy obrazkiem referencyjnym, a kadrem z kamery. W ramach inicjującej przyjmowana jest struktura maszyny. Po pobraniu obrazka referencyjnego, tworzony jest deskryptor, domyślnie ORB, ustawiony na wykrywanie 1000 punktów kluczowych. \textbf{SPRAWDZIĆ}. Następnie za jego pomocą wyznaczane są punkty kluczowy oraz deskryptory obrazu referencyjnego, oraz przygotowywany jest matcher FLANN. Całość tego procesu przedstawia Listing \ref{detecotor}
+Plik zawiera klasę \emph{Detector}. Jej zadaniem jest znalezienie homografii pomiędzy obrazkiem referencyjnym, a kadrem z kamery. W ramach inicjującej przyjmowana jest struktura maszyny. Po pobraniu obrazka referencyjnego, tworzony jest model ORB, ustawiony na wykrywanie 4000 punktów kluczowych. Testy, które doprowadziły do wybrania tej liczby zostały opisane w rozdziale \ref{section:test_kp}. Następnie za jego pomocą wyznaczane są punkty kluczowe oraz deskryptory obrazu referencyjnego, oraz przygotowywany jest matcher FLANN. Całość tego procesu przedstawia Listing \ref{detector}.
 
-\begin{lstlisting}[language=Python,label=machine,caption=Stworzenie instancji Detector]
+\begin{lstlisting}[language=Python,caption=Stworzenie instancji Detector,label=detector]
 class Detector(object):
 	def __init__(self, machine):
 		self.__machine = machine
@@ -702,7 +726,7 @@ class Detector(object):
 		self.__ref_image = ref_img
 		
 		# Prepare descriptor
-		self.__descriptor = cv2.ORB_create(1000)
+		self.__descriptor = cv2.ORB_create(4000)
 		
 		# Compute keypoints and descriptors for reference image
 		self.__kp, self.__desc = self.detectAndCompute(self.__ref_image)
@@ -716,10 +740,10 @@ class Detector(object):
 		self.__matcher = cv2.FlannBasedMatcher(self.__index_params, self.__search_params)
 \end{lstlisting}
 
-Klasa zawiera statyczne metody: calc\_good\_points, która filtruje znalezione dopasowania, oraz false\_detection, zwracającą krotkę charakterystyczną dla braku detekcji obiektu na obrazie. Publiczne metody to detect, przyjmująca kadr z kamery, a zwracająca wartość boolowską czy znaleziono, macierz homografii oraz maskę; get\_pts, zwracająca macierz zawierającą współrzędne narożników obrazka referencyjnego. Jest to przydatne podczas rysowania zgodnego z perspektywą urządzenia.
+Klasa zawiera statyczne metody: \emph{calc\_good\_points}, która filtruje znalezione dopasowania, oraz \emph{false\_detection}, zwracającą krotkę charakterystyczną dla braku detekcji obiektu na obrazie. Publiczne metody to \emph{detect}, przyjmująca kadr z kamery, a~zwracająca wartość boolowską (czy znaleziono obiekt na obrazie), macierz homografii oraz maskę; \emph{get\_pts}, zwracająca macierz zawierającą współrzędne narożników obrazka referencyjnego. Jest to przydatne podczas rysowania zgodnego z perspektywą urządzenia.
 
 \textbf{Client.py}
-Plik zawiera klasę ClientMQTT, umożliwiającą sprawną komunikację z brokerem. Funkcja inicjująca posiada dwa opcjonalne argumenty: host oraz port. W przypadku ich braku domyślnymi wartościami są kolejno "localhost" i 1883. Klasa umożliwia dodanie własnych wywołań zwrotnych (ang. callback) dla połączenia i rozłączenie z brokerem, w przypadku nowej wiadomości od brokera. Kluczową dla działania systemu jest metoda register\_handler, która przyjmuje nazwę tematu oraz funkcję zwrotną, wywoływaną, gdy przyjdzie nowa wiadomość z podanego tematu. Callback przyjmuje nazwę eventu oraz samą wiadomość. Handlery są dodawane automatycznie dla każdego topicu, dzięki czemu możliwa jest aktualizacja stanu aplikacji w czasie rzeczywistym.
+Plik zawiera klasę \emph{ClientMQTT}, umożliwiającą sprawną komunikację z brokerem. Funkcja inicjująca posiada dwa opcjonalne argumenty: \emph{host} oraz \emph{port}. W przypadku ich braku domyślnymi wartościami są kolejno \enquote{localhost} i \enquote{1883}. Klasa umożliwia dodanie własnych wywołań zwrotnych (ang. callback) dla połączenia i rozłączenie z brokerem, oraz w przypadku nowej wiadomości od brokera. Kluczową dla działania systemu jest metoda \emph{register\_handler}, która przyjmuje nazwę tematu oraz funkcję zwrotną, wywoływaną, gdy przyjdzie nowa wiadomość z podanego tematu. Funkcja zwrotna przyjmuje nazwę eventu oraz samą wiadomość. Handlery są dodawane automatycznie dla każdego topicu, dzięki czemu możliwa jest aktualizacja stanu aplikacji w czasie rzeczywistym.
 
 \begin{lstlisting}[language=Python, caption=Tworzenie instancji klienta]
 def handler(event, msg):
@@ -735,7 +759,7 @@ client.connect()
 Plik zawiera:
 
 \begin{enumerate}[label=\alph*), leftmargin=1.25cm]
-\item Klasę T - zawiera typy możliwych transformacji na metodzie rysującej. W chwili obecnej są to: FOLLOW - nakładka na kadr nie jest transformowana geometrycznie, ale początek jej lokalnego układu współrzędnych (lewy góry narożnik) podąża za początkiem układu współrzędnych rozpoznanego obiektu; PERSPECTIVE - na nakładkę aplikowana jest homografia, przez co ma ona wspólną płaszczyznę z panelem urządzenia.
+\item Klasę \emph{T} - zawiera typy możliwych transformacji na metodzie rysującej. W chwili obecnej są to: \emph{FOLLOW} - nakładka na kadr nie jest transformowana geometrycznie, ale początek jej lokalnego układu współrzędnych (lewy góry narożnik) podąża za początkiem układu współrzędnych rozpoznanego obiektu; \emph{PERSPECTIVE} - na nakładkę aplikowana jest homografia, przez co ma ona wspólną płaszczyznę z panelem urządzenia.
 
 \begin{lstlisting}[language=Python]
 class T:
@@ -744,130 +768,166 @@ class T:
 	PERSPECTIVE=2
 \end{lstlisting}
 
-\item Klasę Frame - semantycznie jest to obiekt kadru z kamery. W ramach inicjalizacji konieczne jest podanie obrazu, natomiast opcjonalnymi parametrami są: macierz homografii, maska homografii, oraz rozmiar obrazu referencyjnego.
+\item Klasę \emph{Frame} - semantycznie jest to obiekt kadru z kamery. W ramach inicjalizacji konieczne jest podanie obrazu, natomiast opcjonalnymi parametrami są: macierz homografii, maska homografii, oraz rozmiar obrazu referencyjnego.
 
-Klasa Frame udostępnia metody:
+Klasa \emph{Frame} udostępnia metody:
 
-\item draw\_rectangle - rysuje prostokąt o zadanym: początku, rozmiarze, kolorze oraz transformacji. Domyślnie prostokąt jest biały oraz bez transformacji. Reszta parametrów jest obligatoryjna. Przykład:
+\item \emph{draw\_rectangle} - rysuje prostokąt o zadanym: początku, rozmiarze, kolorze oraz transformacji. Domyślnie prostokąt jest biały oraz bez transformacji. Reszta parametrów jest opcjonalna. Przykład:
 \begin{lstlisting}[language=Python]
 draw_rectangle((100,100), (50, 90), color=(255, 0, 0), transform=T.PERSPECTIVE)
 \end{lstlisting}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{draw_rect}
-	\caption{Rysowanie prostokąta. Źródło własne}
+	\caption{Rysowanie prostokąta.}
 \end{figure}
 
-\item draw\_polylines - rysuje wielokąt. Wymaganym parametrem jest lista krotek dwuelementowych, zawierająca współrzędne kolejnych wierzchołków. Opcjonalnymi parametrami są: kolor oraz grubość linii. Przykład:
+\item \emph{draw\_polylines} - rysuje wielokąt. Wymaganym parametrem jest lista krotek dwuelementowych, zawierająca współrzędne kolejnych wierzchołków. Opcjonalnymi parametrami są: kolor oraz grubość linii. Przykład:
 \begin{lstlisting}[language=Python]
 frame.draw_polylines([np.int32([(10,10),(30, 40), (70, 20), (90,100)])], color=(0, 255, 0))
 \end{lstlisting}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.3\textwidth]{draw_poly}
-	\caption{Rysowanie wielokąta. Źródło własne}
+	\caption{Rysowanie wielokąta.}
 \end{figure}
 
-\item draw\_text - rysuje na kadrze tekst o zadanej treści i współrzędnych. Wśród opcjonalnych parametrów są: krój fontu, rozmiar, kolor, grubość linii, sposób wygładzania linii  oraz sposób transformacji. Przykład:
+\item \emph{draw\_text} - rysuje na kadrze tekst o zadanej treści i współrzędnych. Wśród opcjonalnych parametrów są: krój fontu, rozmiar, kolor, grubość linii, sposób wygładzania linii  oraz sposób transformacji. Przykład:
 \begin{lstlisting}[language=Python]
 frame.draw_text("img/rot_arr_cw.png", (20, 50), size=0.5)
 \end{lstlisting}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{draw_text}
-	\caption{Rysowanie tekstu. Źródło własne}
+	\caption{Rysowanie tekstu.}
 \end{figure}
 
-\item draw\_image - rysunek inny obrazek. Konieczne jest podanie drugiej obrazu, natomiast opcjonalne są: współrzędne (domyślnie punkt (0,0)), rozmiar (domyślnie rozmiar obrazka) oraz sposób transformacji. Przykład:
+\item \emph{draw\_image} - rysunek inny obrazek. Konieczne jest podanie drugiej obrazu, natomiast opcjonalne są: współrzędne (domyślnie punkt (0,0)), rozmiar (domyślnie rozmiar obrazka) oraz sposób transformacji. Przykład:
 \begin{lstlisting}[language=Python]
 frame.draw_image(path, (160, 400), (50, 50), transform=T.PERSPECTIVE)
 \end{lstlisting}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{draw_img}
-	\caption {Rysowanie obrazka. Źródło własne}
+	\caption {Rysowanie obrazka.}
 \end{figure}
 
-\item get\_image - bezparametrowa funkcja zwracająca aktualny kadr, razem z ewentualnymi zmianami.
+\item \emph{get\_image} - bezparametrowa funkcja zwracająca aktualny kadr, razem z ewentualnymi zmianami.
 \end{enumerate}
 
-Dzięki temu, że każda z wymienionych metod zwraca całą instancję, możliwe jest wywołań i pisanie kodu w postaci:
-\begin{lstlisting}[language=Python]
+Możliwe jest też łączenie wywołań w łańcuchy. Taki kod znajduje się na listingu \ref{chaingin_lst}, a obraz wynikowy przedstawia rysunek \ref{chaining}.
+\begin{lstlisting}[language=Python, label=chaingin_lst]
 frame \
 	.draw_rectangle((10,10),(100,100), color=(255,255,0)) \
 	.draw_text("TEST", (30, 30))
 \end{lstlisting}
-Co skutkuje narysowaniem na ekranie
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{chaining}
-	\caption{Rysowanie prostokąta i tekstu. Źródło własne}
+	\caption{Rysowanie prostokąta i tekstu.}
+	\label{chaining}
 \end{figure}
 
 
 \textbf{AugumentAPI.py}
-Zawarta w pliku klasa AugumentAPI jest jedną z 2 obiektów, które powinny zostać zainicjowane w skrypcie głównym main.py. Pierwszym z nich jest obiekt strumienia video, a drugim właśnie AugumentAPI, które ten właśnie strumień przyjmie w funkcji startu run. Dodatkowo podczas inicjalizacji obiektu należy podać ścieżkę do pliku konfiguracyjnego w formacie json, co przedstawia listing \ref{aug}.
+Zawarta w pliku klasa \emph{AugumentAPI} jest jedną z dwóch obiektów, które powinny zostać zainicjowane w skrypcie głównym \emph{main.py}. Pierwszym z nich jest obiekt strumienia video, a drugim właśnie \emph{AugumentAPI}, które ten strumień przyjmie w funkcji startu \emph{run}. Dodatkowo podczas inicjalizacji obiektu należy podać ścieżkę do pliku konfiguracyjnego w formacie JSON, co przedstawia listing \ref{aug}.
 
 \begin{lstlisting}[language=Python, label=aug, caption=Tworzenie oraz uruchomienie systemu AR]
 augument = AugumentAPI(config)
 augument.run(cap)
 \end{lstlisting}
 
-W ramach inicjalizacji skonfigurowane zostaną obiekty Detector, Client oraz Store, oraz zasubskrybowane będą tematy MQTT pobrane z pliku konfiguracyjnego. Klasa zawiera metodę add\_layer, w ramach której podaje się funkcję rysującą. Zostaje ona do pola \_\_layers. Wykorzystane jest ono w metodzie parse\_frame w ramach której na kadr nakładane są elementy stworzone w funkcji rysujących. Ponieważ wywoływanie podanych funkcji jest realizowane w ramach kolejki FIFO, możliwe jest tworzenie warstw jedna na drugiej. Może to być szczególnie pomocne podczas tworzenia bardziej skomplikowanych interfejsów.
+W ramach inicjalizacji skonfigurowane zostaną obiekty \emph{Detector}, \emph{Client} oraz \emph{Store}, oraz subskrybowane będą tematy MQTT pobrane z pliku konfiguracyjnego. Klasa zawiera metodę \emph{add\_layer}, w ramach której podaje się funkcję rysującą. Zostaje ona dodana do pola \emph{\_\_layers}. Wykorzystane jest ono w metodzie \emph{parse\_frame} w~ramach której na kadr nakładane są elementy stworzone w funkcji rysujących. Ponieważ wywoływanie podanych funkcji jest realizowane w ramach kolejki FIFO, możliwe jest tworzenie warstw jedna na drugiej. Może to być szczególnie pomocne podczas tworzenia bardziej skomplikowanych interfejsów.
 
 Inne dostępne dla użytkownika metody to:
 \begin{enumerate}[label=\alph*), leftmargin=1.25cm]
-	\item stop() - zatrzymuje działanie systemu
-	\item show\_fps() - pokazuje klatkaż w lewym górnym rogu ekranu
-	\item outline\_detection() - rozpoznany obiekt zostaje obrysowany czerwoną linią
+	\item \emph{stop()} - zatrzymuje działanie systemu
+	\item \emph{show\_fps()} - pokazuje liczbę klatek na sekundę w lewym górnym rogu ekranu
+	\item \emph{outline\_detection()} - rozpoznany obiekt zostaje obrysowany czerwoną linią
 \end{enumerate}
 
 \textbf{util.py}
-Zawiera dodatkowe generyczne funkcje wykorzystywane w każdym z plików projektu. Zawiera między innymi metody na wyświetlanie informacji w terminalu w zależności od ich przeznaczenia: info, warning, error, success; przeskaluj obraz, aby jego rozmiar nie przekraczał maksymalnego, bez zmiany skali, odczytaj plik JSON i inne.
+Zawiera dodatkowe generyczne funkcje wykorzystywane w każdym z~plików projektu. Zawiera między innymi metody na wyświetlanie wiadomości w terminalu w zależności od ich przeznaczenia: \emph{info} (informacyjne), \emph{warning} (ostrzeżenie), \emph{error} (błąd), \emph{success} (sukces); funkcja przeskalowania obrazu tak, aby jego rozmiar nie przekraczał maksymalnego, bez zmiany skali; odczytanie pliku JSON.
 
 
 \subsection{Komunikacja}
-Komunikacja odbywa się za pomocą protokołu MQTT, którego opis przedstawiono w jednym z poprzednich rozdziałów. Aby założenia projektowe mogły być spełniono, wyznaczono tematy do komunikacji
+Komunikacja odbywa się za pomocą protokołu MQTT. Aby założenia projektowe mogły być spełnione, wyznaczono tematy do komunikacji:
 \begin{enumerate}
-	\item connected - temat informujący czy urządzenie ma aktywne połączenie z brokerem. Może przyjąć wartość "ON" bądź "OFF". Jest to specjalny kanał, ponieważ dzięki zastosowaniu techniki "testamentu", 5 sekund po przerwaniu połączenia z brokerem, temat przyjmie wartość "OFF".
-	\item arduino/red - zawiera składową czerwonego koloru. Przyjmuje wartości o 0 do 255 typu String. Jest to wartość potencjometrze na rezystorze R1, z czerwoną gałką.
-	\item arduino/green - zawiera składową zielonego koloru. Przyjmuje wartości o 0 do 255 typu String. Jest to wartość potencjometrze na rezystorze R2, z zieloną gałką.
-	\item arduino/blue - zawiera składową niebieskiego koloru. Przyjmuje wartości o 0 do 255 typu String. Jest to wartość potencjometrze na rezystorze R3, z niebieską gałką.
-	\item arduino/mode - przyjmuje wartości od 0 do 2 typu String. Oznacza tryb, opisany w następnym podrozdziale. Wartość jest zwiększa o 1, bądź ustawiania na 0 po wciśnięciu przycisku B1.
+	\item \emph{connected} - temat informujący czy urządzenie ma aktywne połączenie z brokerem. Może przyjąć wartość \enquote{ON} bądź \enquote{text}{OFF}. Jest to specjalny kanał, ponieważ dzięki zastosowaniu techniki \enquote{testamentu}, 5 sekund po przerwaniu połączenia z brokerem, temat przyjmie wartość \enquote{OFF}.
+	\item \emph{arduino/red} - zawiera składową czerwonego koloru. Przyjmuje wartości o 0 do 255 typu \emph{String}. Jest to wartość napięcia na potencjometrze na R1, z czerwoną gałką.
+	\item \emph{arduino/green} - zawiera składową zielonego koloru. Przyjmuje wartości o 0 do 255 typu \emph{String}. Jest to wartość napięcia na potencjometrze  R2, z zieloną gałką.
+	\item \emph{arduino/blue} - zawiera składową niebieskiego koloru. Przyjmuje wartości o 0 do 255 typu \emph{String}. Jest to wartość napięcia na  potencjometrze R3, z niebieską gałką.
+	\item \emph{arduino/mode} - przyjmuje wartości od 0 do 2 typu \emph{String}. Oznacza tryb, opisany w rozdziale \ref{subsection:mode}. Wartość jest zwiększa o 1, bądź ustawiania na 0 po wciśnięciu przycisku B1.
 \end{enumerate}
 
 \subsection{Tryby działania}
-W celu przeprowadzenia prezentacji, autor podjął decyzję o stworzeniu 3 trybów pokazowych, mających zademonstrować działanie systemu.
+\label{subsection:mode}
+W celu przeprowadzenia prezentacji, autor podjął decyzję o stworzeniu trzech trybów, mających zademonstrować działanie systemu.
 
 Pierwszym trybem jest tryb pokazowy. Za pomocą strzałek oznaczone są wszystkie obszaru opisane w pliku konfiguracyjnym dla każdej maszyny. Na strzałki nałożona jest homografia, wobec czego podążają one za obszarami oraz są one transformowane geometrycznie. Dodatkowo w lewym górnym narożniku ekranu rysowany jest obszar informacyjny, z wartościami liczbowymi składowych kolorów, a także aktualnym trybem.
-
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{pres}
-	\caption{Tryb prezentacji. Źródło własne}
+	\caption{Tryb pokazowy.}
 \end{figure}
 
-Drugi i trzeci tryb mają analogiczne działanie. Otóż celem tego trybu jest pokierowanie użytkownika tak, aby dioda RGB świeciła na odpowiedni kolor. Składowe dla trybu drugiego (limonkowy) to (100, 200, 0), kolejno dla koloru czerwonego, zielonego i niebieskiego. Trzeci tryb nazwany został turkusowym, a pożądane składowe to (5, 85, 35). Ze względu na niedokładność potencjometrów i przetwornika analogowo/cyfrowego Arduino, przyjęto dokładność +/- 15. W przypadku, gdy dana składowa nie mieści się w pożądanym obszarze, na obrazie rysowana jest strzałka skierowana w kierunku, w którym gałka potencjometru powinna zostać obrócona. Obrazuje to rysunek \ref{limref}
+Drugi i trzeci tryb są bardzo do siebie podobne. Ich celem jest pokierowanie użytkownika tak, aby dioda RGB świeciła na odpowiedni kolor. Dioda RGB to tak naprawdę trzy diody (czerwona, zielona i niebieska), z czego jasność każdej z nich zależy od doprowadzonego napięcia w zakresie 0-5V. Kolor wynikowy zależy natomiast od sumy składowych każdej z pomniejszych diod. Zasadę działania zjawiska ilustruje rysunek \ref{rgb_tri}. Widać na nim, że na przykład kolor czerwony i zielony daje kolor żółty, a suma wszystkich kolor biały.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5\textwidth]{lim}
-	\caption{Tryb limonkowy. Źródło własne}
-	\label{limref}
+	\includegraphics[width=0.5\textwidth]{rgb_tri}
+	\caption{Trójkąt kolorów RGB \cite{rgb_tri}.}
+	\label{rgb_tri}
+\end{figure}
+
+Składowe dla trybu drugiego (limonkowy) to (100, 200, 0), kolejno dla koloru czerwonego, zielonego i niebieskiego. Użytkownikowi przedstawione są przy potencjometrach strzałki skierowane w stronę, w którą powinien zakręcić. W przypadku, gdy danej składowej jest zbyt mało, prezentowana przy odpowiednim potencjometrze strzałka skierowana w prawą stronę, a jeśli zbyt mało, to skierowaną w lewą. Jeśli składowa ma odpowiednią wartość, nic nie jest rysowane. Dodatkowo rysowany jest prostokąt reprezentujący aktualny kolor na komputerze. Różne warianty prezentuje rysunek \ref{lim}
+
+\begin{figure}[]
+	\begin{subfigure}[b]{0.5\textwidth}
+		\includegraphics[width=\textwidth]{lim2}
+		\caption{Brak składowych.}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\includegraphics[width=\textwidth]{lim3}
+		\caption{Poprawne składowe.}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\includegraphics[width=\textwidth]{lim4}
+		\caption{Zbyt duża składowa koloru niebieskiego}
+	\end{subfigure}
+	\caption{Tryb limonkowy.}
+	\label{lim}
 \end{figure}
 
 
+Trzeci tryb nazwany został turkusowym, a pożądane składowe to (5, 85, 35). Wariant dla niepoprawnego i poprawnego stanu w tym trybie przedstawiono na rysunku \ref{turk}.
+
+\begin{figure}[htb!]
+	\centering
+	\begin{subfigure}[b]{0.7\textwidth}
+		\includegraphics[width=\textwidth]{turk2}
+		\caption{Brak składowych.}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.7\textwidth}
+		\includegraphics[width=\textwidth]{turk1}
+		\caption{Poprawne składowe.}
+	\end{subfigure}
+	\caption{Tryb turkusowy.}
+	\label{turk}
+\end{figure}
+
+Ze względu na niedokładność potencjometrów i przetwornika analogowo/cyfrowego Arduino, przyjęto dokładność +/- 15 wartości składowej.
 
 \section{Testy}
 W celu ustalenia sprawności i dokładności systemu rozpoznawania obiektu, autor podjął decyzję o wykonaniu testów dla różnych warunków. Testy, nie licząc testu odległości, wykonano w odległości 50cm kamery od urządzenia. Wykorzystana została kamera internetowa Tecknet c018 FullHD oraz lampa symulująca różne warunki oświetleniowe.  Stanowisko testowe zostało przedstawione na rysunku \ref{test_station}
 
-Testy wykonano poprzez zwiększanie bądź zmniejszanie badanego parametru do momentu, w którym rozpoznawanie było stabilne. Każdy z punktów brzegowych został uwieczniony i przedstawiony w stosownym podrozdziale w postaci zdjęcia sytuacji.
+Testy wykonano poprzez zwiększanie bądź zmniejszanie badanego parametru do momentu, w którym rozpoznawanie było stabilne.Punkty brzegowe zostały uwiecznione i przedstawione w stosownych podrozdziałach w postaci zdjęcia sytuacji.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{test_stat}
-	\caption{Stanowisko do testów. Źródło własne}
+	\caption{Stanowisko do testów.}
 	\label{test_station}
 \end{figure}
 
@@ -882,7 +942,7 @@ Wykonane zostały:
 \end{enumerate}
 
 \subsection{Test odległości}
-Testowano poprzez przesuwanie kamery wzdłuż osi głównej ustawionej prostopadle do płaszczyzny panelu urządzenia. Rozpoznawanie było stabilne w zakresie 10-90cm. W przypadku bliższego wariantu, fakt czy urządzenie zostało rozpoznane zależało od obecności wzoru na kadrze - jego brak powodował brak detekcji, patrz rys. \ref{test_close1}.
+Testowano poprzez przesuwanie kamery wzdłuż osi głównej ustawionej prostopadle do płaszczyzny panelu urządzenia. Rozpoznawanie było stabilne w zakresie 10-95cm.
 \begin{figure}[htb!]
 	\begin{subfigure}[b]{0.5\textwidth}
 		\includegraphics[width=\textwidth]{test_close1}
@@ -896,10 +956,10 @@ Testowano poprzez przesuwanie kamery wzdłuż osi głównej ustawionej prostopad
 	\end{subfigure}
 	\begin{subfigure}[b]{0.5\textwidth}
 		\includegraphics[width=\textwidth]{test_close3}
-		\caption{90cm}
+		\caption{95cm}
 		\label{test_close3}
 	\end{subfigure}
-	\caption{Testy odległości. Źródło własne}
+	\caption{Testy odległości.}
 \end{figure}
 \FloatBarrier
 
@@ -918,7 +978,7 @@ Testy wykonano dla różnych katów pomiędzy osią główną kamery, a płaszcz
 		\caption{45\degree w płaszczyźnie pionowej}
 		\label{test_angl2}
 	\end{subfigure}
-	\caption{Test kąta patrzenia. Źródło własne}
+	\caption{Test kąta patrzenia.}
 \end{figure}
 \FloatBarrier
 
@@ -940,7 +1000,7 @@ Poprzez warunki oświetleniowe rozumie się punktowe źródło światła skierow
 		\caption{od góry}
 		\label{test_light3}
 	\end{subfigure}
-	\caption{Test różnych warunków oświetleniowych. Źródło własne}
+	\caption{Test różnych warunków oświetleniowych.}
 \end{figure}
 \FloatBarrier
 
@@ -963,7 +1023,7 @@ Celem testu było sprawdzenie jak system detekcji działa w warunkach słabego o
 		\caption{bardzo słabe oświetlenie}
 		\label{test_bright3}
 	\end{subfigure}
-	\caption{Test różnych natężeń oświetlenia. Źródło własne}
+	\caption{Test różnych natężeń oświetlenia.}
 \end{figure}
 \FloatBarrier
 
@@ -986,15 +1046,16 @@ Celem było sprawdzenie jak detekcja reaguje na obrót obrazu względem osi gł�
 		\caption{90\degree w lewo}
 		\label{test_rot3}
 	\end{subfigure}
-	\caption{Test obrotu względem osi głównej kamery. Źródło własne}
+	\caption{Test obrotu względem osi głównej kamery.}
 \end{figure}
 \FloatBarrier
 
 
 \subsection{Test częściowo widocznego urządzenia}
+\label{section:partlyvisible}
 Celem było przetestowanie zachowania algorytmu detekcji dla częściowo zasłoniętego panelu urządzenia. Wykonano łącznie pięć testów: dwa symulujące naturalne zachowania, to jest ludzka dłoń korzystająca z panelu, trzeci testował zachowanie przy niewidocznym wzorze, a dwa ostatnie sprawdzały procentowe zasłonięcie panelu.
 
-Gdy cześć panelu została zasłonięta dłonią, detekcja była poprawna. W przypadku, gdy całość wzoru nie była widoczna, detekcja nie następowała. Dla dwóch ostatnich pomiarów, urządzenie było rozpoznawane jeśli conajmniej 25\%-50\% było widoczne.
+Gdy cześć panelu została zasłonięta dłonią, detekcja była poprawna. W przypadku, gdy całość wzoru nie była widoczna, detekcja nie następowała. Dla dwóch ostatnich pomiarów, urządzenie było rozpoznawane jeśli co najmniej 25\%-50\% było widoczne.
 
 \begin{figure}[htb!]
 	\begin{subfigure}[b]{0.5\textwidth}
@@ -1022,19 +1083,42 @@ Gdy cześć panelu została zasłonięta dłonią, detekcja była poprawna. W pr
 		\caption{90\degree w lewo}
 		\label{test_cover5}
 	\end{subfigure}
-	\caption{Test częściowo widocznego urządzenia. Źródło własne}
+	\caption{Test częściowo widocznego urządzenia.}
 \end{figure}
 \FloatBarrier
 
+\subsection{Test liczby punktów kluczowych}
+\label{section:test_kp}
+
+Motywacją do wykonania tego testu było określenie optymalnej liczby punktów kluczowych, które algorytm ORB powinien wyznaczyć. Testowano dwa parametry: maksymalną odległość dla której detekcje tracą stabilność, czyli otrzymywane są różne wykluczające się położenia w przeciągu kilku klatek strumienia; liczbę klatek na sekundę. Przetestowano 7 wariantów: 500 (domyślna wartość), 1000, 2000, 3000, 4000, 5000, 10000. Wyniki testów przedstawiono w tablicy \ref{table:test_kp}. Maksymalna odległość dla której detekcje były stabilne wynosi się w okolicy 95cm przy 4000 punktach, podczas dalszego zwiększania ich liczby malała jedynie liczba klatek na sekundę, nie zwiększając dokładności. Dlatego też liczba 4000 punktów kluczowych została wybrana podczas realizacji pracy.
+
+\begin{table}[]
+	\centering
+	\caption{Wyniki testu liczby punktów kluczowych.}
+	\label{table:test_kp}
+	\begin{tabular}{lll}
+	\rowcolor[HTML]{EFEFEF} 
+	liczba punktów & maksymalna odległość {[}cm{]} & FPS {[}kl./s{]} \\
+	500            & 45                            & 10-16           \\
+	1000           & 70                            & 9-15            \\
+	2000           & 85                            & 9-11            \\
+	3000           & 90                            & 8-10            \\
+	4000           & 95                            & 8-10            \\
+	5000           & 95                            & 7-9             \\
+	10000          & 95                            & 5-7            
+	\end{tabular}
+	\end{table}
+
 \subsection{Podsumowanie i wnioski z testów}
 \begin{enumerate}[label=\alph*), leftmargin=1.25cm]
-\item W teście odległości, maksymalną wartość zwiększyć można korzystając z lepszej kamery, bądź opierając się na obrazie w większej rozdzielczości
-\item Wykorzystana kamera rozmazuje obraz w ruchu
-\item Obrót względem osi głównej nie wpływa na poprawność detekcji
-\item Urządzenie jest poprawnie rozpoznawane dla +/-45\degree w dowolnej osi, wydaje się to być wartością wystarczającą do praktycznego wykorzystania systemu
-\item Rozpoznanie nie występuje dla bardzo słabego oświetlenia. Można to poprawić poprzez obróbkę obrazu przed detekcją, na przykład rozjaśnienie, bądź zwiększenie kontrastu, lub wykorzystanie lepszej kamery
-\item Pozycja źródła światła (a więc cienie) nie wpływa na poprawność detekcji
+\item W teście odległości, maksymalną wartość zwiększyć można korzystając z lepszej kamery, bądź opierając się na obrazie w większej rozdzielczości. Dla bliższych dystansów detekcje zależały od faktu, czy wzór mieścił się w kadrze. Problem ten wynika z małej liczby wykrytych punktów nie należących do wzoru (rys. \ref{test_close1}).
+\item Wykorzystana kamera rozmazuje obraz w ruchu.
+\item Obrót względem osi głównej nie wpływa na poprawność detekcji.
+\item Urządzenie jest poprawnie rozpoznawane dla +/-45\degree w dowolnej osi, wydaje się to być wartością wystarczającą do praktycznego wykorzystania systemu.
+\item Rozpoznanie nie występuje dla bardzo słabego oświetlenia. Można to poprawić poprzez obróbkę obrazu przed detekcją, na przykład rozjaśnienie, bądź zwiększenie kontrastu, lub wykorzystanie lepszej kamery.
+\item Pozycja źródła światła (a więc cienie) nie wpływa na poprawność detekcji.
 \item Przy w większości zasłoniętym panelu występują problemy z rozpoznawaniem, szczególnie, gdy nie jest widoczny wzór. W praktyce, dla bardziej skomplikowanych panelów nie powinno być to aż tak uciążliwe, jednak poprawę sytuacji zapewni rozmieszczenie wzorów w różnych miejscach.
+\item Maksymalna odległość dla której detekcje są stabilne przy użytej kamerze oraz wykorzystanej rozdzielczości wynosi 95cm.
 \end{enumerate}
 \clearpage
 
@@ -1042,11 +1126,11 @@ Gdy cześć panelu została zasłonięta dłonią, detekcja była poprawna. W pr
 \section{Podsumowanie i wnioski końcowe}
 Wykorzystanie AR do celów użytkowania i obsługi urządzeń jest bez wątpienia przyszłością. Możliwości jakie zapewnia rozszerzenie widocznego obrazu pozwala na odciążenie pracowników, dzięki czemu będą oni popełniać mniej błędów, ponieważ niektóre decyzje podejmować może program. Dodatkowo ze względu na dostęp do danych w czasie rzeczywistym pozwala na przyspieszenie części zadań. Urządzenie stworzone na potrzeby pracy było w pełni zamknięte, nie posiadające zewnętrznych portów dostępowych, ani wyświetlaczy. Jest to w niektórych przypadkach wymagane, jeśli urządzenie jest podane na warunki zewnętrzne, a pracuje w takich warunkach. Wtedy dostęp do niektórych funkcji może być utrudniony, jednak wyświetlanie odpowiednich parametrów przed oczami pracownika rozwiązuje ten problem.
 
-Tryby, w których pracownik jest prowadzony za rękę przez specjalnie przygotowany tryb, pokazujący kolejne kroki procesu pozwoli zredukować czas uczenia, a także koszty z tym związane. Zamiast wysyłać serwisanta lub trenera na miejsce usterki czy też treningu, nawiązać można wideo rozmowę, gdzie obaj będą widzieć ten sam obraz, co pozwala na bezproblemową komunikację.
+Tryby, w których pracownik jest prowadzony za rękę przez specjalnie przygotowany tryb, pokazujący kolejne kroki procesu pozwoli zredukować czas uczenia, a także koszty z tym związane. Zamiast wysyłać serwisanta lub trenera na miejsce usterki, czy też treningu, nawiązać można wideo rozmowę, gdzie obaj będą widzieć ten sam obraz, co pozwala na bezproblemową komunikację.
 
-Udało się wykonać projekt, który spełnia wymagania postawione przez autora. Stworzony system poprawnie rozpoznaje obiekt podany na obrazie referencyjnym. Rozpoznawanie działa stabilnie dla typowych warunków, jakim jest światło o średnim natężeniu i kamera zwrócona na wprost panelu urządzenia. Cienie nie wypływają na poprawność detekcji, więc nie jest potrzebne specjalne przygotowanie środowiska wokół rzeczywistego urządzenia. Widoczność do 45 stopni wydaje się być wystarczająca do poprawnej pracy.
+Udało się wykonać projekt, który spełnia wymagania postawione przez autora. Stworzony system poprawnie rozpoznaje obiekt podany na obrazie referencyjnym. Rozpoznawanie działa stabilnie dla typowych warunków, jakim jest światło o średnim natężeniu i kamera zwrócona na wprost panelu urządzenia. Cienie nie wypływają na poprawność detekcji, więc nie jest potrzebne specjalne przygotowanie środowiska wokół rzeczywistego urządzenia. Odporność na różne kąty pomiędzy kamerą a obiektem, do 45 stopni wydaje się być wystarczająca do poprawnej pracy. Stworzony projekt może zostać wykorzystywany między innymi do nauki obsługi urządzeń dzięki możliwości zlokalizowania poszczególnych ich elementów w przestrzeni, a także diagnostyki dzięki komunikacji odbywającej się w czasie rzeczywistym.
 
-Polem do usprawnienia programu jest zastosowanie rzeczywistych okularów rozszerzonej rzeczywistości, dzięki czemu doświadczenie użytkownika będzie dużo lepsze niż na monitorze komputera. Kompromisem może być także aplikacja na urządzenia mobilne. Konieczne jest wykorzystanie lepszej kamery, ponieważ niedokładność zastosowanej pogarsza działanie systemu. Dodatkowa optymalizacja procesu pozwoli na zwiększenie FPS. Wykorzystane metody do tworzenia nakładek są prymitywne. Pożądane jest wykorzystanie bibliotek typu OpenGL do tworzenia grafiki, dzięki czemu możliwe będzie komponowanie ładniejszych i czytelniejszych interfejsów, a także wykorzystanie animacji i modelów 3D.
+Polem do usprawnienia programu jest zastosowanie rzeczywistych okularów rozszerzonej rzeczywistości, dzięki czemu doświadczenie użytkownika będzie dużo lepsze niż na monitorze komputera. Kompromisem może być także aplikacja na urządzenia mobilne. Konieczne jest wykorzystanie lepszej kamery, ponieważ niedokładność zastosowanej pogarsza działanie systemu. Dodatkowa optymalizacja procesu pozwoli na zwiększenie liczby klatek na sekundę. Wykorzystane metody do tworzenia nakładek są prymitywne. Pożądane jest wykorzystanie bibliotek typu OpenGL do tworzenia grafiki, dzięki czemu możliwe będzie komponowanie ładniejszych i czytelniejszych interfejsów, a także wykorzystanie animacji i modelów 3D. W praktycznym zastosowaniu przydatna byłaby także obsługa więcej niż jednego urządzenia, a także możliwość określenia stanu obiektu nie tylko na podstawie przesyłanych parametrów, ale też stanu wizualnego, na przykład określenie obrotu potencjometru na podstawie jego wyglądu.
 \clearpage
 
 \addcontentsline{toc}{section}{Literatura}
@@ -1098,8 +1182,38 @@ PTC \emph{The State of Industrial Augmented Reality 2019}, 2019.
 
 \bibitem{huaweicasestudy}
 \url{https://www.manufacturing.net/article/2016/10/case-study-augmented-reality-maintenance-technicians}. Dostęp 20.06.2019.
+
+\bibitem{features}
+\url{https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_feature2d/py_features_meaning/py_features_meaning.html#features-meaning}. Dostęp 22.06.2019.
+
+\bibitem{orb_doc}
+E. Rublee \emph{ORB: an efficient alternative to SIFT or SURF}
+\url{http://www.willowgarage.com/sites/default/files/orb_final.pdf}
+
+\bibitem{fast}
+E. Rosten, T. Drummond \emph{Machine learning for high-speed corner detection}
+\url{https://www.edwardrosten.com/work/rosten_2006_machine.pdf}
+
+\bibitem{fast_img}
+\url{https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_feature2d/py_features_meaning/py_features_meaning.html#features-meaning}. Dostęp 22.06.2019.
+
+\bibitem{brief}
+M. Calonder, V. Lepetit, Ch. Strecha, P. Fua \emph{BRIEF: Binary Robust Independent Elementary Features}
+\url{https://www.cs.ubc.ca/~lowe/525/papers/calonder_eccv10.pdf}. Dostęp 22.06.2019.
+
+\bibitem{fastest_orb}
+S. Tareen \emph{A Comparative Analysis of SIFT, SURF, KAZE, AKAZE, ORB, and BRISK }, 2018.
+\url{https://www.researchgate.net/publication/323561586_A_comparative_analysis_of_SIFT_SURF_KAZE_AKAZE_ORB_and_BRISK}. Dostęp 22.06.2019.
+
 \bibitem{orbkp}
 \url{https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_feature2d/py_orb/py_orb.html}. Dostęp 17.06.2019.
+
+\bibitem{sift_scale_invariant}
+\url{https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_feature2d/py_sift_intro/py_sift_intro.html#sift-intro}
+
+\bibitem{dl_in_cv}
+A. Voulodimos \emph{Deep Learning for Computer Vision: A Brief Review}, 2018.
+\url{https://www.hindawi.com/journals/cin/2018/7068349/abs/}. Dostęp 22.06.2019
 
 \bibitem{dlowe}
 D.Lowe \emph{Distinctive Image Features from Scale-Invariant Keypoints}, 2004.
@@ -1119,6 +1233,9 @@ A. Kaehler, G. Bradski \emph{Distinctive Image Features from Scale-Invariant Key
 
 \bibitem{mqtt}
 \url{https://devenv.pl/mqtt-protokol-transmisji-danych-dla-iot/}. Dostęp 19.06.2019
+
+\bibitem{rgb_tri}
+\url{http://www.allthesky.com/articles/colorpreserve.html}. Dostęp 24.06.2019.
 
 
 \end{thebibliography}
